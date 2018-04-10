@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HippaComponent } from './hippa/hippa.component';
 import { FooterComponent } from './footer/footer.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     NavBarComponent,
     ProfileComponent,
     HippaComponent,
-    FooterComponent
+    FooterComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule
