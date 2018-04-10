@@ -3,6 +3,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 import { User } from '../_models/user';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-login',
@@ -12,15 +13,16 @@ import { User } from '../_models/user';
 })
 
 export class LoginComponent implements OnInit {
-    model: any = {};
-    loading = false;
-    returnUrl: string;
+    public model: any = {};
+    public loading = false;
+    public returnUrl: string;
 
     constructor(
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService) { }
+      private alertService: AlertService
+    ) {}
 
     ngOnInit() {
           // reset login status
@@ -30,17 +32,18 @@ export class LoginComponent implements OnInit {
           this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-      login() {
+    login() {
           this.loading = true;
-          this.authenticationService.login(this.model.username, this.model.password)
+          this.authenticationService.login(this.model)
               .subscribe(
                   data => {
-                      this.router.navigate([this.returnUrl]);
+                      console.log(this.returnUrl);
+                      this.router.navigate(['_profile'], { queryParams: this.model});
                   },
                   error => {
                       this.alertService.error(error);
                       this.loading = false;
                   });
-      }
+    }
 }
 

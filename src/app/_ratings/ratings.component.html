@@ -1,0 +1,5 @@
+<span class="stars">
+    <span *ngFor="let level of [1,2,3,4,5]"
+      [class]="(rating >= level ? 'full-star' : 'empty-star')">
+    </span>
+</span>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
@@ -18,12 +19,16 @@ import { LoginComponent } from './_login/index';
 import { RegisterComponent } from './_register/index';
 import { ProfileComponent } from './_profile/profile.component';
 import { AppRouting } from './app.routing';
+import { RatingsComponent } from './_ratings/ratings.component';
+import { DocReviewsComponent } from './_doc-reviews/doc-reviews.component';
+
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        HttpModule,
         RouterModule,
         AppRouting
     ],
@@ -33,13 +38,21 @@ import { AppRouting } from './app.routing';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ProfileComponent
+        ProfileComponent,
+        RatingsComponent,
+        DocReviewsComponent
     ],
     providers: [
         AuthenticationGuard,
         AlertService,
         AuthenticationService,
         UserService,
+        UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        },
 
         // provider used to create fake backend
         fakeBackendProvider

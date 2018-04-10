@@ -1,0 +1,43 @@
+{
+    "users" : [ {
+        "id": 1,
+        "username" : "kacarr",
+        "email" : "kacarr@smu.edu",
+        "password" : "sunshine14",
+        "firstName" : "Katie",
+        "lastName" : "Carr"
+      },
+      {
+        "id": 2,
+        "username" : "random_andy",
+        "email" : "randyandy@smu.edu",
+        "password" : "sunshine14",
+        "firstName" : "Andy",
+        "lastName" : "Smith",
+        "phone" : "918-788-4196",
+        "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+        "specialty": "Pediatrics",
+        "rating": "4",
+        "reviews": [{
+          "username": "kacarr",
+          "rating": "4",
+          "date": "04/26/18",
+          "comment": "Excellent, compassionate, and caring staff!"
+        },
+        {
+          "username": "everyone_loves_chris",
+          "rating": "4",
+          "date": "04/21/18",
+          "comment": "Awesome customer service!"
+        }]
+      },
+      {
+        "id": 3,
+        "username" : "everyone_loves_chris",
+        "password" : "sunshine14",
+        "email" : "chrisblack63@gmail.com",
+        "firstName" : "Chris",
+        "lastName" : "Black"
+      }
+    ]
+  }

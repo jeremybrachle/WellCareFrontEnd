@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../_models/user';
+import { Doctor } from '../_models/index';
+import { Patient } from '../_models/index';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,11 +9,24 @@ import { User } from '../_models/user';
 })
 export class ProfileComponent implements OnInit {
   @Input()
-  public user: User;
+  public user: Doctor;
+  public imagePath: string;
+  public userImage: string;
 
-  constructor() { }
+  constructor() {
+    this.imagePath = '../../assets/images/smu_logo.png';
+    console.log('profile constructor!');
+    this.userImage = '../../assets/images/ted.jpg';
+
+  }
 
   ngOnInit() {
+    console.log(JSON.parse(localStorage.getItem('currentUser')));
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  public logout() {
+    console.log('woo');
   }
 
 }

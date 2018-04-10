@@ -8,9 +8,9 @@ import { ProfileComponent} from './_profile/index';
 import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
-    { path: '', component: AppComponent},
+    { path: '', component: HomeComponent},
     { path: '_login', component: LoginComponent},
-    { path: '_register', component: RegisterComponent},
+    { path: '_login/_register', component: RegisterComponent},
     { path: '_profile', component: ProfileComponent, canActivate: [AuthenticationGuard]},
 ];
 

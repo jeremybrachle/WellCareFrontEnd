@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "json-server": "json-server --watch db.json --port 3004"
   },
   "private": true,
   "dependencies": {
@@ -24,20 +25,21 @@
     "@auth0/angular-jwt": "^1.1.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
+    "edit-json-file": "^1.0.8",
     "jquery": "^3.3.1",
     "js": "^0.1.0",
     "popper": "^1.0.1",
     "popper.js": "^1.14.3",
     "rxjs": "^5.5.8",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.3",
+    "@angular/cli": "^1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
-    "@types/node": "~6.0.60",
+    "@types/node": "^6.0.104",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",

@@ -1,6 +1,4 @@
-import {Doctor} from './doctor';
-import {Patient} from './patient';
-export class User {
+export class Patient {
   id: number;
   username: string;
   password: string;
@@ -9,5 +7,6 @@ export class User {
   email: string;
   phone: string;
   address: string;
-  doc: boolean;
+  emergency_contact: string;
+  dob: Date;
 }

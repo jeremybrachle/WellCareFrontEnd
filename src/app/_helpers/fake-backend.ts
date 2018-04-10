@@ -7,48 +7,78 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/materialize';
 import 'rxjs/add/operator/dematerialize';
-
+declare var require: any;
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
-    constructor() { }
+    constructor() {
+      console.log('intercept');
+    }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // array in local storage for registered users
-        let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
 
+        // array in local storage for registered users
+        const data: any = require('../../assets/mock_data.json');
+        const users = data.users;
+        // const users: any[] = JSON.parse(localStorage.getItem('users')) || [];
         // wrap in delayed observable to simulate server api call
         return Observable.of(null).mergeMap(() => {
 
             // authenticate
             if (request.url.endsWith('/api/authenticate') && request.method === 'POST') {
                 // find if any user matches login credentials
-                let filteredUsers = users.filter(user => {
-                    return user.username === request.body.username && user.password === request.body.password;
-                });
-
-                if (filteredUsers.length) {
-                    // if login details are valid return 200 OK with user details and fake jwt token
-                    let user = filteredUsers[0];
-                    let body = {
-                        id: user.id,
-                        username: user.username,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        token: 'fake-jwt-token'
+                for (let j = 0; j < data.users.length; j++) {
+                  if (data.users[j].username === request.body.user.username && data.users[j].password === request.body.user.password){
+                    console.log('match!');
+                    const user = data.users[j];
+                    const body = {
+                      id: user.id,
+                      username: user.username,
+                      firstName: user.firstName,
+                      lastName: user.lastName,
+                      address: user.address,
+                      email: user.email,
+                      phone: user.phone,
+                      specialty: user.specialty,
+                      rating: user.rating,
+                      reviews: user.reviews,
+                      token: 'fake-jwt-token'
                     };
-
                     return Observable.of(new HttpResponse({ status: 200, body: body }));
-                } else {
-                    // else return 400 bad request
-                    return Observable.throw('Username or password is incorrect');
+                  }
                 }
+                return Observable.throw('Username or password is incorrect');
+            }
+            // authenticate
+            if (request.url.endsWith('/api/authenticate/patient') && request.method === 'POST') {
+              // find if any user matches login credentials
+              for (let j = 0; j < data.users.length; j++) {
+                if (data.users[j].username === request.body.user.username && data.users[j].password === request.body.user.password){
+                  console.log('match!');
+                  const user = data.users[j];
+                  const body = {
+                    id: user.id,
+                    username: user.username,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    address: user.address,
+                    email: user.email,
+                    phone: user.phone,
+                    emergency_contact: user.emergency_contact,
+                    dob: user.dob,
+                    token: 'fake-jwt-token'
+                  };
+                  return Observable.of(new HttpResponse({ status: 200, body: body }));
+                }
+              }
+              return Observable.throw('Username or password is incorrect');
             }
 
             // get users
-            if (request.url.endsWith('/api/users') && request.method === 'GET') {
-                // check for fake auth token in header and return users if valid,
-                // this security is implemented server side in a real application
+            if (request.url.endsWith('/assets/mock_data.json') && request.method === 'GET') {
+                console.log('made it');
+                // check for fake auth token in header and return users if valid, this
+                // security is implemented server side in a real application
                 if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     return Observable.of(new HttpResponse({ status: 200, body: users }));
                 } else {
@@ -59,8 +89,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // get user by id
             if (request.url.match(/\/api\/users\/\d+$/) && request.method === 'GET') {
-                // check for fake auth token in header and return user if valid,
-                // this security is implemented server side in a real application
+                // check for fake auth token in header and return user if valid, this security
+                // is implemented server side in a real application
                 if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     // find user by id in users array
                     let urlParts = request.url.split('/');
@@ -71,20 +101,25 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return Observable.of(new HttpResponse({ status: 200, body: user }));
                 } else {
                     // return 401 not authorised if token is null or invalid
-                    return Observable.throw('Unauthorised');
+                    return Observable.throw('Unauthorized');
                 }
             }
 
             // create user
-            if (request.url.endsWith('/api/users') && request.method === 'POST') {
+            if (request.url.endsWith('/assets/mock_data.json') && request.method === 'POST') {
                 // get new user object from post body
-                let newUser = request.body;
-
-                // validation
-                let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
-                if (duplicateUser) {
+                console.log(request.body);
+                const newUser = request.body;
+                for (let j = 0; j < users.length; j++) {
+                  if (users[j].username === newUser.username) {
                     return Observable.throw('Username "' + newUser.username + '" is already taken');
+                  }
                 }
+                // // validation
+                // let duplicateUser = users.filter(user =>  { return user.username === newUser.username; }).length;
+                // if (duplicateUser) {
+                //     return Observable.throw('Username "' + newUser.username + '" is already taken');
+                // }
 
                 // save new user
                 newUser.id = users.length + 1;
@@ -126,8 +161,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         })
 
-        // call materialize and dematerialize to ensure delay even,
-        // if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
+        // call materialize and dematerialize to ensure delay even if
+        // an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
         .materialize()
         .delay(500)
         .dematerialize();

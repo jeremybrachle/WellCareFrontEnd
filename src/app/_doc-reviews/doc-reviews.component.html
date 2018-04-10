@@ -1,0 +1,83 @@
+    <div class="container">
+      <div class="row" id="prodReviewsHead">
+          <div style="color:black;">Product Reviews</div>
+          <div class="text-muted" style="padding-left:.5rem;">( {{all_reviews.length}} )</div>
+      </div>
+      <div *ngIf="all_reviews.length !== 0;" class="showReviews">
+          <div *ngFor="let review of all_reviews">
+            <div class="card">
+                <div class="card-header">
+                  <!-- <span class="stars">
+                    <span *ngFor="let level of [1,2,3,4,5]"
+                      [class]="(review.rating >= level ? 'full-star' : 'empty-star')">
+                    </span>
+                  </span> -->
+                  <app-rating [rating]="review.rating"></app-rating>
+                </div>
+                <div class="card-body">
+                  <div class="row" id="msgInfo">
+                    <div class="col-lg-10 text-muted">{{review.userName}}</div>
+                    <div class="col-lg-2 text-muted">{{review.date | date:'MMM d, y'}}</div>
+                  </div>
+                  <div class="row" id="msgContent" style="color:black;">
+                    <div class="col-lg-10">
+                        "{{review.comment}}"
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div *ngIf="all_reviews.length === 0">
+        <div class="container text-left bg-light" id="noReviews">
+          Be the first to add a review!
+        </div>
+      </div>
+      <div class="card" id="addReview" style="margin-top:1rem;">
+        <div class="card-header bg-secondary text-white">
+          Add Review
+        </div>
+        <div class="card-body bg-white" id="addForm">
+
+            <form #addReviewForm="ngForm" (ngSubmit)="addReview(addReviewForm.value)">
+
+                <div class="row form-inline" id="addInfoLabels">
+                    <div class="form-group col-lg-6">
+                        <label for="inputName">Your Name</label>
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <label for="inputRating">Rating</label>
+                    </div>
+                </div>
+                <div class="row" id="addInfo">
+                  <div class="form-group col-lg-6">
+                    <input type="text" id="inputName" class="form-control" [(ngModel)]="model.userName" [ngModelOptions]="{standalone:true}" />
+                  </div>
+                  <div class="form-group col-lg-3">
+                      <select id="inputRating" class="form-control" [(ngModel)]="model.rating" [ngModelOptions]="{standalone:true}">
+                          <option selected>5</option>
+                          <option>4</option>
+                          <option>3</option>
+                          <option>2</option>
+                          <option>1</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-lig-3">
+                    <app-rating [rating]="model.rating"></app-rating>
+                  </div>
+                </div>
+                <div class="row form-group align-left col-lg-11" id="addComment">
+                  <label for="inputComment">Comment </label>
+                  <textarea class="form-control" rows="5" id="inputComment" [(ngModel)]="model.comment" [ngModelOptions]="{standalone:true}"></textarea>
+                </div>
+
+            </form>
+
+            <button type="button" class="btn btn-primary" (click)="addReview(addReviewForm)" id="submitReview" [disabled]="!addReviewForm.form.valid">Submit</button>
+            <br />
+            <div *ngIf="alert_msg !== '';"class="alert alert-danger" role="alert" style="margin-top:1rem;">
+              {{alert_msg}}
+            </div>
+        </div>
+      </div>
+    </div>
