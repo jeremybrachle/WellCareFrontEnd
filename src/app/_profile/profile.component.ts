@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   public user: Doctor;
   public imagePath: string;
   public userImage: string;
+  public comment: string;
 
   constructor() {
     this.imagePath = '../../assets/images/smu_logo.png';
@@ -23,6 +24,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    if (this.user.reviews.length > 0) {
+      this.comment = this.user.reviews[0].comment;
+    }
   }
 
   public logout() {

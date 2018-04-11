@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
 @font-face {
     font-family: 'brandon';
     src: '../fonts/webfontkit/brandon.woff';
@@ -9,7 +9,7 @@
 }
 
 h1 {
-  font-family: 'sansb';
+  font-family: 'Roboto Slab', serif;
   font-size: 2.7rem;
   margin-top:1.4rem;
   padding-left:.3rem;
@@ -21,6 +21,7 @@ h1 {
 }
 .navbar {
   width: 100%;
+  padding-bottom:.1rem;
 }
 #usrImg {
   width:40%;
@@ -28,14 +29,34 @@ h1 {
   padding-bottom: .6rem;
 }
 .card {
-  margin-left: 1rem;
-  width:31%;
-  height: 25rem;
+  margin-top:0.85rem;
+  margin-left: 1.8rem;
+  margin-bottom: 1rem;
+  width:29%;
+  height: 26.5rem;
   background-color:rgb(47, 117, 247);
   color: black;
 }
 .aboutDr {
+  font-family: 'Roboto Slab', serif;
   color: black !important;
+  font-weight: 300;
+}
+/* .userHeader {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+} */
+.profile-usertitle-comment {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding-left:.15rem;
+  padding-right:.3rem;
+  padding-top:0rem;
+}
+.label {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
 }
 .profile {
   padding-left: 2rem;
