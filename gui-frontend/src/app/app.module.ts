@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { HippaComponent } from './hippa/hippa.component';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
+import { browser } from 'protractor';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { SettingsComponent } from './settings/settings.component';
     SettingsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

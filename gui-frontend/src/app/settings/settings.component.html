@@ -7,12 +7,99 @@
     <h1 class="text-muted">Settings</h1>
     <div class="tab-content">
       <ul class="list-group">
-        <a href="#" class="list-group-item">Change Password</a>
-        <a href="#" class="list-group-item">Edit Profile</a>
-        <a href="#" class="list-group-item">Notifications</a>
-        <a href="#" class="list-group-item">Option 4 TBD</a>
+        <a data-target="#formModal" data-toggle="modal" class="list-group-item text-center" id="MainNavHelp" href="#myModal">Edit Profile</a>
+        <a data-target="#ChangePassword" data-toggle="modal" class="list-group-item text-center" id="MainNavHelp" href="#myModal">Change Password</a>
+        <a data-target="#formModal" data-toggle="modal" class="list-group-item text-center" id="MainNavHelp" href="#myModal">Notifications</a>
       </ul>
       <br/>
     </div>
   </div>
   <app-footer></app-footer>
+  <!-- Modals -->
+  <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header modalHeaderColor text-white">
+          <h5 class="modal-title" id="modalLabel">Profile Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <textarea class="form-control" name="firstName" [(ngModel)]="user.firstName" rows="1" required="true" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <textarea class="form-control" name="lastName" [(ngModel)]="user.lastName" rows="1" required="true" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <textarea class="form-control" name="email" [(ngModel)]="user.email" rows="1" required="true" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number</label>
+              <textarea class="form-control" name="phone" [(ngModel)]="user.phone" rows="1" required="true" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea class="form-control" name="address" rows="1" [(ngModel)]="user.address" required="true" required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div *ngIf="user.firstName !== '' && user.lastName !== '' && user.email !== '' && user.phone !== '' && user.address !== '' ">
+            <input class="btn btn-primary" data-dimiss="modal" type="submit" value="Update">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ChangePassword" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header modalHeaderColor text-white">
+          <h5 class="modal-title" id="modalLabel">Profile Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="OldPassword">Enter Current Password</label>
+              <textarea class="form-control" name="oldPass" [(ngModel)]="this.oldPass" rows="1" required="true" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="newPass">Enter New Password</label>
+              <textarea class="form-control" name="newPass" [(ngModel)]="this.newPass" rows="1" required="true" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="newPass2">Password Confirmation</label>
+              <textarea class="form-control" name="newPass2" [(ngModel)]="this.newPass2" rows="1" required="true" required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div *ngIf=" this.oldPass !== '' && this.newPass !== '' && this.newPass2 !== ''">
+              <div *ngIf=" this.user.password !== this.oldPass">
+                  <div class="alert alert-danger" role="alert">
+                    Your old password is incorrect!
+                  </div>
+                </div>
+              <div *ngIf=" this.newPass !== this.newPass2">
+                <div class="alert alert-danger" role="alert">
+                  Your new password must equal your confirmation password!
+                </div>
+              </div>
+              <div *ngIf=" this.newPass == this.newPass2">
+                <input class="btn btn-primary" type="submit" value="submit" (click)="changePassword()">
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
