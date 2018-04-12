@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { HippaComponent } from './hippa/hippa.component';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ManageAppointmentsComponent } from './manage-appointments/manage-appointments.component';
+import { PatientAddAppointmentComponent } from './patient-add-appointment/patient-add-appointment.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SettingsComponent } from './settings/settings.component';
     ProfileComponent,
     HippaComponent,
     FooterComponent,
-    SettingsComponent
+    SettingsComponent,
+    ManageAppointmentsComponent,
+    PatientAddAppointmentComponent
   ],
   imports: [
     BrowserModule

@@ -1,69 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<div class="jumbotron bg-white">
 
-<body>
-  <div class="span3 well">
-    <div layout="row" layout-align="center center">
-      <a href="#aboutModal" data-toggle="modal">
-        <img src="webber2.gif" name="aboutme" width="200" height="200" class="img">
-      </a>
-      <h3>John Doe
-        <br>
-      </h3>
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View More</button>
-      <p>
-        <br>If your looking for a dermatologist,
-        <br>
-        <a target="_blank">you've come to the right place</a>
-      </p>
-    </div>
+  <div class="nav nav-tabs headerMargin" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-fall-tab" data-toggle="tab" href="#nav-fall" role="tab" aria-controls="nav-home" aria-selected="true">My Info</a>
+      <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Doctors</a>
+      <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Prescriptions</a>
   </div>
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal hide" id="aboutModal">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">✕</button>
-        <h3>About John</h3>
-      </div>
-      <div class="modal-body" style="text-align:center">
-        <div class="row-fluid">
-          <div class="span10 offset1">
-            <div id="modalTab">
-              <div class="tab-content">
-                <div class="tab-pane active" id="about">
-                  <img src="/src/assets/images/webber.jpg" name="aboutme" width="140" height="140" border="0" class="img-circle">
-                  <h3 class="media-heading">Dr. John Doe
-                    <small> USA</small>
-                  </h3>
-                  <span>
-                    <strong>Specalties: </strong>
-                  </span>
-                  <span class="label label-warning">Dermatology</span>
 
-                  <div layout="row" layout-align="center center">
-                    <p class="text-left">
-                      <strong>Bio: </strong>
-                      <br> Doe's Dermatology is located in the Doe District of Doeville, Doeland. Dr. John Doe practices general,
-                      or medical dermatology, which includes skin conditions such as rashes, skin cancer, acne and warts;
-                      and cosmetic dermatology, which includes treatments such as Botox, fillers and laser hair removal.</p>
-                    <br>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class = "tab-content card-body border border-top-0">
+
+      <label class="pl-3" for="profileCard">
+          Patient
+        </label>
+
+      <div class="card p-3 ml-3" style="width: 30rem;" id="profileCard">
+          <div class="card-header bg-white">
+            <h2>
+              Peruna McLyle
+            </h2>
+          </div>
+          <div class="card-body">
+              <img src="http://via.placeholder.com/80x80" id="logo">
+              <button class="float-right">
+                Edit
+              </button>
+
+              <table class ="table table-striped" id="fallTable">
+                <thead>
+                    <tr>
+                      <td scope="col"><strong>Gender</strong></td>
+                      <td scope="col">Male</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>DOB</strong></td>
+                      <td scope="row">02/31/1999</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Email</strong></td>
+                      <td scope="row">pmclyle@smu.edu</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Phone</strong></td>
+                      <td scope="row">(123) 456-7890</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Local Address</strong></td>
+                      <td scope="row">123 Sesame St.</td>
+                    </tr>
+                  </thead>
+                  <tbody id="fallSemesterTableBody">
+                </tbody>
+              </table>
           </div>
         </div>
-      </div>
-    </div>
   </div>
-</body>
 
-</html>
+
+</div>
+
