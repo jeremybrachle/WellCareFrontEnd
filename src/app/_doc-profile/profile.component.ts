@@ -7,7 +7,7 @@ import { Patient } from '../_models/index';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class DocProfileComponent implements OnInit {
   @Input()
   public user: Doctor;
   public imagePath: string;

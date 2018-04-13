@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
               .subscribe(
                   data => {
                       console.log(this.returnUrl);
-                      this.router.navigate(['_profile'], { queryParams: this.model});
+                      this.router.navigate(['_doc-profile'], { queryParams: this.model});
                   },
                   error => {
                       this.alertService.error(error);

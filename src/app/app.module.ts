@@ -17,10 +17,12 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
 import { HomeComponent } from './_home/index';
 import { LoginComponent } from './_login/index';
 import { RegisterComponent } from './_register/index';
-import { ProfileComponent } from './_profile/profile.component';
+import { DocProfileComponent } from './_doc-profile/profile.component';
 import { AppRouting } from './app.routing';
 import { RatingsComponent } from './_ratings/ratings.component';
 import { DocReviewsComponent } from './_doc-reviews/doc-reviews.component';
+import { DocApptsComponent } from './_doc-appts/doc-appts.component';
+import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
 
 
 @NgModule({
@@ -38,9 +40,11 @@ import { DocReviewsComponent } from './_doc-reviews/doc-reviews.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ProfileComponent,
+        DocProfileComponent,
         RatingsComponent,
-        DocReviewsComponent
+        DocReviewsComponent,
+        DocApptsComponent,
+        ApptPipe
     ],
     providers: [
         AuthenticationGuard,

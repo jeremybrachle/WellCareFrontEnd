@@ -7,13 +7,19 @@
     font-family: 'sansb';
     src: '../fonts/sansb___.ttf';
 }
-
+.back {
+  background-color: #f7ea3c;
+  width: 100vw;
+  height: 100vw;
+  padding: 0;
+}
 h1 {
   font-family: 'Roboto Slab', serif;
   font-size: 2.7rem;
   margin-top:1.4rem;
   padding-left:.3rem;
-  color: rgb(4, 4, 207);
+  color: black;
+  /* color: rgb(47, 117, 247); */
 }
 #mynav {
   width: 100vw;
@@ -31,10 +37,11 @@ h1 {
 .card {
   margin-top:0.85rem;
   margin-left: 1.8rem;
-  margin-bottom: 1rem;
+  padding-bottom: 1.4rem;
   width:29%;
   height: 26.5rem;
-  background-color:rgb(47, 117, 247);
+  background-color: white;
+  /* background-color:rgb(41, 107, 250); */
   color: black;
 }
 .aboutDr {
@@ -64,8 +71,12 @@ h1 {
   padding-top: 1rem;
 }
 .inactive{
-  color:rgb(48, 47, 47);
+  color:rgb(85, 84, 84);
 }
 .active{
-  color:rgb(4, 4, 207);
+  color: black;
+  /* color:rgb(47, 117, 247); */
+}
+#logout {
+  background-color:#f7ea3c;
 }

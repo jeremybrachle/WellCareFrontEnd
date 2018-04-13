@@ -1,5 +1,5 @@
 
-
+<div class="back">
     <div class="row" id="head">
         <img src={{imagePath}} style="height:12%; width:7%; margin-top:.8rem; margin-left:2rem; padding-bottom:.2rem;"/>
         <h1>SMU Well-Care</h1>
@@ -11,7 +11,7 @@
                   <a class="nav-link">My Profile <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link inactive" [routerLink]="['_appts']">Appointments</a>
+                  <a class="nav-link inactive" [routerLink]="['_doc-appts']">Appointments</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link inactive" [routerLink]="['_myPatients']">Patients</a>
@@ -22,16 +22,6 @@
                 <li class="nav-item">
                     <button class="btn inactive" ng-click="logout()" id="logout">Logout</button>
                 </li>
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li> -->
               </ul>
         </nav>
     <!-- </div> -->
@@ -90,3 +80,4 @@
           </div>
         </div>
     </div>
+</div>
