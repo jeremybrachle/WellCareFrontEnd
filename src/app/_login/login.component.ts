@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
               .subscribe(
                   data => {
                       console.log(this.returnUrl);
-                      this.router.navigate(['_doc-profile'], { queryParams: this.model});
+                      // need to determine what type of user
+                      // this.router.navigate(['_doc-profile'], { queryParams: this.model});
+                      this.router.navigate(['-patient-profile'], { queryParams: this.model});
                   },
                   error => {
                       this.alertService.error(error);

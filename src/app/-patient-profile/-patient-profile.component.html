@@ -1,0 +1,66 @@
+
+<br>
+<a [routerLink]="['-patient-appointments']" class="btn btn-primary">appointments</a>
+
+<div class="jumbotron bg-white">
+
+  <div class="nav nav-tabs headerMargin" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-fall-tab" data-toggle="tab" href="#nav-fall" role="tab" aria-controls="nav-home" aria-selected="true">My Info</a>
+      <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Doctors</a>
+      <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Prescriptions</a>
+  </div>
+
+  <div class = "tab-content card-body border border-top-0">
+
+      <label class="pl-3" for="profileCard">
+          Patient
+        </label>
+
+      <div class="card p-3 ml-3" style="width: 30rem;" id="profileCard">
+          <div class="card-header bg-white">
+            <h2>
+              Peruna McLyle
+            </h2>
+          </div>
+          <div class="card-body">
+              <img src="http://via.placeholder.com/80x80" id="logo">
+              <button class="float-right">
+                Edit
+              </button>
+
+              <table class ="table table-striped" id="fallTable">
+                <thead>
+                    <tr>
+                      <td scope="col"><strong>Gender</strong></td>
+                      <td scope="col">Male</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>DOB</strong></td>
+                      <td scope="row">02/31/1999</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Email</strong></td>
+                      <td scope="row">pmclyle@smu.edu</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Phone</strong></td>
+                      <td scope="row">(123) 456-7890</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Local Address</strong></td>
+                      <td scope="row">123 Sesame St.</td>
+                    </tr>
+                    <tr>
+                      <td scope="row"><strong>Emergency Contact Phone</strong></td>
+                      <td scope="row">(111) 222-3344</td>
+                    </tr>
+                  </thead>
+              </table>
+          </div>
+        </div>
+  </div>
+
+
+</div>
+
+

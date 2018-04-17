@@ -23,6 +23,9 @@ import { RatingsComponent } from './_ratings/ratings.component';
 import { DocReviewsComponent } from './_doc-reviews/doc-reviews.component';
 import { DocApptsComponent } from './_doc-appts/doc-appts.component';
 import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
+import { PatientProfileComponent } from './-patient-profile/-patient-profile.component';
+import { PatientAppointmentsComponent } from './-patient-appointments/-patient-appointments.component';
+import { PatientAddAppointmentComponent } from './patient-add-appointment/patient-add-appointment.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
         RatingsComponent,
         DocReviewsComponent,
         DocApptsComponent,
-        ApptPipe
+        ApptPipe,
+        PatientProfileComponent,
+        PatientAppointmentsComponent,
+        PatientAddAppointmentComponent
     ],
     providers: [
         AuthenticationGuard,
