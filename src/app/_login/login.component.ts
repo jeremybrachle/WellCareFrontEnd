@@ -2,7 +2,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
-import { User } from '../_models/user';
+import { User, Doctor, Patient } from '../_models/index';
 import { Location } from '@angular/common';
 
 @Component({
@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     public model: any = {};
     public loading = false;
     public returnUrl: string;
+    public sampleDoc: Doctor;
+    public samplePatient: Patient;
 
     constructor(
       private route: ActivatedRoute,
@@ -32,18 +34,32 @@ export class LoginComponent implements OnInit {
           this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-    login() {
+    loginDoc() {
           this.loading = true;
-          this.authenticationService.login(this.model)
+          this.authenticationService.loginDoc(this.model)
               .subscribe(
                   data => {
-                      console.log(this.returnUrl);
-                      this.router.navigate(['_doc-profile'], { queryParams: this.model});
+                    console.log(this.returnUrl);
+                    this.router.navigate(['_doc-profile'], { queryParams: this.model});
                   },
                   error => {
                       this.alertService.error(error);
                       this.loading = false;
                   });
     }
+
+    loginPatient() {
+      this.loading = true;
+      this.authenticationService.loginPatient(this.model)
+          .subscribe(
+              data => {
+                  console.log(this.returnUrl);
+                  this.router.navigate(['_patient-profile'], { queryParams: this.model})
+              },
+              error => {
+                  this.alertService.error(error);
+                  this.loading = false;
+              });
+}
 }
 

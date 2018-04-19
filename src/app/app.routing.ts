@@ -1,3 +1,4 @@
+import { PatientProfileComponent } from './_patient-profile/patient-profile.component';
 import { DocApptsComponent } from './_doc-appts/doc-appts.component';
 import { Routes, RouterModule } from '@angular/router';
 import {NgModule} from '@angular/core';
@@ -7,6 +8,7 @@ import { RegisterComponent } from './_register/index';
 import { AuthenticationGuard } from './_guards/index';
 import { DocProfileComponent} from './_doc-profile/index';
 import { AppComponent } from './app.component';
+import { DocSettingsComponent } from './_settings/settings.component'
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -14,6 +16,8 @@ const appRoutes: Routes = [
     { path: '_register', component: RegisterComponent},
     { path: '_doc-profile', component: DocProfileComponent, canActivate: [AuthenticationGuard]},
     { path: '_doc-profile/_doc-appts', component: DocApptsComponent},
+    { path: '_patient-profile', component: PatientProfileComponent, canActivate: [AuthenticationGuard]},
+    { path: '_settings', component: DocSettingsComponent}
 ];
 
 @NgModule({

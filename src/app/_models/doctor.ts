@@ -12,4 +12,5 @@ export class Doctor {
   address?: string;
   rating?: Number;
   reviews?: DocReview[];
+  profPic?: string;
 }

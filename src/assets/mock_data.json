@@ -5,7 +5,9 @@
         "email" : "kacarr@smu.edu",
         "password" : "sunshine14",
         "firstName" : "Katie",
-        "lastName" : "Carr"
+        "lastName" : "Carr",
+        "dob" : "10/24/97",
+        "profPic" : "../../assets/images/katie.jpg"
       },
       {
         "id": 2,
@@ -17,6 +19,7 @@
         "phone" : "918-788-4196",
         "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
         "specialty": "Pediatrics",
+        "profPic" : "../../assets/images/ted.jpg",
         "rating": "4",
         "reviews": [{
           "username": "kacarr",
@@ -30,6 +33,20 @@
           "date": "04/21/18",
           "comment": "Awesome customer service!"
         }]
+      },
+      {
+        "id": "87644291",
+        "username" : "misterKade",
+        "email" : "kadej@smu.edu",
+        "dob" : "04/20/1995",
+        "password" : "sunshine14",
+        "firstName" : "Kade",
+        "lastName" : "Johnson",
+        "phone" : "918-788-4196",
+        "address": "10 Cloverfield Lane, Dallas, TX, 75205",
+        "emergency_contact": "Barbara Johnson 934-610-8572",
+        "profPic" : "../../assets/images/kade3.jpg",
+        "gender": "Male"
       },
       {
         "id": 3,

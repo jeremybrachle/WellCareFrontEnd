@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
+import { Directive, Input, OnInit, ElementRef, Renderer2 } from '@angular/core';
+
+import * as octicons from 'octicons';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
 
@@ -23,7 +27,15 @@ import { RatingsComponent } from './_ratings/ratings.component';
 import { DocReviewsComponent } from './_doc-reviews/doc-reviews.component';
 import { DocApptsComponent } from './_doc-appts/doc-appts.component';
 import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
-
+import { PatientProfileComponent } from './_patient-profile/patient-profile.component';
+import { DocSettingsComponent } from './_settings/settings.component';
+import { FooterComponent } from './_footer/footer.component';
+import { OcticonDirective } from './_patient-profile/octicon.directive';
+import { CalendarComponent } from './calendar/calendar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'angular-calendar';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { DemoUtilsModule } from '../../demo-utils/module';
 
 @NgModule({
     imports: [
@@ -32,7 +44,11 @@ import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
         HttpClientModule,
         HttpModule,
         RouterModule,
-        AppRouting
+        AppRouting,
+        BrowserAnimationsModule,
+        CalendarModule.forRoot(),
+        NgbModalModule.forRoot(),
+        DemoUtilsModule
     ],
     declarations: [
         AppComponent,
@@ -44,7 +60,12 @@ import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
         RatingsComponent,
         DocReviewsComponent,
         DocApptsComponent,
-        ApptPipe
+        ApptPipe,
+        PatientProfileComponent,
+        DocSettingsComponent,
+        FooterComponent,
+        OcticonDirective,
+        CalendarComponent
     ],
     providers: [
         AuthenticationGuard,
@@ -64,5 +85,5 @@ import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
     bootstrap: [AppComponent]
 })
 
-export class AppModule { }
 
+export class AppModule { }

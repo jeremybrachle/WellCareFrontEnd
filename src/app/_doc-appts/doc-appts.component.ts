@@ -1,7 +1,6 @@
 import { ApptPipe } from './appt-pipe.pipe';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, enableProdMode } from '@angular/core';
 import { Doctor } from '../_models/index';
-
 @Component({
   selector: 'app-docappts',
   templateUrl: './doc-appts.component.html',
@@ -20,28 +19,34 @@ export class DocApptsComponent implements OnInit {
   public row1MonthDays: number[];
   public fills: number[];
   public hide: boolean;
+  public daysUntilCurr: number[];
+  public daysPostCurr: number[];
+  public fifthRow: number[];
 
   constructor() { }
 
   ngOnInit() {
     this.currMonth = 4;
     this.currDay = 12;
-    this.monthDays = new Array(30);
+    this.monthDays = [];
     for (let i = 0; i < 30; i++) {
       this.monthDays.push(i + 1);
     }
+    console.log('total days in month: ' + this.monthDays);
     this.weekDay1 = 1;
     this.weekDayEnd = 2;
     this.prevMonthDays = 31;
     this.prevMonthFill = [];
     this.hide = true;
     this.row1MonthDays = [1, 2, 3, 4, 5, 6, 7];
+    this.daysUntilCurr = [8, 9, 10, 11];
+    this.daysPostCurr = [13, 14];
   }
 
   prevMonth() {
     (this.currMonth)--;
     const numDays = this.getDays(this.currMonth);
-    this.monthDays = new Array(numDays);
+    this.monthDays = [];
     for (let i = 0; i < numDays; i++) {
       this.monthDays.push(i + 1);
     }
@@ -79,6 +84,7 @@ export class DocApptsComponent implements OnInit {
     this.currMonth++;
     this.prevMonthDays = this.monthDays.length;
     const numDays = this.getDays(this.currMonth);
+    this.monthDays = [];
     this.monthDays = new Array(numDays);
     for (let i = 0; i < numDays; i++) {
       this.monthDays.push(i + 1);
@@ -114,4 +120,34 @@ export class DocApptsComponent implements OnInit {
         return 30;
     }
   }
+  checkCurrDay(rowNum: number) {
+
+    const weekXDay1 = this.weekDay1 + (7 * (rowNum - 1));
+    if (rowNum === 4) {
+      const weekXLastDay = weekXDay1 + 6;
+      this.fifthRow = [];
+      if (weekXLastDay < this.monthDays.length) {
+        for (let j = weekXLastDay + 1; j < this.monthDays.length + 1; j++) {
+          this.fifthRow.push(j);
+        }
+      }
+      console.log('fifth row: ' + this.fifthRow);
+      console.log('weekXLastDay: ' + weekXLastDay);
+      console.log('total Days in month: ' + this.monthDays.length);
+    }
+    if ((this.currDay > weekXDay1) && (this.currDay < weekXDay1 + 7)) {
+      this.daysUntilCurr = [];
+      this.daysPostCurr = [];
+      for (let i = weekXDay1; i < this.currDay; i++) {
+        this.daysUntilCurr.push(i);
+      }
+      for (let i = (this.currDay + 1); i < (weekXDay1 + 7); i++) {
+        this.daysPostCurr.push(i);
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
+

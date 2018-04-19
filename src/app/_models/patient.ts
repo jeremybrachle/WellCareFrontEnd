@@ -1,5 +1,6 @@
 export class Patient {
   id: number;
+  gender: string;
   username: string;
   password: string;
   firstName: string;
@@ -9,4 +10,5 @@ export class Patient {
   address: string;
   emergency_contact: string;
   dob: Date;
+  profPic?: string;
 }

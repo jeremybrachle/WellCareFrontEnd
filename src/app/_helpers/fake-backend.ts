@@ -25,7 +25,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return Observable.of(null).mergeMap(() => {
 
             // authenticate
-            if (request.url.endsWith('/api/authenticate') && request.method === 'POST') {
+            if (request.url.endsWith('/api/authenticate/doc') && request.method === 'POST') {
+                console.log(request.body);
                 // find if any user matches login credentials
                 for (let j = 0; j < data.users.length; j++) {
                   if (data.users[j].username === request.body.user.username && data.users[j].password === request.body.user.password){
@@ -34,6 +35,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     const body = {
                       id: user.id,
                       username: user.username,
+                      password: user.password,
                       firstName: user.firstName,
                       lastName: user.lastName,
                       address: user.address,
@@ -42,6 +44,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                       specialty: user.specialty,
                       rating: user.rating,
                       reviews: user.reviews,
+                      profPic: user.profPic,
                       token: 'fake-jwt-token'
                     };
                     return Observable.of(new HttpResponse({ status: 200, body: body }));
@@ -58,7 +61,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                   const user = data.users[j];
                   const body = {
                     id: user.id,
+                    gender: user.gender,
                     username: user.username,
+                    password: user.password,
                     firstName: user.firstName,
                     lastName: user.lastName,
                     address: user.address,
@@ -66,6 +71,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     phone: user.phone,
                     emergency_contact: user.emergency_contact,
                     dob: user.dob,
+                    profPic: user.profPic,
                     token: 'fake-jwt-token'
                   };
                   return Observable.of(new HttpResponse({ status: 200, body: body }));

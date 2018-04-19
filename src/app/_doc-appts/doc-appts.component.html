@@ -1,5 +1,5 @@
 
-<!-- <div class="container">
+<div class="container">
 	<div class="row">
         <div class="span12">
     		<table class="table-condensed table-bordered table-striped">
@@ -23,8 +23,8 @@
                         <th>Sa</th>
                     </tr>
                 </thead>
-                <tbody> -->
-                    <!-- <tr>
+                <tbody>
+                    <tr>
                         <td class="muted" *ngFor="let num of prevMonthFill" [hidden]="hide">
                             {{num}}
                         </td>
@@ -35,42 +35,56 @@
                             {{num}}
                         </td>
                     </tr>
-                    <tr>
+                    <tr [hidden]='checkCurrDay(2)=== false'>
+                      <td class="calRow2 containsCurrDay"  *ngFor='let num of daysUntilCurr'>
+                        {{num}}
+                      </td>
+                      <td class="btn-primary"><strong>{{currDay}}</strong></td>
+                      <td class="calRow2 containsCurrDay"  *ngFor='let num of daysPostCurr'>
+                        {{num}}
+                      </td>
+                    </tr>
+                    <tr [hidden]='checkCurrDay(2)=== true'>
                         <td class="calRow2" *ngFor='let num of [1,2,3,4,5,6,7]'>
                           {{num+row1MonthDays.length}}</td>
                     </tr>
-                    <tr>
-                        <td *ngFor='let num of [1,2,3,4,5,6,7]'>
-                          {{num+7+row1MonthDays.length}}
+                    <tr [hidden]='checkCurrDay(3)=== false'>
+                      <td class="calRow3 containsCurrDay"  *ngFor='let num of daysUntilCurr'>
+                        {{num}}
+                      </td>
+                      <td class="btn-primary"><strong>{{currDay}}</strong></td>
+                      <td class="calRow3 containsCurrDay"  *ngFor='let num of daysPostCurr'>
+                        {{num}}
+                      </td>
+                    </tr>
+                    <tr [hidden]='checkCurrDay(3)=== true'>
+                        <td class="calRow3" *ngFor='let num of [1,2,3,4,5,6,7]'>
+                          {{num+7+row1MonthDays.length}}</td>
+                    </tr>
+                    <tr [hidden]='checkCurrDay(4)=== false'>
+                      <td class="calRow4 containsCurrDay"  *ngFor='let num of daysUntilCurr'>
+                        {{num}}
+                      </td>
+                      <td class="btn-primary"><strong>{{currDay}}</strong></td>
+                      <td class="calRow4 containsCurrDay"  *ngFor='let num of daysPostCurr'>
+                        {{num}}
+                      </td>
+                    </tr>
+                    <tr [hidden]='checkCurrDay(4)=== true'>
+                        <td class="calRow4" *ngFor='let num of [1,2,3,4,5,6,7]'>
+                          {{num+14+row1MonthDays.length}}
                         </td>
                     </tr>
                     <tr>
-                        <td *ngFor='let num of [1,2,3,4,5,6,7]'>
-                            {{num+14+row1MonthDays.length}}
+                        <td class='fifthRow' *ngFor='let num of fifthRow'>
+                            {{num}}
                         </td>
-                        <td class="btn-primary"><strong>20</strong></td>
+                    </tr>
 
-                    </tr>
-                    <tr>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                        <td class="muted">1</td>
-                        <td class="muted">2</td>
-                        <td class="muted">3</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
 	</div>
-</div> -->
+</div>
 
-<form>
-                            <label for="date title">Estimated Completion Date</label>
-                            <br> Start Date:
-                            <input type="date" name="day" max="2020-12-31" [(ngModel)]="tempJob.startDate" name="startdatefield">
-                            <br *ngIf="fromView == true"> End Date:
-                            <input type="date" name="day" min="2000-01-02" [(ngModel)]="tempJob.endDate" name="enddatefield">
-                            <br>
-  </form>
+<!-- <app-calendar></app-calendar> -->

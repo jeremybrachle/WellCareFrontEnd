@@ -5,7 +5,9 @@ import { AlertService, UserService } from '../_services/index';
 import { Doctor } from '../_models/index';
 import { Patient } from '../_models/index';
 import { User } from '../_models/index';
+import { Users } from '../_models/index';
 declare var require: any;
+
 @Component({
     selector: 'app-register',
     moduleId: module.id,

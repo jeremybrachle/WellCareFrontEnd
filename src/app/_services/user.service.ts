@@ -8,12 +8,15 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { Doctor } from '../_models/index';
 import { Patient } from '../_models/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Users } from '../_models/index';
 
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
     public token: string;
+    public accounts: Users;
+
     constructor(
         private http: HttpClient,
         private authenticationService: AuthenticationService) {
