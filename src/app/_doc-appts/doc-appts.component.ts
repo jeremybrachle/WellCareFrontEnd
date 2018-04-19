@@ -9,8 +9,10 @@ import { Doctor } from '../_models/index';
 export class DocApptsComponent implements OnInit {
   @Input()
   public doc: Doctor;
-  public currMonth: number;
+  public currMonthNum: number;
+  public currMonthName: string;
   public currDay: number;
+  public currYear: '2018';
   public monthDays: number[];
   public weekDay1: number;
   public weekDayEnd: number;
@@ -22,11 +24,18 @@ export class DocApptsComponent implements OnInit {
   public daysUntilCurr: number[];
   public daysPostCurr: number[];
   public fifthRow: number[];
+  public imagePath: string;
+  public iconLeft: string;
+  public iconRight: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.currMonth = 4;
+    this.iconLeft = 'arrow-left';
+    this.iconRight = 'arrow-right';
+    this.imagePath = '../../assets/images/smu_logo.png';
+    this.currMonthNum = 4;
+    this.currMonthName = 'April';
     this.currDay = 12;
     this.monthDays = [];
     for (let i = 0; i < 30; i++) {
@@ -41,19 +50,34 @@ export class DocApptsComponent implements OnInit {
     this.row1MonthDays = [1, 2, 3, 4, 5, 6, 7];
     this.daysUntilCurr = [8, 9, 10, 11];
     this.daysPostCurr = [13, 14];
+    this.buildFifthRow();
+  }
+  buildFifthRow() {
+    const week4Day1 = this.weekDay1 + (7 * (4 - 1));
+      const week4LastDay = week4Day1 + 6;
+      this.fifthRow = [];
+      if (week4LastDay < this.monthDays.length) {
+        for (let j = week4LastDay + 1; j < this.monthDays.length + 1; j++) {
+          this.fifthRow.push(j);
+        }
+      }
+      console.log('fifth row: ' + this.fifthRow);
+      console.log('weekXLastDay: ' + week4LastDay);
+      console.log('total Days in month: ' + this.monthDays.length);
   }
 
   prevMonth() {
-    (this.currMonth)--;
-    const numDays = this.getDays(this.currMonth);
+    (this.currMonthNum)--;
+    this.currMonthName = this.getMonthName(this.currMonthNum);
+    const numDays = this.getDays(this.currMonthNum);
     this.monthDays = [];
     for (let i = 0; i < numDays; i++) {
       this.monthDays.push(i + 1);
     }
-    if (this.currMonth === 1) {
+    if (this.currMonthNum === 1) {
       this.prevMonthDays = this.getDays(12);
     } else {
-      this.prevMonthDays = this.getDays(this.currMonth - 1);
+      this.prevMonthDays = this.getDays(this.currMonthNum - 1);
     }
     if (this.weekDay1 === 1) {
       this.weekDayEnd = 7;
@@ -78,12 +102,14 @@ export class DocApptsComponent implements OnInit {
       // for (let k = 0; k < (this.prevMonthDays - (this.weekDay1 - 2)); k++){
       //   this.prevMonthFill.push(k);
       // }
+      this.buildFifthRow();
     }
   }
   nextMonth() {
-    this.currMonth++;
+    this.currMonthNum++;
+    this.currMonthName = this.getMonthName(this.currMonthNum);
     this.prevMonthDays = this.monthDays.length;
-    const numDays = this.getDays(this.currMonth);
+    const numDays = this.getDays(this.currMonthNum);
     this.monthDays = [];
     this.monthDays = new Array(numDays);
     for (let i = 0; i < numDays; i++) {
@@ -121,20 +147,7 @@ export class DocApptsComponent implements OnInit {
     }
   }
   checkCurrDay(rowNum: number) {
-
     const weekXDay1 = this.weekDay1 + (7 * (rowNum - 1));
-    if (rowNum === 4) {
-      const weekXLastDay = weekXDay1 + 6;
-      this.fifthRow = [];
-      if (weekXLastDay < this.monthDays.length) {
-        for (let j = weekXLastDay + 1; j < this.monthDays.length + 1; j++) {
-          this.fifthRow.push(j);
-        }
-      }
-      console.log('fifth row: ' + this.fifthRow);
-      console.log('weekXLastDay: ' + weekXLastDay);
-      console.log('total Days in month: ' + this.monthDays.length);
-    }
     if ((this.currDay > weekXDay1) && (this.currDay < weekXDay1 + 7)) {
       this.daysUntilCurr = [];
       this.daysPostCurr = [];
@@ -148,6 +161,32 @@ export class DocApptsComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  getMonthName(monthNum: number) {
+    if (monthNum === 1) { return 'January';
+    }
+    if (monthNum === 2) { return 'February';
+    }
+    if (monthNum === 3) { return 'March';
+    }
+    if (monthNum === 4) { return 'April';
+    }
+    if (monthNum === 5) { return 'May';
+    }
+    if (monthNum === 6) { return 'June';
+    }
+    if (monthNum === 7) { return 'July';
+    }
+    if (monthNum === 8) { return 'August';
+    }
+    if (monthNum === 9) { return 'September';
+    }
+    if (monthNum === 10) { return 'October';
+    }
+    if (monthNum === 11) {
+      return 'November';
+    } else { return 'December'; }
   }
 }
 

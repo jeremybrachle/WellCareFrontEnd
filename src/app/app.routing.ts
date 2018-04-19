@@ -9,6 +9,7 @@ import { AuthenticationGuard } from './_guards/index';
 import { DocProfileComponent} from './_doc-profile/index';
 import { AppComponent } from './app.component';
 import { DocSettingsComponent } from './_settings/settings.component'
+import { PatientAppointmentsComponent } from './_patient-appts/patient-appts.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
     { path: '_register', component: RegisterComponent},
     { path: '_doc-profile', component: DocProfileComponent, canActivate: [AuthenticationGuard]},
     { path: '_doc-profile/_doc-appts', component: DocApptsComponent},
+    { path: '_patient-profile/_patient-appts', component: PatientAppointmentsComponent},
     { path: '_patient-profile', component: PatientProfileComponent, canActivate: [AuthenticationGuard]},
     { path: '_settings', component: DocSettingsComponent}
 ];

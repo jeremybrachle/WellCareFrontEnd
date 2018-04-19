@@ -36,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoUtilsModule } from '../../demo-utils/module';
+import { PatientAppointmentsComponent } from './_patient-appts/patient-appts.component';
 
 @NgModule({
     imports: [
@@ -65,7 +66,8 @@ import { DemoUtilsModule } from '../../demo-utils/module';
         DocSettingsComponent,
         FooterComponent,
         OcticonDirective,
-        CalendarComponent
+        CalendarComponent,
+        PatientAppointmentsComponent
     ],
     providers: [
         AuthenticationGuard,

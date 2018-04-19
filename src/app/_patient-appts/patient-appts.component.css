@@ -19,7 +19,6 @@ h1 {
   margin-top:1.4rem;
   padding-left:.3rem;
   color: black;
-  /* color: rgb(47, 117, 247); */
 }
 #mynav {
   width: 100vw;
@@ -71,39 +70,7 @@ h1 {
 }
 .active{
   color: black;
-  /* color:rgb(47, 117, 247); */
 }
 #logout {
   background-color:#f7ea3c;
-}
-
-calRow1 {
-  background-color: rgb(255, 255, 255);
-}
-calRow2 {
-  background-color: rgb(255, 255, 255)!important;
-}
-calRow3 {
-  background-color: rgb(255, 255, 255);
-}
-calRow4 {
-  background-color: rgb(255, 255, 255);
-}
-calRow5 {
-  background-color: rgb(255, 255, 255);
-}
-currDay {
-  background-color: rgb(0, 119, 255);
-}
-
-thead {
-  background-color: rgb(190, 191, 192);
-}
-
-.bod {
-  background-color: white;
-}
-
-#calendarWrap {
-  padding:1rem;
 }
