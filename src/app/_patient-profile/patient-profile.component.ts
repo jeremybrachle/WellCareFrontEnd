@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Directive } from '@angular/core';
 import { User, Doctor, Patient} from '../_models/index';
 // import { AppModule } from '../app.module';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-profile',
@@ -15,10 +15,12 @@ export class PatientProfileComponent implements OnInit {
   public userImage: string;
   public comment: string;
   public icon: string;
+  public myDocsCard: boolean;
 
-  constructor() {
+  constructor(private router: Router) {
     this.imagePath = '../../assets/images/smu_logo.png';
     console.log('profile constructor!');
+    this.myDocsCard = false;
   }
 
   ngOnInit() {
@@ -30,6 +32,10 @@ export class PatientProfileComponent implements OnInit {
 
   public logout() {
     console.log('woo');
+    this.router.navigateByUrl('');
+  }
+  showMyDocs() {
+    this.myDocsCard = true;
   }
 }
 

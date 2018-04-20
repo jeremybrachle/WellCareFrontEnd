@@ -1,27 +1,30 @@
 {
-    "users" : [ {
-        "id": 1,
-        "username" : "kacarr",
-        "email" : "kacarr@smu.edu",
-        "password" : "sunshine14",
-        "firstName" : "Katie",
-        "lastName" : "Carr",
-        "dob" : "10/24/97",
-        "profPic" : "../../assets/images/katie.jpg"
-      },
-      {
-        "id": 2,
-        "username" : "random_andy",
-        "email" : "thauptmann@smu.edu",
-        "password" : "sunshine14",
-        "firstName" : "Teddy",
-        "lastName" : "Hauptmann",
-        "phone" : "918-788-4196",
-        "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
-        "specialty": "Pediatrics",
-        "profPic" : "../../assets/images/ted.jpg",
-        "rating": "4",
-        "reviews": [{
+  "users": [
+    {
+      "id": 1,
+      "username": "kacarr",
+      "email": "kacarr@smu.edu",
+      "password": "sunshine14",
+      "firstName": "Katie",
+      "lastName": "Carr",
+      "dob": "10/24/97",
+      "profPic": "../../assets/images/katie.jpg",
+      "insurance": "None"
+    },
+    {
+      "id": 2,
+      "username": "random_andy",
+      "email": "thauptmann@smu.edu",
+      "password": "sunshine14",
+      "firstName": "Teddy",
+      "lastName": "Hauptmann",
+      "phone": "918-788-4196",
+      "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+      "specialty": "Pediatrics",
+      "profPic": "../../assets/images/ted.jpg",
+      "rating": "4",
+      "reviews": [
+        {
           "username": "kacarr",
           "rating": "4",
           "date": "04/26/18",
@@ -32,29 +35,191 @@
           "rating": "4",
           "date": "04/21/18",
           "comment": "Awesome customer service!"
-        }]
-      },
-      {
-        "id": "87644291",
-        "username" : "misterKade",
-        "email" : "kadej@smu.edu",
-        "dob" : "04/20/1995",
-        "password" : "sunshine14",
-        "firstName" : "Kade",
-        "lastName" : "Johnson",
-        "phone" : "918-788-4196",
-        "address": "10 Cloverfield Lane, Dallas, TX, 75205",
-        "emergency_contact": "Barbara Johnson 934-610-8572",
-        "profPic" : "../../assets/images/kade3.jpg",
-        "gender": "Male"
-      },
-      {
-        "id": 3,
-        "username" : "everyone_loves_chris",
-        "password" : "sunshine14",
-        "email" : "chrisblack63@gmail.com",
-        "firstName" : "Chris",
-        "lastName" : "Black"
-      }
-    ]
-  }
+        }
+      ],
+      "appointments": [
+        {
+          "date": "04/20/18",
+          "time": "11:30AM-12PM",
+          "patient": {
+            "id": "87644291",
+            "username": "misterKade",
+            "email": "kadej@smu.edu",
+            "dob": "04/20/1995",
+            "password": "sunshine14",
+            "firstName": "Kade",
+            "lastName": "Johnson",
+            "phone": "918-788-4196",
+            "address": "10 Cloverfield Lane, Dallas, TX, 75205",
+            "emergency_contact": "Barbara Johnson 934-610-8572",
+            "profPic": "../../assets/images/kade3.jpg",
+            "gender": "Male",
+            "insurance": "Anthem Blue Cross"
+          },
+          "doctor": {},
+          "reason": "Severe migraines",
+          "insurance": "Anthem Blue Cross",
+          "newPatient": "true"
+        },
+        {
+          "date": "04/20/18",
+          "time": "2PM-2:30PM",
+          "patient": {
+            "id": 1,
+            "username": "kacarr",
+            "email": "kacarr@smu.edu",
+            "password": "sunshine14",
+            "firstName": "Katie",
+            "lastName": "Carr",
+            "dob": "10/24/97",
+            "profPic": "../../assets/images/katie.jpg"
+          },
+          "doctor": {},
+          "reason": "Back and Neck pain",
+          "insurance": "None",
+          "newPatient": "true"
+        },
+        {
+          "date": "04/20/18",
+          "time": "8AM-9AM",
+          "patient": {
+            "id": 3,
+            "username": "everyone_loves_chris",
+            "password": "sunshine14",
+            "email": "chrisblack63@gmail.com",
+            "firstName": "Chris",
+            "lastName": "Black",
+            "dob": "4/30/95",
+            "profPic": "../../assets/images/kade.jpg"
+          },
+          "doctor": {},
+          "reason": "Green pigmentation",
+          "insurance": "GlobalHealth",
+          "newPatient": "false"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "username": "dr_derek",
+      "email": "dshepherd@graysanatomy.edu",
+      "password": "sunshine14",
+      "firstName": "Derek",
+      "lastName": "Shepherd",
+      "phone": "918-788-4196",
+      "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+      "specialty": "Neurosurgery",
+      "profPic": "../../assets/images/derek.jpg",
+      "rating": "4",
+      "reviews": [
+        {
+          "username": "kacarr",
+          "rating": "4",
+          "date": "04/15/18",
+          "comment": "Excellent, compassionate, and caring staff!"
+        },
+        {
+          "username": "everyone_loves_chris",
+          "rating": "4",
+          "date": "04/18/18",
+          "comment": "Awesome customer service!"
+        }
+      ],
+      "appointments": [
+        {
+          "date": "04/20/18",
+          "time": "4PM-5PM",
+          "patient": {
+            "id": "87644291",
+            "username": "misterKade",
+            "email": "kadej@smu.edu",
+            "dob": "04/20/1995",
+            "password": "sunshine14",
+            "firstName": "Kade",
+            "lastName": "Johnson",
+            "phone": "918-788-4196",
+            "address": "10 Cloverfield Lane, Dallas, TX, 75205",
+            "emergency_contact": "Barbara Johnson 934-610-8572",
+            "profPic": "../../assets/images/kade3.jpg",
+            "gender": "Male",
+            "insurance": "Anthem Blue Cross"
+          },
+          "doctor": {},
+          "reason": "Severe migraines",
+          "insurance": "Anthem Blue Cross",
+          "newPatient": "true"
+        },
+        {
+          "date": "04/20/18",
+          "time": "11AM-11:30AM",
+          "patient": {
+            "id": 1,
+            "username": "kacarr",
+            "email": "kacarr@smu.edu",
+            "password": "sunshine14",
+            "firstName": "Katie",
+            "lastName": "Carr",
+            "dob": "10/24/97",
+            "profPic": "../../assets/images/katie.jpg"
+          },
+          "doctor": {},
+          "reason": "Back and Neck pain",
+          "insurance": "None",
+          "newPatient": "true"
+        },
+        {
+          "date": "04/20/18",
+          "time": "8AM-9AM",
+          "patient": {
+            "id": 3,
+            "username": "everyone_loves_chris",
+            "password": "sunshine14",
+            "email": "chrisblack63@gmail.com",
+            "firstName": "Chris",
+            "lastName": "Black",
+            "dob": "4/30/95",
+            "profPic": "../../assets/images/kade.jpg"
+          },
+          "doctor": {},
+          "reason": "Green pigmentation",
+          "insurance": "GlobalHealth",
+          "newPatient": "false"
+        }
+      ]
+    },
+    {
+      "id": "87644291",
+      "username": "misterKade",
+      "email": "kadej@smu.edu",
+      "dob": "04/20/1995",
+      "password": "sunshine14",
+      "firstName": "Kade",
+      "lastName": "Johnson",
+      "phone": "918-788-4196",
+      "address": "10 Cloverfield Lane, Dallas, TX, 75205",
+      "emergency_contact": "Barbara Johnson 934-610-8572",
+      "profPic": "../../assets/images/kade3.jpg",
+      "gender": "Male",
+      "insurance": "Anthem Blue Cross"
+    },
+    {
+      "id": 3,
+      "username": "everyone_loves_chris",
+      "password": "sunshine14",
+      "email": "chrisblack63@gmail.com",
+      "firstName": "Chris",
+      "lastName": "Black"
+    },
+    {
+      "id": 8,
+      "username": "mr_jeremy",
+      "email": "jeremy@smu.edu",
+      "password": "sunshine14",
+      "firstName": "Jeremy",
+      "lastName": "Berechle",
+      "dob": "10/24/97",
+      "profPic": "../../assets/images/katie.jpg",
+      "insurance": "BlueCross of Texas"
+    }
+  ]
+}

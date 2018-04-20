@@ -12,14 +12,14 @@
                 <li class="nav-item">
                   <a class="nav-link inactive" [routerLink]="['_patient-appts']">Appointments</a>
                 </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link inactive" [routerLink]="['_myDoctors']">Doctors</a>
+                </li> -->
                 <li class="nav-item">
-                  <a class="nav-link inactive" [routerLink]="['_myPatients']">Patients</a>
+                    <a class="nav-link inactive" [routerLink]="['_patient-settings']">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link inactive" [routerLink]="['_drSettings']">Settings</a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn inactive" ng-click="logout()" id="logout">Logout</button>
+                    <button class="btn inactive" (click)="logout()" id="logout">Logout</button>
                 </li>
               </ul>
         </nav>
@@ -30,11 +30,11 @@
 
       <div class="nav nav-tabs headerMargin" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-fall-tab" data-toggle="tab" href="#nav-fall" role="tab" aria-controls="nav-home" aria-selected="true">My Info</a>
-          <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Doctors</a>
+          <a class="nav-item nav-link" id="nav-spring-tab" role="tab" (click)="showMyDocs()">My Doctors</a>
           <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Prescriptions</a>
       </div>
 
-      <div class = "tab-content card border border-top-0">
+      <div class = "tab-content card border border-top-0" [hidden]='myDocsCard'>
         <div class="row">
             <label class="pl-3" for="profileCard" style="margin-left: .7rem; padding: .3rem .2rem;">
                 Patient
@@ -89,7 +89,64 @@
               </div>
             </div>
       </div>
+      <div class = "tab-content card border border-top-0" [hidden]='myDocsCard'>
+        <div class="row">
+            <label class="pl-3" for="profileCard" style="margin-left: .7rem; padding: .3rem .2rem;">
+                Patient
+            </label>
+        </div>
 
+          <div class="card p-3 m-l-3" style="width: 30rem;" id="profileCard">
+              <div class="card-header bg-white row">
+                <h2 class="col-lg-10">
+                  {{user.firstName}} {{user.lastName}}
+                </h2>
+                <button type="button" class="btn btn-default col-lg-2" id="edit">
+                    <span appOcticon [octicon]="icon"></span>
+                      Edit
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="imgWrap">
+                    <img src={{this.userImage}} id="userImg">
+                </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                    <thead>
+                        <tr>
+                          <td scope="col"><strong>Gender</strong></td>
+                          <td scope="col">{{user.gender}}</td>
+                        </tr>
+                        <tr>
+                          <td scope="row"><strong>DOB</strong></td>
+                          <td scope="row">{{user.dob}}</td>
+                        </tr>
+                        <tr>
+                          <td scope="row"><strong>Email</strong></td>
+                          <td scope="row">{{user.email}}</td>
+                        </tr>
+                        <tr>
+                          <td scope="row"><strong>Phone</strong></td>
+                          <td scope="row">{{user.phone}}</td>
+                        </tr>
+                        <tr>
+                          <td scope="row"><strong>Local Address</strong></td>
+                          <td scope="row">{{user.address}}</td>
+                        </tr>
+                        <tr>
+                          <td scope="row"><strong>Emergency Contact Phone</strong></td>
+                          <td scope="row">{{user.emergency_contact}}</td>
+                        </tr>
+                      </thead>
+                      <tbody id="fallSemesterTableBody">
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+      </div>
+      <div class = "tab-content card border border-top-0" [hidden]='myDocsCard === false'>
+        <!-- <app-my-docs></app-my-docs> -->
+      </div>
 
   </div>
 

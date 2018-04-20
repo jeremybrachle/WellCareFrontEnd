@@ -1,6 +1,8 @@
 import { ApptPipe } from './appt-pipe.pipe';
 import { Component, OnInit, Input, enableProdMode } from '@angular/core';
-import { Doctor } from '../_models/index';
+import { Doctor, Appointment } from '../_models/index';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-docappts',
   templateUrl: './doc-appts.component.html',
@@ -9,6 +11,7 @@ import { Doctor } from '../_models/index';
 export class DocApptsComponent implements OnInit {
   @Input()
   public doc: Doctor;
+  public appointments: Appointment[];
   public currMonthNum: number;
   public currMonthName: string;
   public currDay: number;
@@ -19,8 +22,6 @@ export class DocApptsComponent implements OnInit {
   public prevMonthDays: number;
   public prevMonthFill: number[];
   public row1MonthDays: number[];
-  public fills: number[];
-  public hide: boolean;
   public daysUntilCurr: number[];
   public daysPostCurr: number[];
   public fifthRow: number[];
@@ -28,15 +29,18 @@ export class DocApptsComponent implements OnInit {
   public iconLeft: string;
   public iconRight: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.doc = JSON.parse(localStorage.getItem('currentUser'));
+    this.appointments = this.doc.appointments;
+    console.log(this.appointments);
     this.iconLeft = 'arrow-left';
     this.iconRight = 'arrow-right';
     this.imagePath = '../../assets/images/smu_logo.png';
     this.currMonthNum = 4;
     this.currMonthName = 'April';
-    this.currDay = 12;
+    this.currDay = 20;
     this.monthDays = [];
     for (let i = 0; i < 30; i++) {
       this.monthDays.push(i + 1);
@@ -46,7 +50,6 @@ export class DocApptsComponent implements OnInit {
     this.weekDayEnd = 2;
     this.prevMonthDays = 31;
     this.prevMonthFill = [];
-    this.hide = true;
     this.row1MonthDays = [1, 2, 3, 4, 5, 6, 7];
     this.daysUntilCurr = [8, 9, 10, 11];
     this.daysPostCurr = [13, 14];
@@ -89,19 +92,13 @@ export class DocApptsComponent implements OnInit {
       this.prevMonthFill = [];
       this.row1MonthDays = [1, 2, 3, 4, 5, 6, 7];
     } else {
-      this.hide = false;
       for (let k = 1; k < (this.weekDay1); k++) {
         this.prevMonthFill.push(k);
       }
       for (let l = this.weekDay1; l < 8; l++) {
         this.row1MonthDays.push(l);
       }
-      // for (let j = 0; j < (this.weekDay1 - 1); j++) {
-      //   this.fills.push(j);
-      // }
-      // for (let k = 0; k < (this.prevMonthDays - (this.weekDay1 - 2)); k++){
-      //   this.prevMonthFill.push(k);
-      // }
+
       this.buildFifthRow();
     }
   }
@@ -126,7 +123,6 @@ export class DocApptsComponent implements OnInit {
       this.prevMonthFill = [];
       this.row1MonthDays = [1, 2, 3, 4, 5, 6, 7];
     } else {
-      this.hide = false;
       for (let k = 1; k < (this.weekDay1); k++) {
         this.prevMonthFill.push(k);
       }
@@ -187,6 +183,18 @@ export class DocApptsComponent implements OnInit {
     if (monthNum === 11) {
       return 'November';
     } else { return 'December'; }
+  }
+
+  changeCurrDay(newCurrDay: number) {
+    this.currDay = newCurrDay;
+  }
+
+  public logout() {
+    this.router.navigate(['']);
+  }
+  private navigateToProfile() {
+    console.log('UGH');
+    this.router.navigateByUrl('/_doc-profile');
   }
 }
 

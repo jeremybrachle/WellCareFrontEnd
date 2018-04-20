@@ -7,4 +7,5 @@ export class Appointment {
   doctor: Doctor;
   reason: string;
   insurance: string;
+  newPatient: boolean;
 }

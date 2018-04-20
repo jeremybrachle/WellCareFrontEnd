@@ -32,7 +32,7 @@ export class RegisterComponent {
                   // console.log('yay');
                   this.alertService.success('Registration successful', true);
 
-                  this.router.navigate(['/_login']);
+                  this.router.navigate(['']);
               },
               error => {
                   this.alertService.error(error);
@@ -49,7 +49,7 @@ export class RegisterComponent {
                   // console.log('yay');
                   this.alertService.success('Registration successful', true);
 
-                  this.router.navigate(['/_login']);
+                  this.router.navigate(['']);
               },
               error => {
                   this.alertService.error(error);

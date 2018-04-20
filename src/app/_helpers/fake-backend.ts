@@ -45,6 +45,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                       rating: user.rating,
                       reviews: user.reviews,
                       profPic: user.profPic,
+                      appointments: user.appointments,
                       token: 'fake-jwt-token'
                     };
                     return Observable.of(new HttpResponse({ status: 200, body: body }));
@@ -72,6 +73,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     emergency_contact: user.emergency_contact,
                     dob: user.dob,
                     profPic: user.profPic,
+                    appointments: user.appointments,
                     token: 'fake-jwt-token'
                   };
                   return Observable.of(new HttpResponse({ status: 200, body: body }));

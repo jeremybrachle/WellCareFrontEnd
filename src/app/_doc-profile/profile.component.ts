@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../_models/user';
 import { Doctor } from '../_models/index';
 import { Patient } from '../_models/index';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,7 +15,7 @@ export class DocProfileComponent implements OnInit {
   public userImage: string;
   public comment: string;
 
-  constructor() {
+  constructor(private router: Router) {
     this.imagePath = '../../assets/images/smu_logo.png';
     console.log('profile constructor!');
     // this.userImage = '../../assets/images/ted.jpg';
@@ -31,6 +32,7 @@ export class DocProfileComponent implements OnInit {
 
   public logout() {
     console.log('woo');
+    this.router.navigateByUrl('');
   }
 
 }

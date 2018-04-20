@@ -8,20 +8,20 @@
   <div class="row" id="mynav">
       <nav class="navbar navbar-expand-lg">
             <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link">My Profile <span class="sr-only">(current)</span></a>
+              <li class="nav-item inactive">
+                <a class="btn" (click)="navigateToProfile()">My Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link inactive" [routerLink]="['_doc-appts']">Appointments</a>
+                <a class="nav-link active" [routerLink]="['_doc-appts']">Appointments <span class="sr-only">(current)</span></a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link inactive" [routerLink]="['_myPatients']">My Patients</a>
+              </li> -->
+              <li class="nav-item">
+                  <a class="nav-link inactive" [routerLink]="['_doc-settings']">Settings</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link inactive" [routerLink]="['_myPatients']">Patients</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link inactive" [routerLink]="['_drSettings']">Settings</a>
-              </li>
-              <li class="nav-item">
-                  <button class="btn inactive" ng-click="logout()" id="logout">Logout</button>
+                  <button class="btn inactive" (click)="logout()" id="logout">Logout</button>
               </li>
             </ul>
       </nav>
@@ -65,11 +65,11 @@
                               <td class="muted" *ngFor="let num of prevMonthFill" [hidden]="prevMonthFill === []">
                                   {{num}}
                               </td>
-                              <td class="btn-light calRow1" *ngFor='let num of daysUntilCurr'>
+                              <td class="btn-light calRow1" *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
                                   {{num}}
                               </td>
                               <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                              <td class="btn-light calRow1" *ngFor='let num of  daysPostCurr'>
+                              <td class="btn-light calRow1" *ngFor='let num of  daysPostCurr' (click)="changeCurrDay(num)">
                                   {{num}}
                               </td>
                           </tr>
@@ -77,53 +77,53 @@
                             <td class="muted" *ngFor="let num of prevMonthFill" [hidden]="prevMonthFill === []">
                                 {{num}}
                             </td>
-                            <td class="btn-light calRow1" *ngFor='let num of row1MonthDays'>
+                            <td class="btn-light calRow1" *ngFor='let num of row1MonthDays' (click)="changeCurrDay(num)">
                                 {{num}}
                             </td>
 
                           </tr>
                           <tr [hidden]='checkCurrDay(2)=== false'>
-                            <td class="btn-light calRow2 containsCurrDay"  *ngFor='let num of daysUntilCurr'>
+                            <td class="btn-light calRow2 containsCurrDay"  *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
                               {{num}}
                             </td>
                             <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                            <td class="btn-light calRow2 containsCurrDay"  *ngFor='let num of daysPostCurr'>
+                            <td class="btn-light calRow2 containsCurrDay"  *ngFor='let num of daysPostCurr' (click)="changeCurrDay(num)">
                               {{num}}
                             </td>
                           </tr>
                           <tr [hidden]='checkCurrDay(2)=== true'>
-                              <td class="btn-light calRow2" *ngFor='let num of [1,2,3,4,5,6,7]'>
+                              <td class="btn-light calRow2" *ngFor='let num of [1,2,3,4,5,6,7]' (click)="changeCurrDay(num)">
                                 {{num+row1MonthDays.length}}</td>
                           </tr>
                           <tr [hidden]='checkCurrDay(3)=== false'>
-                            <td class="btn-light calRow3 containsCurrDay"  *ngFor='let num of daysUntilCurr'>
+                            <td class="btn-light calRow3 containsCurrDay"  *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
                               {{num}}
                             </td>
                             <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                            <td class="btn-light calRow3 containsCurrDay"  *ngFor='let num of daysPostCurr'>
+                            <td class="btn-light calRow3 containsCurrDay"  *ngFor='let num of daysPostCurr' (click)="changeCurrDay(num)">
                               {{num}}
                             </td>
                           </tr>
                           <tr [hidden]='checkCurrDay(3)=== true'>
-                              <td class="btn-light calRow3" *ngFor='let num of [1,2,3,4,5,6,7]'>
+                              <td class="btn-light calRow3" *ngFor='let num of [1,2,3,4,5,6,7]' (click)="changeCurrDay(num)">
                                 {{num+7+row1MonthDays.length}}</td>
                           </tr>
                           <tr [hidden]='checkCurrDay(4)=== false'>
-                            <td class="btn-light calRow4 containsCurrDay"  *ngFor='let num of daysUntilCurr'>
+                            <td class="btn-light calRow4 containsCurrDay"  *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
                               {{num}}
                             </td>
                             <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                            <td class="btn-light calRow4 containsCurrDay"  *ngFor='let num of daysPostCurr'>
+                            <td class="btn-light calRow4 containsCurrDay"  *ngFor='let num of daysPostCurr' (click)="changeCurrDay(num)">
                               {{num}}
                             </td>
                           </tr>
                           <tr [hidden]='checkCurrDay(4)=== true'>
-                              <td class="btn-light calRow4" *ngFor='let num of [1,2,3,4,5,6,7]'>
+                              <td class="btn-light calRow4" *ngFor='let num of [1,2,3,4,5,6,7]' (click)="changeCurrDay(num)">
                                 {{num+14+row1MonthDays.length}}
                               </td>
                           </tr>
                           <tr>
-                              <td class='btn-light calRow5' *ngFor='let num of fifthRow'>
+                              <td class='btn-light calRow5' *ngFor='let num of fifthRow' (click)="changeCurrDay(num)">
                                   {{num}}
                               </td>
                           </tr>
@@ -143,27 +143,22 @@
               <table class="table">
                   <thead>
                     <tr>
-                      <th>Date</th>
+                      <th>Patient</th>
                       <th>Time</th>
-                      <th>Doctor</th>
-                      <th>Type</th>
-                      <th>Symtoms</th>
+                      <th>Reason for Visit</th>
+                      <th>Insurance</th>
+                      <th>New Patient</th>
                       <th></th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>04/14/18</td>
-                      <td>10am</td>
-                      <td>Dr. Banner</td>
-                      <td>General Check Up</td>
-                      <td>Anger management, green skin pigmentation, gamma radiation exposure</td>
-                      <td>
-                        <div class="btn btn-secondary">
-                          Edit
-                        </div>
-                      </td>
+                    <tr *ngFor='let appt of doc.appointments'>
+                      <td>{{appt.date}}</td>
+                      <td>{{appt.time}}</td>
+                      <td>{{appt.reason}}</td>
+                      <td>{{appt.insurance}}</td>
+                      <td>{{appt.newPatient}}</td>
                       <td>
                         <div class="btn btn-danger">
                           Cancel

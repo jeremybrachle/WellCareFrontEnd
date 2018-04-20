@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
     public returnUrl: string;
     public sampleDoc: Doctor;
     public samplePatient: Patient;
-
+    public displayHelp: boolean;
+    public str1: '#pwdModal';
+    public str2: 'modal';
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
           // reset login status
+          this.displayHelp = false;
           this.authenticationService.logout();
 
           // get return url from route parameters or default to '/'
@@ -60,6 +63,11 @@ export class LoginComponent implements OnInit {
                   this.alertService.error(error);
                   this.loading = false;
               });
-}
+    }
+
+    forgot() {
+      this.displayHelp = true;
+      console.log(this.displayHelp);
+    }
 }
 

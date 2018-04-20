@@ -28,15 +28,18 @@ import { DocReviewsComponent } from './_doc-reviews/doc-reviews.component';
 import { DocApptsComponent } from './_doc-appts/doc-appts.component';
 import { ApptPipe } from './_doc-appts/appt-pipe.pipe';
 import { PatientProfileComponent } from './_patient-profile/patient-profile.component';
-import { DocSettingsComponent } from './_settings/settings.component';
+import { DocSettingsComponent } from './_doc-settings/doc-settings.component';
 import { FooterComponent } from './_footer/footer.component';
 import { OcticonDirective } from './_patient-profile/octicon.directive';
-import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'angular-calendar';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoUtilsModule } from '../../demo-utils/module';
 import { PatientAppointmentsComponent } from './_patient-appts/patient-appts.component';
+import { ForgotComponent } from './forgot/forgot.component';
+import { PatientSettingsComponent } from './_patient-settings/patient-settings.component';
+import { MyDoctorsComponent } from './_my-doctors/my-doctors.component';
+import { ModalModule } from 'ngx-bootstrap';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
     imports: [
@@ -47,9 +50,9 @@ import { PatientAppointmentsComponent } from './_patient-appts/patient-appts.com
         RouterModule,
         AppRouting,
         BrowserAnimationsModule,
-        CalendarModule.forRoot(),
         NgbModalModule.forRoot(),
-        DemoUtilsModule
+        DemoUtilsModule,
+        ModalModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -63,17 +66,20 @@ import { PatientAppointmentsComponent } from './_patient-appts/patient-appts.com
         DocApptsComponent,
         ApptPipe,
         PatientProfileComponent,
-        DocSettingsComponent,
         FooterComponent,
         OcticonDirective,
-        CalendarComponent,
-        PatientAppointmentsComponent
+        PatientAppointmentsComponent,
+        ForgotComponent,
+        DocSettingsComponent,
+        PatientSettingsComponent,
+        MyDoctorsComponent
     ],
     providers: [
         AuthenticationGuard,
         AlertService,
         AuthenticationService,
         UserService,
+        BsModalService,
         UserService,
         {
             provide: HTTP_INTERCEPTORS,
