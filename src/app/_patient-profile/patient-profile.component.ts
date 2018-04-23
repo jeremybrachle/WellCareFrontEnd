@@ -15,12 +15,20 @@ export class PatientProfileComponent implements OnInit {
   public userImage: string;
   public comment: string;
   public icon: string;
-  public myDocsCard: boolean;
+  public docsTabPane: boolean;
+  public infoTabPane: boolean;
+  public scripsTabPane: boolean;
+  public docsClass: string;
+  public infoClass: string;
+  public scripsClass: string;
+
 
   constructor(private router: Router) {
-    this.imagePath = '../../assets/images/smu_logo.png';
+    this.imagePath = '../../assets/images/smu_logo2.png';
     console.log('profile constructor!');
-    this.myDocsCard = false;
+    this.docsTabPane = false;
+    this.infoTabPane = true;
+    this.scripsTabPane = false;
   }
 
   ngOnInit() {
@@ -28,6 +36,9 @@ export class PatientProfileComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.userImage = this.user.profPic;
     this.icon = 'pencil';
+    this.infoClass = 'btn nav-link activeTab';
+    this.docsClass = 'nav-link inactiveTab';
+    this.scripsClass = 'nav-link inactiveTab';
   }
 
   public logout() {
@@ -35,7 +46,28 @@ export class PatientProfileComponent implements OnInit {
     this.router.navigateByUrl('');
   }
   showMyDocs() {
-    this.myDocsCard = true;
+    this.docsClass = 'nav-link activeTab';
+    this.infoClass = 'btn nav-link inactiveTab';
+    this.scripsClass = 'nav-link inactiveTab';
+    this.docsTabPane = true;
+    this.infoTabPane = false;
+    this.scripsTabPane = false;
+  }
+  showMyScrips() {
+    this.docsClass = 'nav-link inactiveTab';
+    this.infoClass = 'btn nav-link inactiveTab';
+    this.scripsClass = 'nav-link activeTab';
+    this.docsTabPane = false;
+    this.infoTabPane = false;
+    this.scripsTabPane = true;
+  }
+  showMyInfo() {
+    this.docsClass = 'nav-link inactiveTab';
+    this.infoClass = 'btn nav-link activeTab';
+    this.scripsClass = 'nav-link inactiveTab';
+    this.docsTabPane = false;
+    this.infoTabPane = true;
+    this.scripsTabPane = false;
   }
 }
 

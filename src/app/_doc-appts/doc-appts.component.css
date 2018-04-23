@@ -8,7 +8,7 @@
     src: '../fonts/sansb___.ttf';
 }
 .back {
-  background-color: #f7ea3c;
+  background-color: rgb(209, 208, 208);
   width: 100vw;
   height: 100vw;
   padding: 0;
@@ -20,6 +20,17 @@ h1 {
   padding-left:.3rem;
   color: black;
   /* color: rgb(47, 117, 247); */
+}
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.4rem;
+  margin-top:1.3rem;
+  padding-left:.3rem;
+  color: white;
+  /* color: rgb(47, 117, 247); */
+}
+.top {
+  background-color: rgb(16, 30, 77) !important;
 }
 #mynav {
   width: 100vw;
@@ -67,14 +78,18 @@ h1 {
   padding-top: 1rem;
 }
 .inactive{
-  color:rgb(85, 84, 84);
+  color:rgb(224, 3, 3);
 }
 .active{
-  color: black;
+  color: white;
   /* color:rgb(47, 117, 247); */
 }
+a:hover{
+  color:rgb(224, 222, 222);
+}
 #logout {
-  background-color:#f7ea3c;
+  color:rgb(212, 4, 4);
+  background-color: transparent
 }
 
 calRow1 {

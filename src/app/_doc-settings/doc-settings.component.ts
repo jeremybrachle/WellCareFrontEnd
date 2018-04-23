@@ -20,7 +20,7 @@ export class DocSettingsComponent implements OnInit {
   public newPass2: string;
   public imagePath: string;
   constructor(private router: Router) {
-    this.imagePath = '../../assets/images/smu_logo.png';
+    this.imagePath = '../../assets/images/smu_logo2.png';
    }
 
   ngOnInit() {

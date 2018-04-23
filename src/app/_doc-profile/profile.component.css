@@ -8,22 +8,32 @@
     src: '../fonts/sansb___.ttf';
 }
 .back {
-  background-color: #f7ea3c;
+  background-color: rgb(209, 208, 208);
+  /* background-image: linear-gradient(-135deg, #3185e6, #203bc0); */
   width: 100vw;
   height: 100vw;
   padding: 0;
+  overflow: hidden;
 }
 h1 {
   font-family: 'Roboto Slab', serif;
-  font-size: 2.7rem;
-  margin-top:1.4rem;
+  font-size: 2.4rem;
+  margin-top:1.3rem;
   padding-left:.3rem;
-  color: black;
+  color: white;
   /* color: rgb(47, 117, 247); */
 }
+.top {
+  background-color: rgb(16, 30, 77);
+}
+#smuLogoPic {
+  height:7%;
+  width: 5%;
+  margin-top:.7rem;
+  margin-left:2rem;
+}
 #mynav {
-  width: 100vw;
-  padding-bottom: .9rem;
+  margin-top: .1rem;
 }
 .navbar {
   width: 100%;
@@ -35,14 +45,17 @@ h1 {
   padding-bottom: .6rem;
 }
 .card {
-  margin-top:0.85rem;
-  margin-left: 1.8rem;
+  margin-top:3.2rem;
+  margin-left: 4.0rem;
   padding-bottom: 1.4rem;
   width:29%;
   height: 26.5rem;
-  background-color: white;
-  /* background-color:rgb(41, 107, 250); */
+  background-color:white;
   color: black;
+  /* opacity: 0.9; */
+  /* border-color: red;
+  border-width: .3rem; */
+
 }
 .aboutDr {
   font-family: 'Roboto Slab', serif;
@@ -64,6 +77,7 @@ h1 {
 .label {
   font-family: 'Roboto Slab', serif;
   font-weight: 400;
+  color:black;
 }
 .profile {
   padding-left: 2rem;
@@ -71,12 +85,25 @@ h1 {
   padding-top: 1rem;
 }
 .inactive{
-  color:rgb(85, 84, 84);
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  color: rgb(204, 4, 4);
 }
 .active{
-  color: black;
+  font-family: 'Roboto Slab', serif;
+  color: white;
+  font-weight: 400;
   /* color:rgb(47, 117, 247); */
 }
+a:hover {
+  color: rgb(201, 197, 197);;
+}
 #logout {
-  background-color:#f7ea3c;
+  background-color:transparent;
+  color: rgb(204, 4, 4);
+}
+#rest {
+  opacity: .8;
+  background: no-repeat cover;
+  height: 100%;
 }

@@ -14,9 +14,10 @@ export class DocProfileComponent implements OnInit {
   public imagePath: string;
   public userImage: string;
   public comment: string;
-
+  public smuImage: string;
   constructor(private router: Router) {
-    this.imagePath = '../../assets/images/smu_logo.png';
+    this.imagePath = '../../assets/images/redLogo.png';
+    this.smuImage = '../../assets/images/dhall.jpg';
     console.log('profile constructor!');
     // this.userImage = '../../assets/images/ted.jpg';
 

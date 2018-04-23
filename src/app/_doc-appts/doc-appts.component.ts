@@ -37,7 +37,7 @@ export class DocApptsComponent implements OnInit {
     console.log(this.appointments);
     this.iconLeft = 'arrow-left';
     this.iconRight = 'arrow-right';
-    this.imagePath = '../../assets/images/smu_logo.png';
+    this.imagePath = '../../assets/images/smu_logo2.png';
     this.currMonthNum = 4;
     this.currMonthName = 'April';
     this.currDay = 20;

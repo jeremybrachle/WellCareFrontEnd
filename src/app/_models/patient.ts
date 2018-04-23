@@ -1,3 +1,4 @@
+import { Appointment } from './appt';
 export class Patient {
   id: number;
   gender: string;
@@ -11,4 +12,5 @@ export class Patient {
   emergency_contact: string;
   dob: Date;
   profPic?: string;
+  appointments?: Appointment[];
 }

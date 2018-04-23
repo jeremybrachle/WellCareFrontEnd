@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400i');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700');
+
+@font-face {
+    font-family: 'brandon';
+    src: '../fonts/webfontkit/brandon.woff';
+}
+@font-face {
+    font-family: 'sansb';
+    src: '../fonts/sansb___.ttf';
+}
+#img {
+  margin-top:.3rem;
+  height: 24%;
+  width: 15%;
+  margin-left:.1rem;
+  padding-bottom:.2rem;
+}
+h1 {
+  font-family: 'Crimson text', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.0rem;
+  margin-top:.45rem;
+  margin-left: 0.65rem;
+  color: white;
+}
+#login {
+  margin-left: 2rem;
+  width: 78%;
+  background-color: red;
+  color: white;
+  border-radius: 0.3;
+}
+p {
+  font-family: 'Crimson text', serif;
+  font-style: normal;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  color: white;
+  margin-left: 4rem;
+}
+a{
+  color: white;
+}
+h5 {
+  font-family: 'Crimson text', serif;
+  font-style: normal;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: white;
+  margin-left: 1rem;
+  padding:.5rem;
+}
+hr {
+  width: 80%;
+  margin-top:4rem;
+  border-width: 1px;
+  border-color:white;
+}
+#nonCursive {
+  font-family: 'Roboto Slab', serif;
+}
+.giantPIC {
+  margin-top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+.card {
+  height: 78%;
+  width:34%;
+  margin-top: 4rem;
+  margin-left: 24rem;
+  background-color: rgb(12, 16, 36);
+  opacity: 0.92;
+}
+.card-header {
+  margin-top: 0rem;
+}

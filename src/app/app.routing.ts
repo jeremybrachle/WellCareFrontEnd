@@ -2,7 +2,7 @@ import { PatientProfileComponent } from './_patient-profile/patient-profile.comp
 import { DocApptsComponent } from './_doc-appts/doc-appts.component';
 import { Routes, RouterModule } from '@angular/router';
 import {NgModule} from '@angular/core';
-import { HomeComponent } from './_home/index';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './_login/index';
 import { RegisterComponent } from './_register/index';
 import { AuthenticationGuard } from './_guards/index';

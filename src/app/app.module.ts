@@ -18,7 +18,7 @@ import { AlertComponent } from './_directives/index';
 import { AuthenticationGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
-import { HomeComponent } from './_home/index';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './_login/index';
 import { RegisterComponent } from './_register/index';
 import { DocProfileComponent } from './_doc-profile/profile.component';

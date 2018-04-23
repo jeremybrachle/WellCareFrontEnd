@@ -1,4 +1,5 @@
 <div class="back">
+  <div class="top">
     <div class="row" id="head">
         <img src={{imagePath}} style="height:12%; width:7%; margin-top:.8rem; margin-left:2rem; padding-bottom:.2rem;"/>
         <h1>SMU Well-Care</h1>
@@ -25,129 +26,141 @@
         </nav>
     </div>
 
-
+  </div>
   <div class="jumbotron bg-white">
+    <div class="card">
 
-      <div class="nav nav-tabs headerMargin" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-fall-tab" data-toggle="tab" href="#nav-fall" role="tab" aria-controls="nav-home" aria-selected="true">My Info</a>
-          <a class="nav-item nav-link" id="nav-spring-tab" role="tab" (click)="showMyDocs()">My Doctors</a>
-          <a class="nav-item nav-link" id="nav-spring-tab" data-toggle="tab" href="#nav-spring" role="tab" aria-controls="nav-profile" aria-selected="false">My Prescriptions</a>
-      </div>
-
-      <div class = "tab-content card border border-top-0" [hidden]='myDocsCard'>
-        <div class="row">
-            <label class="pl-3" for="profileCard" style="margin-left: .7rem; padding: .3rem .2rem;">
-                Patient
-            </label>
+        <div class="card-header patientTabs">
+          <ul class="nav nav-tabs card-header-tabs pull-left" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a [ngClass]="infoClass" id="info-tab" aria-selected="myInfo" (click)="showMyInfo()">My Info</a>
+            </li>
+            <li class="nav-item">
+              <a [ngClass]="docsClass" id="docs-tab" role="tab" (click)="showMyDocs()" aria-selected="myDocs">My Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a [ngClass]="scripsClass" id="scrips-tab" role="tab" (click)="showMyScrips()" aria-selected="myScrips">My Prescriptions</a>
+            </li>
+          </ul>
         </div>
 
-          <div class="card p-3 m-l-3" style="width: 30rem;" id="profileCard">
-              <div class="card-header bg-white row">
-                <h2 class="col-lg-10">
-                  {{user.firstName}} {{user.lastName}}
-                </h2>
-                <button type="button" class="btn btn-default col-lg-2" id="edit">
-                    <span appOcticon [octicon]="icon"></span>
-                      Edit
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="imgWrap">
-                    <img src={{this.userImage}} id="userImg">
-                </div>
 
-                  <table class ="table table-striped" id="fallTable">
-                    <thead>
-                        <tr>
-                          <td scope="col"><strong>Gender</strong></td>
-                          <td scope="col">{{user.gender}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>DOB</strong></td>
-                          <td scope="row">{{user.dob}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Email</strong></td>
-                          <td scope="row">{{user.email}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Phone</strong></td>
-                          <td scope="row">{{user.phone}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Local Address</strong></td>
-                          <td scope="row">{{user.address}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Emergency Contact Phone</strong></td>
-                          <td scope="row">{{user.emergency_contact}}</td>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+              <div *ngIf="infoTabPane" id="infoTab">
+                  <div class="row">
+                      <label class="pl-3" for="profileCard" style="margin-left: .7rem; padding: .3rem .2rem;">
+                          Patient
+                      </label>
+                    </div>
+
+                    <div class="card p-3 m-l-3" style="width: 30rem;" id="profileCard">
+                        <div class="card-header bg-white row">
+                            <h2 class="col-lg-10">
+                                {{user.firstName}} {{user.lastName}}
+                            </h2>
+                            <button type="button" class="btn btn-default col-lg-2" id="edit">
+                                  <span appOcticon [octicon]="icon"></span>
+                                    Edit
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="imgWrap">
+                                  <img src={{this.userImage}} id="userImg">
+                            </div>
+
+                            <table class ="table table-striped" id="fallTable">
+                              <thead>
+                                  <tr>
+                                      <td scope="col"><strong>Gender</strong></td>
+                                      <td scope="col">{{user.gender}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>DOB</strong></td>
+                                      <td scope="row">{{user.dob}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Email</strong></td>
+                                      <td scope="row">{{user.email}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Phone</strong></td>
+                                      <td scope="row">{{user.phone}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Local Address</strong></td>
+                                      <td scope="row">{{user.address}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Emergency Contact Phone</strong></td>
+                                      <td scope="row">{{user.emergency_contact}}</td>
+                                  </tr>
+                              </thead>
+                            </table>
+                        </div>
+                    </div>
+              </div>
+              <div *ngIf="docsTabPane">
+                <table>
+                  <thead>
+                      <tr scope="col" style="font-size:2rem;">My Doctors</tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let appt of user.appointments">
+                      <td scope="row" style="font-weight:700;">
+                        <a [routerLink]="['']" style="color:black;"> Dr. {{appt.doctor.firstName}} {{appt.doctor.lastName}}
+                        </a>
+                      </td>
+                      <td style="font-weight:300; padding-left:2rem;">
+                          {{appt.doctor.specialty}}
+                      </td>
+                      <td style="font-weight:300; padding-left:2rem;">
+                          <a>{{appt.doctor.phone}}</a>
+                      </td>
+                      <td style="font-weight:300; padding-left:2rem;">
+                          {{appt.doctor.address}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div *ngIf="scripsTabPane">
+                  <table>
+                      <thead>
+                        <tr style="font-weight:400;">
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Drug</th>
+                          <th scope="col" style="font-size:1rem; width:10rem; text-align:left; padding:1rem;">Date Prescribed</th>
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Expiration</th>
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Doctor</th>
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Description</th>
                         </tr>
                       </thead>
-                      <tbody id="fallSemesterTableBody">
-                    </tbody>
-                  </table>
+                      <tbody>
+                        <tr *ngFor="let scrip of user.scrips" style="padding-bottom:1rem;" class="spaceUnder">
+                          <td style="font-weight:300; text-align:left; padding:1rem;">
+                              {{scrip.name}}
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              {{scrip.writtenOn}}
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              {{scrip.expiration}}
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              <a [routerLink]="['']" style="color:black;"> Dr. {{scrip.prescriber.firstName}} {{scrip.prescriber.lastName}}</a>
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              {{scrip.description}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
               </div>
             </div>
-      </div>
-      <div class = "tab-content card border border-top-0" [hidden]='myDocsCard'>
-        <div class="row">
-            <label class="pl-3" for="profileCard" style="margin-left: .7rem; padding: .3rem .2rem;">
-                Patient
-            </label>
         </div>
-
-          <div class="card p-3 m-l-3" style="width: 30rem;" id="profileCard">
-              <div class="card-header bg-white row">
-                <h2 class="col-lg-10">
-                  {{user.firstName}} {{user.lastName}}
-                </h2>
-                <button type="button" class="btn btn-default col-lg-2" id="edit">
-                    <span appOcticon [octicon]="icon"></span>
-                      Edit
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="imgWrap">
-                    <img src={{this.userImage}} id="userImg">
-                </div>
-
-                  <table class ="table table-striped" id="fallTable">
-                    <thead>
-                        <tr>
-                          <td scope="col"><strong>Gender</strong></td>
-                          <td scope="col">{{user.gender}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>DOB</strong></td>
-                          <td scope="row">{{user.dob}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Email</strong></td>
-                          <td scope="row">{{user.email}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Phone</strong></td>
-                          <td scope="row">{{user.phone}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Local Address</strong></td>
-                          <td scope="row">{{user.address}}</td>
-                        </tr>
-                        <tr>
-                          <td scope="row"><strong>Emergency Contact Phone</strong></td>
-                          <td scope="row">{{user.emergency_contact}}</td>
-                        </tr>
-                      </thead>
-                      <tbody id="fallSemesterTableBody">
-                    </tbody>
-                  </table>
-              </div>
-            </div>
-      </div>
-      <div class = "tab-content card border border-top-0" [hidden]='myDocsCard === false'>
-        <!-- <app-my-docs></app-my-docs> -->
-      </div>
-
+    </div>
   </div>
 
+
 </div>
+

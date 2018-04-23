@@ -157,7 +157,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;
+  /* width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -172,15 +172,28 @@ iframe {
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0); */
+  /* background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  Chrome 10-25, Safari 5.1-6 */
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow: hidden;
+  margin-top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+
 }
 
 .wrap-login100 {
-  width: 960px;
+  width: 80vw;
+  height: 85vh;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
+  margin-left:8rem;
+  margin-top:2.8rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -188,13 +201,16 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 177px 130px 33px 95px;
+  /* padding: 177px 130px 33px 95px; */
 }
+
 
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
   width: 316px;
+  margin-top: 4rem;
+  margin-left: 4.5rem;
 }
 
 .login100-pic img {
@@ -205,7 +221,8 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-form {
-  width: 290px;
+  width: 17rem;
+  margin-right: 6rem;
 }
 
 .login100-form-title {
@@ -214,7 +231,8 @@ iframe {
   color: #333333;
   line-height: 1.2;
   text-align: center;
-
+  margin-top:2.3rem;
+  margin-left: 0rem;
   width: 100%;
   display: block;
   padding-bottom: 54px;
@@ -334,6 +352,7 @@ iframe {
   height: 40px;
   border-radius: 25px;
   background: #57b846;
+  /* background-color: rgb(240, 11, 11); */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

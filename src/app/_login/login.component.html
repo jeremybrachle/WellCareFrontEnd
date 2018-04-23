@@ -1,7 +1,8 @@
 
 
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" >
+        <!-- [ngStyle]="{'background-image': 'url('+'../../assets/images/smuBg.jpg)', 'background-position': 'center', 'background-size': 'cover'}" -->
       <div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
             <img src="../../assets/images/img-01.png" alt="IMG">
@@ -32,26 +33,6 @@
                   <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
               </div>
           </div>
-          <!-- <div class="wrap-input100 validate-input">
-              <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
-                  <label for="userType">Doctor</label>
-                  <input type="checkbox" class="form-control input100" name="userType" [(ngModel)]="model.doc" #userType="ngModel"/>
-                  <span class="focus-input100"></span>
-                  <span class="symbol-input100">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </span>
-              </div>
-					</div>
-          <div class="wrap-input100 validate-input">
-              <div class="form-group">
-                <label for="userType">Patient</label>
-                <input type="checkbox" class="form-control input100" name="userType" [(ngModel)]="model.doc" #userType="ngModel" checked/>
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-lock" aria-hidden="true"></i>
-                </span>
-              </div>
-          </div> -->
 					<div class="form-group container-login100-form-btn row">
               <button [disabled]="loading" (click)="loginPatient()" class="login100-form-btn">Patient Login</button>
               <button [disabled]="loading" (click)="loginDoc()" class="login100-form-btn">Doctor Login</button>
