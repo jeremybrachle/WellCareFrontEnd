@@ -146,24 +146,24 @@ export class LoginComponent implements OnInit {
 
     // get from github
     this.httpClient.post('http://0.0.0.0:5000/login', {
-      // 'Email': this.newUser.userName.toString(),
-      // 'Password': this.newUser.passWord.toString()
-      'UserId': 19,
-      'Password': 'abe'
+      'UserId': this.newUser.userName.toString(),
+      'Password': this.newUser.passWord.toString()
+      // 'UserId': 19,
+      // 'Password': 'abe'
     },
     this.httpOptions
     )
     .subscribe(data => {
       
       console.log(data);
-      /*
+      
       console.log();
       if (data === 'Login Success') {
         console.log('User was logged in');
       } else {
         console.log('Wrong Password or something else... but connected!');
       }
-      */
+      
     }, err => {
       console.log('Error occured.');
       console.log(err);
