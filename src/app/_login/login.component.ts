@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
     public displayHelp: boolean;
     public str1: '#pwdModal';
     public str2: 'modal';
+    public alertMsg: string;
+    public count: number;
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -30,37 +32,51 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
           // reset login status
+          this.count = 0;
           this.displayHelp = false;
           this.authenticationService.logout();
-
+          this.alertMsg = '';
           // get return url from route parameters or default to '/'
           this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+          let allDocs = this.authenticationService.getAllDocs();
+          allDocs = JSON.parse(localStorage.getItem('currentDocs'));
+          console.log(allDocs);
     }
 
     loginDoc() {
+          this.count++;
           this.loading = true;
-          this.authenticationService.loginDoc(this.model)
+          this.authenticationService.loginDoc(this.model, )
               .subscribe(
                   data => {
-                    console.log(this.returnUrl);
+                    this.count = 0;
+                    this.alertMsg = '';
                     this.router.navigate(['_doc-profile'], { queryParams: this.model});
                   },
                   error => {
-                      this.alertService.error(error);
+                      if (this.count > 3) {
+                        this.kickedOut();
+                      }
+                      this.alertMsg = 'Username or password incorrect!';
                       this.loading = false;
                   });
     }
 
     loginPatient() {
+      this.count++;
       this.loading = true;
       this.authenticationService.loginPatient(this.model)
           .subscribe(
               data => {
-                  console.log(this.returnUrl);
+                  this.count = 0;
+                  this.alertMsg = '';
                   this.router.navigate(['_patient-profile'], { queryParams: this.model})
               },
               error => {
-                  this.alertService.error(error);
+                  this.alertMsg = 'Username or password incorrect!';
+                  if (this.count > 3) {
+                    this.kickedOut();
+                  }
                   this.loading = false;
               });
     }
@@ -68,6 +84,13 @@ export class LoginComponent implements OnInit {
     forgot() {
       this.displayHelp = true;
       console.log(this.displayHelp);
+    }
+
+    kickedOut() {
+      const kicked = {
+        'kickedOut' : true
+      };
+      this.router.navigate(['/'], { queryParams: kicked});
     }
 }
 

@@ -1,11 +1,12 @@
 import {Doctor} from './doctor';
 import {Patient} from './patient';
 export class Prescription {
-  scripNum: number;
-  prescriber: Doctor;
+  Rx_Numb: number;
+  doctor: Doctor;
   patient: Patient;
   description?: string;
   name?: string;
-  writtenOn: Date;
+  start_date: Date;
   expiration: Date;
+  refill: number;
 }

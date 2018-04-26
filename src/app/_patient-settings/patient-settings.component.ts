@@ -27,38 +27,25 @@ export class PatientSettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = {
-      id: 0,
-      gender: '',
-      username: '',
-      password: 'something',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      address: '',
-      emergency_contact: '',
-      dob: new Date(Date.now()),
-      profPic: ''
-    };
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.oldPass = '';
     this.newPass = '';
     this.newPass2 = '';
   }
-  changePassword() {
+  public changePassword() {
     this.user.password = this.newPass2;
   }
   public logout() {
     console.log('woo');
     this.router.navigateByUrl('');
   }
-  navigateToProfile() {
+  public navigateToProfile() {
     console.log('ugh frusterated');
     this.router.navigateByUrl('/_patient-profile');
   }
-  openModal(template: TemplateRef<any>) {
+  public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-}
+  }
 }
 
 

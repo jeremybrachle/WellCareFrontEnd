@@ -24,20 +24,7 @@ export class DocSettingsComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.user = {
-      id: 0,
-      gender: '',
-      username: '',
-      password: 'something',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      address: '',
-      emergency_contact: '',
-      dob: new Date(Date.now()),
-      profPic: ''
-    };
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.oldPass = '';
     this.newPass = '';
     this.newPass2 = '';

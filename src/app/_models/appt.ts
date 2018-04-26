@@ -8,4 +8,6 @@ export class Appointment {
   reason: string;
   insurance: string;
   newPatient: boolean;
+  type: string;
+  status: string;
 }

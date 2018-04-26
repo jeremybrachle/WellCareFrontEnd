@@ -9,7 +9,31 @@
       "lastName": "Carr",
       "dob": "10/24/97",
       "profPic": "../../assets/images/katie.jpg",
-      "insurance": "None"
+      "insurance": "None",
+      "appointments": [
+        {
+        "date": "04/28/18",
+        "time": "11AM-11:30AM",
+        "patient": {
+        },
+        "doctor": {
+          "id": 6,
+          "username": "dr_derek",
+          "email": "dshepherd@graysanatomy.edu",
+          "password": "sunshine14",
+          "firstName": "Derek",
+          "lastName": "Shepherd",
+          "phone": "918-788-4196",
+          "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+          "specialty": "Neurosurgery"
+        },
+        "reason": "Back and Neck pain",
+        "treatment": "eval",
+        "insurance": "None",
+        "newPatient": "true",
+        "status": "requested"
+      }
+      ]
     },
 
 
@@ -211,7 +235,7 @@
       "insurance": "Anthem Blue Cross",
       "appointments": [
       {
-          "date": "04/20/18",
+          "date": "04/28/18",
           "time": "4PM-5PM",
           "patient": {},
           "doctor": {
@@ -227,10 +251,11 @@
           },
           "reason": "Severe migraines",
           "insurance": "Anthem Blue Cross",
-          "newPatient": "true"
+          "newPatient": "true",
+          "status": "approved"
       },
       {
-          "date": "04/20/18",
+          "date": "04/28/18",
           "time": "11:30AM-12PM",
           "patient": {},
           "doctor": {
@@ -246,13 +271,32 @@
           },
           "reason": "Severe migraines",
           "insurance": "Anthem Blue Cross",
-          "newPatient": "true"
+          "newPatient": "true",
+          "status": "requested"
+      }
+      ],
+      "notifications": [],
+      "docNotes": [
+        { "sender" : {
+          "id": 2,
+          "username": "random_andy",
+          "email": "thauptmann@smu.edu",
+          "password": "sunshine14",
+          "firstName": "Teddy",
+          "lastName": "Hauptmann",
+          "phone": "918-788-4196",
+          "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+          "specialty": "Pediatrics"
+        },
+        "recipient": {},
+        "message": "An apple a day would make me go away!",
+        "date": "04/15/18"
       }
       ],
       "scrips": [
         {
-          "scripNum": 0,
-          "prescriber": {
+          "Rx_Numb": 0,
+          "doctor": {
             "id": 2,
             "username": "random_andy",
             "email": "thauptmann@smu.edu",
@@ -266,12 +310,12 @@
           "patient": {},
           "name": "Cymbalta",
           "description": "It can treat depression, anxiety, diabetic peripheral neuropathy, fibromyalgia, and chronic muscle or bone pain. For more information on risks and side effects please visit: https://www.everydayhealth.com/drugs/cymbalta",
-          "writtenOn": "04/10/18",
+          "start_date": "04/10/18",
           "expiration": "04/25/18"
         },
         {
-          "scripNum": 1,
-            "prescriber": {
+          "Rx_Numb": 1,
+            "doctor": {
               "id": 2,
               "username": "random_andy",
               "email": "thauptmann@smu.edu",
@@ -285,7 +329,7 @@
             "patient": {},
             "name": "Minocycline",
             "description": "Minocycline is used to treat a wide variety of infections. It may also be used along with other medications to treat severe acne. This medication belongs to a class of drugs known as tetracycline antibiotics. For more information on risks and side effects please visit:  https://www.rxlist.com/minocin-capsules-side-effects-drug-center.htm",
-            "writtenOn": "03/10/18",
+            "start_date": "03/10/18",
             "expiration": "03/25/18"
         }
       ]
@@ -298,7 +342,22 @@
       "password": "sunshine14",
       "email": "chrisblack63@gmail.com",
       "firstName": "Chris",
-      "lastName": "Black"
+      "lastName": "Black",
+      "emergency_contact": "Barbara Johnson 934-610-8572",
+      "profPic": "../../assets/images/kade3.jpg",
+      "gender": "Male",
+      "insurance": "Anthem Blue Cross",
+      "appointments": [
+        {
+        "date": "04/28/18",
+        "time": "8AM-9AM",
+        "patient": {},
+        "doctor": {},
+        "reason": "Green pigmentation",
+        "insurance": "GlobalHealth",
+        "newPatient": "false",
+        "status": "approved"
+      }]
     },
 
 
@@ -310,8 +369,11 @@
       "firstName": "Jeremy",
       "lastName": "Berechle",
       "dob": "10/24/97",
+      "phone": "918-788-4196",
+      "address": "10 Cloverfield Lane, Dallas, TX, 75205",
       "profPic": "../../assets/images/katie.jpg",
-      "insurance": "BlueCross of Texas"
+      "insurance": "BlueCross of Texas",
+      "appointments": []
     }
 
 

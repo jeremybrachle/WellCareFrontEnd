@@ -5,7 +5,6 @@ import { AlertService, UserService } from '../_services/index';
 import { Doctor } from '../_models/index';
 import { Patient } from '../_models/index';
 import { User } from '../_models/index';
-import { Users } from '../_models/index';
 declare var require: any;
 
 @Component({
@@ -25,6 +24,7 @@ export class RegisterComponent {
     registerPatient() {
       const editJsonFile = require('edit-json-file');
       const file = editJsonFile(`../../assets/mock-data.json`);
+      //'_register/patient'
       this.loading = true;
       this.userService.createPatient(this.model)
           .subscribe(
@@ -42,6 +42,7 @@ export class RegisterComponent {
     registerDoc() {
       const editJsonFile = require('edit-json-file');
       const file = editJsonFile(`../../assets/mock-data.json`);
+          //'_register/doc'
       this.loading = true;
       this.userService.createDoc(this.model)
           .subscribe(

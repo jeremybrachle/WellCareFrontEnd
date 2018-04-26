@@ -31,7 +31,7 @@
     <div class="card">
 
         <div class="card-header patientTabs">
-          <ul class="nav nav-tabs card-header-tabs pull-left" id="myTab" role="tablist">
+          <ul class="nav nav-tabs card-header-tabs pull-left" id="myTabList" role="tablist">
             <li class="nav-item">
                 <a [ngClass]="infoClass" id="info-tab" aria-selected="myInfo" (click)="showMyInfo()">My Info</a>
             </li>
@@ -40,6 +40,12 @@
             </li>
             <li class="nav-item">
               <a [ngClass]="scripsClass" id="scrips-tab" role="tab" (click)="showMyScrips()" aria-selected="myScrips">My Prescriptions</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="docNotesClass" id="doc-notes-tab" role="tab" (click)="showMyDocNotes()" aria-selected="myDocNotes">My Doctor Notes</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="notifsClass" id="notifs-tab" role="tab" (click)="showMyNotifs()" aria-selected="myNotifs">Notifications</a>
             </li>
           </ul>
         </div>
@@ -100,7 +106,7 @@
                         </div>
                     </div>
               </div>
-              <div *ngIf="docsTabPane">
+              <div *ngIf="docsTabPane" id="myDocsTab">
                 <table>
                   <thead>
                       <tr scope="col" style="font-size:2rem;">My Doctors</tr>
@@ -141,13 +147,13 @@
                               {{scrip.name}}
                           </td>
                           <td style="font-weight:300; padding-left:2rem;">
-                              {{scrip.writtenOn}}
+                              {{scrip.start_date}}
                           </td>
                           <td style="font-weight:300; padding-left:2rem;">
                               {{scrip.expiration}}
                           </td>
                           <td style="font-weight:300; padding-left:2rem;">
-                              <a [routerLink]="['']" style="color:black;"> Dr. {{scrip.prescriber.firstName}} {{scrip.prescriber.lastName}}</a>
+                              <a [routerLink]="['']" style="color:black;"> Dr. {{scrip.doctor.firstName}} {{scrip.doctor.lastName}}</a>
                           </td>
                           <td style="font-weight:300; padding-left:2rem;">
                               {{scrip.description}}
@@ -155,6 +161,82 @@
                         </tr>
                       </tbody>
                     </table>
+              </div>
+              <div *ngIf="docNotesTabPane" id="docNotesTab">
+                  <div class="card-header bg-white row">
+                      <h2 class="col-lg-10">
+                            Doctor's Orders!
+                      </h2>
+                  </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                      <thead>
+                        <tr>
+                          <th> Doctor</th>
+                          <th> Note Date</th>
+                          <th> Message </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let note of user.docNotes">
+                          <td scope="col">Dr. {{note.sender.firstName}} {{note.sender.lastName}}</td>
+                          <td scope="row">{{note.date}}</td>
+                          <td scope="row">{{note.message}}</td>
+                        </tr>
+                      </tbody>
+
+                  </table>
+              </div>
+              <div *ngIf="notifsTabPane" id="notifsTab">
+                  <div class="bg-white row">
+                      <h2 class="col-lg-10">
+                            New Appointments
+                      </h2>
+                  </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                      <thead>
+                        <tr>
+                          <th> Appt. Date</th>
+                          <th> Doctor</th>
+                          <th> Reason for Visit </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let notif of user.notifications">
+                          <div *ngIf="notif.notificationType === 'newAppt'">
+                              <td scope="row">{{notif.date}}</td>
+                              <td scope="col" >Dr. {{notif.doctor.firstName}} {{notif.doctor.lastName}}</td>
+                              <td scope="row">{{notif.msg}}</td>
+                          </div>
+                        </tr>
+                      </tbody>
+                  </table>
+
+                  <div class="bg-white row">
+                      <h2 class="col-lg-10">
+                            New Doctor's Notes
+                      </h2>
+                  </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                      <thead>
+                        <tr>
+                          <th> From </th>
+                          <th> Date </th>
+                          <th> Note </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let note of user.notifications">
+                          <div *ngIf="note.notificationType === 'note'">
+                              <td scope="row">Dr. {{note.doctor.firstName}} {{note.doctor.lastName}}</td>
+                              <td scope="col" >{{note.date}}</td>
+                              <td scope="row">{{note.msg}}</td>
+                          </div>
+                        </tr>
+                      </tbody>
+                  </table>
               </div>
             </div>
         </div>

@@ -18,6 +18,10 @@ export class PatientProfileComponent implements OnInit {
   public docsTabPane: boolean;
   public infoTabPane: boolean;
   public scripsTabPane: boolean;
+  public docNotesTabPane: boolean;
+  public notifsTabPane: boolean;
+  public docNotesClass: string;
+  public notifsClass: string;
   public docsClass: string;
   public infoClass: string;
   public scripsClass: string;
@@ -29,6 +33,8 @@ export class PatientProfileComponent implements OnInit {
     this.docsTabPane = false;
     this.infoTabPane = true;
     this.scripsTabPane = false;
+    this.docNotesTabPane = false;
+    this.notifsTabPane = false;
   }
 
   ngOnInit() {
@@ -37,8 +43,10 @@ export class PatientProfileComponent implements OnInit {
     this.userImage = this.user.profPic;
     this.icon = 'pencil';
     this.infoClass = 'btn nav-link activeTab';
-    this.docsClass = 'nav-link inactiveTab';
-    this.scripsClass = 'nav-link inactiveTab';
+    this.docsClass = 'btn nav-link inactiveTab';
+    this.scripsClass = 'btn nav-link inactiveTab';
+    this.notifsClass = 'btn nav-link inactiveTab';
+    this.docNotesClass = 'btn nav-link inactiveTab';
   }
 
   public logout() {
@@ -46,28 +54,70 @@ export class PatientProfileComponent implements OnInit {
     this.router.navigateByUrl('');
   }
   showMyDocs() {
-    this.docsClass = 'nav-link activeTab';
+    this.docsClass = 'btn nav-link activeTab';
     this.infoClass = 'btn nav-link inactiveTab';
-    this.scripsClass = 'nav-link inactiveTab';
+    this.scripsClass = 'btn nav-link inactiveTab';
+    this.notifsClass = 'btn nav-link inactiveTab';
+    this.docNotesClass = 'btn nav-link inactiveTab';
     this.docsTabPane = true;
     this.infoTabPane = false;
     this.scripsTabPane = false;
+    this.docNotesTabPane = false;
+    this.notifsTabPane = false;
   }
   showMyScrips() {
-    this.docsClass = 'nav-link inactiveTab';
+    this.docsClass = 'btn nav-link inactiveTab';
     this.infoClass = 'btn nav-link inactiveTab';
-    this.scripsClass = 'nav-link activeTab';
+    this.scripsClass = 'btn nav-link activeTab';
+    this.notifsClass = 'btn nav-link inactiveTab';
+    this.docNotesClass = 'btn nav-link inactiveTab';
+    this.notifsTabPane = false;
     this.docsTabPane = false;
     this.infoTabPane = false;
     this.scripsTabPane = true;
+    this.docNotesTabPane = false;
   }
   showMyInfo() {
-    this.docsClass = 'nav-link inactiveTab';
+    this.docsClass = 'btn nav-link inactiveTab';
     this.infoClass = 'btn nav-link activeTab';
-    this.scripsClass = 'nav-link inactiveTab';
+    this.scripsClass = 'btn nav-link inactiveTab';
+    this.notifsClass = 'btn nav-link inactiveTab';
+    this.docNotesClass = 'btn nav-link inactiveTab';
+    this.notifsTabPane = false;
     this.docsTabPane = false;
     this.infoTabPane = true;
     this.scripsTabPane = false;
+    this.docNotesTabPane = false;
+  }
+  showMyDocNotes() {
+    this.docsClass = 'btn nav-link inactiveTab';
+    this.infoClass = 'btn nav-link inactiveTab';
+    this.scripsClass = 'btn nav-link inactiveTab';
+    this.notifsClass = 'btn nav-link inactiveTab';
+    this.docNotesClass = 'btn nav-link activeTab';
+    this.notifsTabPane = false;
+    this.docsTabPane = false;
+    this.infoTabPane = false;
+    this.scripsTabPane = false;
+    this.docNotesTabPane = true;
+  }
+  showMyNotifs() {
+    this.docsClass = 'btn nav-link inactiveTab';
+    this.infoClass = 'btn nav-link inactiveTab';
+    this.scripsClass = 'btn nav-link inactiveTab';
+    this.notifsClass = 'btn nav-link activeTab';
+    this.docNotesClass = 'btn nav-link inactiveTab';
+    this.notifsTabPane = true;
+    this.docsTabPane = false;
+    this.infoTabPane = false;
+    this.scripsTabPane = false;
+    this.docNotesTabPane = false;
+    this.updateNotifs();
+  }
+  updateNotifs() {
+    for (let k = 0; k < this.user.notifications.length; k++) {
+      this.user.notifications[k].beenDisplayed = true;
+    }
   }
 }
 

@@ -1,6 +1,8 @@
 import { DocReview } from './doc_review';
 import { Appointment } from './appt';
 import { Prescription } from './scrip';
+import { DoctorNote } from './note';
+import { Notification } from './notification';
 export class Doctor {
   id: number;
   username: string;
@@ -16,4 +18,6 @@ export class Doctor {
   profPic?: string;
   appointments: Appointment[];
   scrips: Prescription[];
+  notesForPatient: DoctorNote[];
+  notifications: Notification[];
 }

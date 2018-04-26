@@ -8,14 +8,12 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { Doctor } from '../_models/index';
 import { Patient } from '../_models/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Users } from '../_models/index';
 
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
     public token: string;
-    public accounts: Users;
 
     constructor(
         private http: HttpClient,
@@ -29,6 +27,10 @@ export class UserService {
       // .map((response: Response) => response.json());
     }
 
+    getAllDocs() {
+      return this.http.get<any>('/getAllDoctors');
+    }
+
     getById(id: number) {
       return this.http.get<any>('/assets/mock_data.json' + id);
     }
@@ -38,14 +40,14 @@ export class UserService {
       // const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'my-auth-token'});
       // const options = new RequestOptions({ headers: headers });
       console.log(user);
-      return this.http.post<any>('/assets/mock_data.json', user);
+      return this.http.post<any>('/assets/mock_data.json/doc', user);
     }
     createPatient(user: Patient) {
       console.log('create patient');
       // const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'my-auth-token'});
       // const options = new RequestOptions({ headers: headers });
       console.log(user);
-      return this.http.post<any>('/assets/mock_data.json', user);
+      return this.http.post<any>('/assets/mock_data.json/patient', user);
     }
 
     updateDoc(user: Doctor) {

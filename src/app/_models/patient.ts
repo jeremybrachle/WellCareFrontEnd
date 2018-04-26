@@ -1,4 +1,8 @@
 import { Appointment } from './appt';
+import { Prescription } from './scrip';
+import { DoctorNote } from './note';
+import { Notification } from './notification';
+
 export class Patient {
   id: number;
   gender: string;
@@ -13,4 +17,7 @@ export class Patient {
   dob: Date;
   profPic?: string;
   appointments?: Appointment[];
+  scrips?: Prescription[];
+  docNotes?: DoctorNote[];
+  notifications?: Notification[];
 }

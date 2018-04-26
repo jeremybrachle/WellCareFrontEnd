@@ -54,20 +54,20 @@
             <form>
               <div class="form-group">
                 <label for="OldPassword">Enter Current Password</label>
-                <textarea class="form-control" name="oldPass" [(ngModel)]="this.oldPass" rows="1" required="true" required></textarea>
+                <textarea class="form-control" name="oldPass" [(ngModel)]="oldPass" rows="1" required="true" required></textarea>
               </div>
               <div class="form-group">
                 <label for="newPass">Enter New Password</label>
-                <textarea class="form-control" name="newPass" [(ngModel)]="this.newPass" rows="1" required="true" required></textarea>
+                <textarea class="form-control" name="newPass" [(ngModel)]="newPass" rows="1" required="true" required></textarea>
               </div>
               <div class="form-group">
                 <label for="newPass2">Password Confirmation</label>
-                <textarea class="form-control" name="newPass2" [(ngModel)]="this.newPass2" rows="1" required="true" required></textarea>
+                <textarea class="form-control" name="newPass2" [(ngModel)]="newPass2" rows="1" required="true" required></textarea>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <div *ngIf=" this.oldPass !== '' && this.newPass !== '' && this.newPass2 !== ''">
+            <div *ngIf="oldPass !== '' && newPass !== '' && newPass2 !== ''">
               <div *ngIf=" this.user.password !== this.oldPass">
                 <div class="alert alert-danger" role="alert">
                   Your old password is incorrect!

@@ -19,6 +19,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         // array in local storage for registered users
         const data: any = require('../../assets/mock_data.json');
+        const docs: any = require('../../assets/mock_doctors.json');
+        const fakeDocs = docs.doctors;
         const users = data.users;
         // const users: any[] = JSON.parse(localStorage.getItem('users')) || [];
         // wrap in delayed observable to simulate server api call
@@ -76,6 +78,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     profPic: user.profPic,
                     appointments: user.appointments,
                     scrips: user.scrips,
+                    docNotes: user.docNotes,
+                    notifications: user.notifications,
                     token: 'fake-jwt-token'
                   };
                   return Observable.of(new HttpResponse({ status: 200, body: body }));
@@ -84,6 +88,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
               return Observable.throw('Username or password is incorrect');
             }
 
+            // get doctors
+            if (request.url.endsWith('/getAllDoctors') && request.method === 'GET') {
+                console.log('getting Doctors');
+                // check for fake auth token in header and return users if valid, this
+                // security is implemented server side in a real application
+                return Observable.of(new HttpResponse({ status: 200, body: fakeDocs }));
+
+            }
             // get users
             if (request.url.endsWith('/assets/mock_data.json') && request.method === 'GET') {
                 console.log('made it');

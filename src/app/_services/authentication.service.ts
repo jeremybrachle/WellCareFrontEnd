@@ -1,4 +1,3 @@
-import { Users } from './../_models/users';
 import { AppComponent } from './../app.component';
 import { Injectable, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -14,9 +13,6 @@ export class AuthenticationService {
     public sampleDoc: Doctor;
     public samplePatient: Patient;
     title = 'app';
-    @Input()
-    public UserList: User[];
-
     constructor(private http: HttpClient) {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
@@ -58,5 +54,13 @@ export class AuthenticationService {
       this.token = null;
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+    getAllDocs() {
+      console.log('auth service get all docs');
+        return this.http.get<any>('/getAllDoctors')
+            .subscribe(curr_docs => {
+                localStorage.setItem('currentDocs', JSON.stringify(curr_docs));
+                return curr_docs;
+            });
     }
 }

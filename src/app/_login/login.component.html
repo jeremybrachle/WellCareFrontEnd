@@ -10,9 +10,14 @@
 
 				<form class="login100-form validate-form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
 					<span class="login100-form-title"> Member Login
-					</span>
+          </span>
+          <div class="row">
+            <div class="alert alert-danger" *ngIf=" alertMsg !== '' " role="alert">
+              <strong>Oh snap!</strong> {{alertMsg}}
+            </div>
+          </div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap1-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
                   <input class="form-control input100" placeholder="Email" type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required >
                   <span class="focus-input100"></span>
@@ -23,7 +28,7 @@
             </div>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<div class="wrap2-input100 validate-input" data-validate = "Password is required">
               <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
                   <input type="password" class="form-control input100" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required />
                   <span class="focus-input100"></span>
@@ -42,13 +47,13 @@
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="#" [routerLink]="['_loginHelp']">
+						<a class="txt2" href="#" [routerLink]="['/_loginHelp']">
 							Username / Password?
             </a>
           </div>
 
           <div class="text-center p-t-13">
-            <a class="txt1" [routerLink]="['_loginHelp']" style="font-size: .68rem;" >
+            <a class="txt1" [routerLink]="['/_loginHelp']" style="font-size: .68rem;" >
 							Reset Password
             </a>
           </div>
@@ -61,7 +66,13 @@
           </div>
 
 				</form>
-			</div>
+      </div>
+
+      <!-- <ng-template #editProf>
+        <div class="modal-body">
+
+        </div>
+      </ng-template>  -->
 		</div>
   </div>
 
