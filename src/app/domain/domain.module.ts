@@ -1,6 +1,7 @@
 import { ProfileComponent } from './../identification/profile/profile.component';
 import { LoginUser } from './login-user.service';
 import { User } from './models/user';
+import { Doctor } from './models/doctor';
 
 
 
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   exports: [
     User,
+    Doctor,
     LoginUser
   ]
 })

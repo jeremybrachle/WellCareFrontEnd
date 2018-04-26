@@ -17,7 +17,10 @@ export class LoginUser extends Verification<User> {
   // protected endPoint = 'http://jsonplaceholder.typicode.com/posts';
 
   // github endpoint
-  protected endPoint = 'https://api.github.com/users/jeremybrachle';
+  // protected endPoint = 'https://api.github.com/users/jeremybrachle';
+
+  // backend endpoint
+  protected endPoint = 'http://0.0.0.0:5000';
 
   constructor(protected httpClient: HttpClient) {
     super(httpClient);

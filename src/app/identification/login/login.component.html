@@ -18,5 +18,34 @@
   </div>
 
   <div class="btn btn-primary" type="submit" (click)="login()">login</div>
+  <div class="btn btn-primary" type="submit" (click)="register()">register</div>
+  <div class="btn btn-primary" type="submit" (click)="changePassword()">change password</div>
 
+</div>
+
+<br>
+<hr>
+
+<div class="container">
+
+    <div class="btn btn-primary" type="submit" (click)="getDoctorInfo()">click to get doctor info</div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of allDoctors">
+        <td>
+          {{doctor?.firstName}}
+        </td>
+        <td>
+          {{doctor?.lastName}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

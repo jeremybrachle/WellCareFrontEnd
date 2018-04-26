@@ -17,7 +17,6 @@ export abstract class Verification<T> {
   };
 
 
-
   constructor(protected httpClient: HttpClient) {}
 
   public get(): Observable<T[]> {
@@ -28,7 +27,7 @@ export abstract class Verification<T> {
 
 
   public loginUser(item: T): Observable<T[]> {
-    return this.httpClient.post(`${this.endPoint}`, item, this.httpOptions).pipe(
+    return this.httpClient.post(`${this.endPoint}/login`, item, this.httpOptions).pipe(
       catchError(this.handleException)
     );
   }
