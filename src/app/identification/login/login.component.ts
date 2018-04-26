@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
   // function for getting doctor information
   public getDoctorInfo(userName: string) {
     console.log('getting doctor info');
+    /*
     // make interface for getting json doctor info
     interface MyDoctor {
       firstName?: string;
@@ -93,6 +94,46 @@ export class LoginComponent implements OnInit {
     .subscribe( data => {
       console.log();
     });
+    */
+
+
+    // make a get request to receive the data
+    this.httpClient.post('http://0.0.0.0:5000/doctor',
+    {
+      'doc_id' : 2
+    },
+    this.httpOptions)
+    .subscribe( data => {
+
+
+      // make interface for getting the json data
+      interface GivenDoctor {
+        address?: string;
+        doc_id?: number;
+        email?: string;
+        firstName?: string;
+        lastName?: string;
+        password?: string;
+        phone?: number;
+        profPic?: string;
+        rating?: number;
+        specialty?: string;
+        username?: string;
+      }
+
+      // turn into the interfaced object to get the attributes
+      const sentObject: GivenDoctor = data;
+
+      // log the desired attributes
+      console.log(sentObject.address);
+      console.log(sentObject.email);
+    },
+    err => {
+      console.log('Error occured');
+      console.log(err);
+    }
+  );
+
 
   }
 
@@ -105,8 +146,8 @@ export class LoginComponent implements OnInit {
     // post request to backend running in local host
     this.httpClient.post('http://0.0.0.0:5000/changepassword', {
       // send the values as json
-      'UserId': this.newUser.userName.toString(),
-      'Password': this.newUser.passWord.toString()
+      'username': this.newUser.userName.toString(),
+      'password': this.newUser.passWord.toString()
       // 'UserId': 19,
       // 'Password': 'abe'
     },
@@ -161,8 +202,9 @@ export class LoginComponent implements OnInit {
 
   // login function
   public login() {
+
     // log in user by sending the user info container username and password
-    this.loginNewUser.loginUser(this.newUser).subscribe(x => {
+    this.loginNewUser.loginUser(this.newUser.userName, this.newUser.passWord).subscribe(x => {
       // log the response
       console.log(x);
     }, err => {
@@ -170,12 +212,16 @@ export class LoginComponent implements OnInit {
     }
   );
 
-    /*
+
+    
     // post request to backend running in local host
+
+
+  /*
     this.httpClient.post('http://0.0.0.0:5000/login', {
       // send the values as json
-      'UserId': this.newUser.userName.toString(),
-      'Password': this.newUser.passWord.toString()
+      'username': this.newUser.userName.toString(),
+      'password': this.newUser.passWord.toString()
       // 'UserId': 19,
       // 'Password': 'abe'
     },
@@ -199,6 +245,7 @@ export class LoginComponent implements OnInit {
     }
   );
   */
+  
 
    // reset the text fields
    this.resetText();

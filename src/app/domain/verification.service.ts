@@ -26,8 +26,8 @@ export abstract class Verification<T> {
   }
 
 
-  public loginUser(item: T): Observable<T[]> {
-    return this.httpClient.post(`${this.endPoint}/login`, item, this.httpOptions).pipe(
+  public loginUser(u: string, p: string): Observable<T[]> {
+    return this.httpClient.post(`${this.endPoint}/login`, {'username' : u, 'password' : p}, this.httpOptions).pipe(
       catchError(this.handleException)
     );
   }
