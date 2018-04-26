@@ -43,6 +43,8 @@ export class AuthenticationService {
                 if (curr_user && curr_user.token) {
                   console.log(curr_user);
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    // check to see if second boolean from backend is 1 or 0, doctor or patient
+                    // if doctor, add "doctor": true
                     localStorage.setItem('currentUser', JSON.stringify(curr_user));
                 }
 

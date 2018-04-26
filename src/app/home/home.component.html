@@ -5,12 +5,15 @@
       <h1>Mustang HealthCare</h1>
     </div>
     <div class="card-body">
-      <div [hidden]="disableLogin">
+      <div>
+            <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button>
+      </div>
+      <!-- <div [hidden]="disableLogin">
           <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button>
       </div>
       <div [hidden]="!disableLogin">
           <button type="button" class="btn btn-danger"  id="login">Login</button>
-      </div>
+      </div> -->
         <p> First-time user? <a [routerLink]="['_register']">Activate account </a></p>
         <hr>
         <h5> © Southern Methodist University, Dallas TX 75205, 214-768-2000 </h5>
