@@ -79,6 +79,8 @@ import {
 
 import {CdkTableModule} from '@angular/cdk/table';
 import { FilterByAvailablePipe } from './_patient-appts/filter-by-available.pipe';
+import { RegisterDocComponent } from './register-doc/register-doc.component';
+import { RegisterPatComponent } from './register-pat/register-pat.component';
 
 @NgModule({
     imports: [
@@ -147,7 +149,9 @@ import { FilterByAvailablePipe } from './_patient-appts/filter-by-available.pipe
         DocSettingsComponent,
         PatientSettingsComponent,
         MyDoctorsComponent,
-        FilterByAvailablePipe
+        FilterByAvailablePipe,
+        RegisterDocComponent,
+        RegisterPatComponent
     ],
     providers: [
         AuthenticationGuard,

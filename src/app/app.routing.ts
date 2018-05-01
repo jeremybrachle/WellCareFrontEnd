@@ -12,6 +12,8 @@ import { DocSettingsComponent } from './_doc-settings/doc-settings.component';
 import { PatientAppointmentsComponent } from './_patient-appts/patient-appts.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { PatientSettingsComponent } from './_patient-settings/patient-settings.component';
+import { RegisterDocComponent } from './register-doc/register-doc.component';
+import { RegisterPatComponent } from './register-pat/register-pat.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
@@ -23,7 +25,9 @@ const appRoutes: Routes = [
     { path: '_patient-profile', component: PatientProfileComponent, canActivate: [AuthenticationGuard]},
     { path: '_loginHelp', component: ForgotComponent},
     { path: '_doc-profile/_doc-settings', component: DocSettingsComponent},
-    { path: '_patient-profile/_patient-settings', component: PatientSettingsComponent}
+    { path: '_patient-profile/_patient-settings', component: PatientSettingsComponent},
+    { path: '_register-doc', component: RegisterDocComponent},
+    { path: '_register-pat', component: RegisterPatComponent}
 ];
 
 @NgModule({

@@ -10,10 +10,10 @@ declare var require: any;
 @Component({
     selector: 'app-register',
     moduleId: module.id,
-    templateUrl: 'register.component.html'
+    templateUrl: 'register-doc.component.html'
 })
 
-export class RegisterComponent {
+export class RegisterDocComponent {
     model: any = {};
     public loading = false;
     public imagePath: string;
@@ -21,25 +21,11 @@ export class RegisterComponent {
     constructor(private router: Router, private userService: UserService, private alertService: AlertService) {
         this.imagePath = '../../assets/images/smu_logo.png';
     }
-    registerPatient() {
-      const editJsonFile = require('edit-json-file');
-      const file = editJsonFile(`../../assets/mock-data.json`);
-      // '_register/patient'
-      this.loading = true;
-      this.userService.createPatient(this.model)
-          .subscribe(
-              data => {
-                  // console.log('yay');
-                  this.alertService.success('Registration successful', true);
 
-                  this.router.navigate(['']);
-              },
-              error => {
-                  this.alertService.error(error);
-                  this.loading = false;
-              });
-    }
     registerDoc() {
+
+      // refactgor to make post request to add a doctor object to back end
+
       const editJsonFile = require('edit-json-file');
       const file = editJsonFile(`../../assets/mock-data.json`);
           // '_register/doc'
