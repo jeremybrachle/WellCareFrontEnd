@@ -25,21 +25,21 @@ export class AuthenticationService {
       })
     };
 
-    loginDoc(user: Doctor) {
-        console.log(user.username);
-        console.log(typeof user);
-          return this.http.post<any>('/api/authenticate/doc', { user: user })
-              .map(curr_user => {
-                  // login successful if there's a jwt token in the response
-                  if (curr_user && curr_user.token) {
-                    console.log(curr_user);
-                      // store user details and jwt token in local storage to keep user logged in between page refreshes
-                      localStorage.setItem('currentUser', JSON.stringify(curr_user));
-                  }
+    // loginDoc(user: Doctor) {
+    //     console.log(user.username);
+    //     console.log(typeof user);
+    //       return this.http.post<any>('/api/authenticate/doc', { user: user })
+    //           .map(curr_user => {
+    //               // login successful if there's a jwt token in the response
+    //               if (curr_user && curr_user.token) {
+    //                 console.log(curr_user);
+    //                   // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //                   localStorage.setItem('currentUser', JSON.stringify(curr_user));
+    //               }
 
-                  return curr_user;
-              });
-    }
+    //               return curr_user;
+    //           });
+    // }
 
     login(u: string, p: string) {
       console.log('username' + u);
