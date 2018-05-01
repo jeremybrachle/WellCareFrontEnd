@@ -6,7 +6,7 @@ export class Prescription {
   patient: Patient;
   description?: string;
   name?: string;
-  start_date: Date;
-  expiration: Date;
+  start_date: string;
+  expiration: string;
   refill: number;
 }

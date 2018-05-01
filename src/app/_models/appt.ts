@@ -1,7 +1,7 @@
 import { Patient } from './patient';
 import { Doctor } from './doctor';
 export class Appointment {
-  date: Date;
+  date: string;
   time: string;
   patient: Patient;
   doctor: Doctor;

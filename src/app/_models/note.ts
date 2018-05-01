@@ -5,6 +5,6 @@ export class DoctorNote {
   message: string;
   recipient: Patient;
   sender: Doctor;
-  date: Date;
+  date: string;
   beenDisplayed: boolean;
 }

@@ -51,10 +51,10 @@ export class UserService {
     }
 
     updateDoc(user: Doctor) {
-      return this.http.put('/assets/mock-data.json' + user.id, user);
+      return this.http.put('/assets/mock_data.json' + user.id, user);
     }
     updatePatient(user: Patient) {
-      return this.http.put('/assets/mock-data.json' + user.id, user);
+      return this.http.put('/assets/mock_data.json' + user.id, user);
     }
 
     delete(id: number) {

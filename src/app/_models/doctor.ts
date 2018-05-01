@@ -9,15 +9,15 @@ export class Doctor {
   password: string;
   firstName: string;
   lastName: string;
-  specialty?: string;
-  email?: string;
-  phone?: string;
-  address?: string;
+  specialty: string;
+  email: string;
+  phone: string;
+  address: string;
   rating?: Number;
   reviews?: DocReview[];
   profPic?: string;
-  appointments: Appointment[];
-  scrips: Prescription[];
-  notesForPatient: DoctorNote[];
-  notifications: Notification[];
+  appointments?: Appointment[];
+  scrips?: Prescription[];
+  notesForPatient?: DoctorNote[];
+  notifications?: Notification[];
 }

@@ -19,7 +19,7 @@
                   <a class="nav-link inactive" [routerLink]="['_myPatients']">My Patients</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link inactive" [routerLink]="['_doc-settings']">Settings</a>
+                    <a class="nav-link inactive" [routerLink]="['/_doc-profile/_doc-settings']">Settings</a>
                 </li>
                 <li class="nav-item">
                     <button class="btn inactive" (click)="logout()" id="logout">Logout</button>
@@ -29,153 +29,55 @@
     </div>
   </div>
   <div class="bod jumbotron bg-white">
-    <div class="container row">
-          <div class="col-lg-3" id="calendarWrap">
-              <div class="span12">
-              <table class="table-condensed table-bordered table-striped" id="calendar">
-                      <thead align="center">
-                          <tr style="height:2.7rem;">
-                            <th colspan="7">
-                              <span class="btn-group" align="center">
-                                <a class="btn" ng-click="prevMonth()">
-                                  <span appOcticon [octicon]="iconLeft"></span>
-                                </a>
-                                <h3 class="btn active">{{currMonthName}}</h3>
-                                <a class="btn" ng-click="nextMonth()">
-                                  <span appOcticon [octicon]="iconRight"></span>
-                                </a>
-                              </span>
-                              <h1 class="row" align="center" style="margin-left:3.3rem; margin-top:.1rem;">{{currDay}}</h1>
-                              <div class="row" class="text-center">
-                                <h5 class="btn active">{{currYear}}</h5>
-                              </div>
-                            </th>
-                          </tr>
+    <div class="row">
+      <div class="col-sm-3 form-group">
+            <h5 >
+                View Appointment by Day
+            </h5>
+            <mat-input-container>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="currDate" [ngModelOptions]="{standalone: true}">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            </mat-input-container>
+            <mat-datepicker #picker></mat-datepicker>
+            <div *ngIf="currDate.length>10; then format(currDate);"></div>
+      </div>
 
-                          <tr>
-                              <th>Su</th>
-                              <th>Mo</th>
-                              <th>Tu</th>
-                              <th>We</th>
-                              <th>Th</th>
-                              <th>Fr</th>
-                              <th>Sa</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr [hidden]='checkCurrDay(1) === false'>
-                              <td class="muted" *ngFor="let num of prevMonthFill" [hidden]="prevMonthFill === []">
-                                  {{num}}
-                              </td>
-                              <td class="btn-light calRow1" *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
-                                  {{num}}
-                              </td>
-                              <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                              <td class="btn-light calRow1" *ngFor='let num of  daysPostCurr' (click)="changeCurrDay(num)">
-                                  {{num}}
-                              </td>
-                          </tr>
-                          <tr [hidden]='checkCurrDay(1) == true'>
-                            <td class="muted" *ngFor="let num of prevMonthFill" [hidden]="prevMonthFill === []">
-                                {{num}}
-                            </td>
-                            <td class="btn-light calRow1" *ngFor='let num of row1MonthDays' (click)="changeCurrDay(num)">
-                                {{num}}
-                            </td>
-
-                          </tr>
-                          <tr [hidden]='checkCurrDay(2)=== false'>
-                            <td class="btn-light calRow2 containsCurrDay"  *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
-                              {{num}}
-                            </td>
-                            <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                            <td class="btn-light calRow2 containsCurrDay"  *ngFor='let num of daysPostCurr' (click)="changeCurrDay(num)">
-                              {{num}}
-                            </td>
-                          </tr>
-                          <tr [hidden]='checkCurrDay(2)=== true'>
-                              <td class="btn-light calRow2" *ngFor='let num of [1,2,3,4,5,6,7]' (click)="changeCurrDay(num)">
-                                {{num+row1MonthDays.length}}</td>
-                          </tr>
-                          <tr [hidden]='checkCurrDay(3)=== false'>
-                            <td class="btn-light calRow3 containsCurrDay"  *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
-                              {{num}}
-                            </td>
-                            <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                            <td class="btn-light calRow3 containsCurrDay"  *ngFor='let num of daysPostCurr' (click)="changeCurrDay(num)">
-                              {{num}}
-                            </td>
-                          </tr>
-                          <tr [hidden]='checkCurrDay(3)=== true'>
-                              <td class="btn-light calRow3" *ngFor='let num of [1,2,3,4,5,6,7]' (click)="changeCurrDay(num)">
-                                {{num+7+row1MonthDays.length}}</td>
-                          </tr>
-                          <tr [hidden]='checkCurrDay(4)=== false'>
-                            <td class="btn-light calRow4 containsCurrDay"  *ngFor='let num of daysUntilCurr' (click)="changeCurrDay(num)">
-                              {{num}}
-                            </td>
-                            <td class="btn-primary currDay"><strong>{{currDay}}</strong></td>
-                            <td class="btn-light calRow4 containsCurrDay"  *ngFor='let num of daysPostCurr' (click)="changeCurrDay(num)">
-                              {{num}}
-                            </td>
-                          </tr>
-                          <tr [hidden]='checkCurrDay(4)=== true'>
-                              <td class="btn-light calRow4" *ngFor='let num of [1,2,3,4,5,6,7]' (click)="changeCurrDay(num)">
-                                {{num+14+row1MonthDays.length}}
-                              </td>
-                          </tr>
-                          <tr>
-                              <td class='btn-light calRow5' *ngFor='let num of fifthRow' (click)="changeCurrDay(num)">
-                                  {{num}}
-                              </td>
-                          </tr>
-
-                      </tbody>
-              </table>
-              </div>
-        </div>
-      <div class="card col-lg-9">
+      <div class="card col-sm-9">
           <div class="card-body">
-            <div class="row" style="max-width:100%">
-              <div class="col-md-12">
-                    <h5 class="card-title">
-                       Scheduled Appointments
-                    </h5>
-              </div> <br>
-              <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Patient</th>
-                      <th>Time</th>
-                      <th>Reason for Visit</th>
-                      <th>Insurance</th>
-                      <th>New Patient</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor='let appt of doc.appointments'>
-                      <td>{{appt.date}}</td>
-                      <td>{{appt.time}}</td>
-                      <td>{{appt.reason}}</td>
-                      <td>{{appt.insurance}}</td>
-                      <td>{{appt.newPatient}}</td>
-                      <td>
-                        <div class="btn btn-danger">
-                          Cancel
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-              </table>
-            </div>
+            <div style="max-width:100%">
+                <h5 class="card-title">
+                        Scheduled Appointments on {{currDate}}
+                </h5>
+            </div> <br>
+            <table class="table">
+                <thead>
+                      <tr>
+                        <th style="max-width:20%;">Patient</th>
+                        <th >Time</th>
+                        <th>Reason for Visit</th>
+                        <th>Insurance</th>
+                        <th>New Patient</th>
+                        <th></th>
+                      </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let appt of doc.appointments' [hidden]="appt.date !== currDate">
+                        <td>{{appt.patient.firstName}} {{appt.patient.lastName}}</td>
+                        <td>{{appt.time}}</td>
+                        <td>{{appt.reason}}</td>
+                        <td>{{appt.insurance}}</td>
+                        <td>{{appt.newPatient}}</td>
+                        <td>
+                          <div class="btn btn-danger">
+                                Cancel
+                          </div>
+                        </td>
+                  </tr>
+                </tbody>
+            </table>
           </div>
+      </div>
     </div>
   </div>
-    <br>
-    <!-- <app-patient-add-appointment></app-patient-add-appointment> -->
-  </div>
-
 </div>
-  <!-- <app-calendar></app-calendar> -->
+

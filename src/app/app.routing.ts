@@ -17,7 +17,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent},
     { path: '_login', component: LoginComponent},
     { path: '_register', component: RegisterComponent},
-    { path: '_doc-profile', component: DocProfileComponent, canActivate: [AuthenticationGuard]},
+    { path: '_doc-profile', component: DocProfileComponent},
     { path: '_doc-profile/_doc-appts', component: DocApptsComponent},
     { path: '_patient-profile/_patient-appts', component: PatientAppointmentsComponent},
     { path: '_patient-profile', component: PatientProfileComponent, canActivate: [AuthenticationGuard]},

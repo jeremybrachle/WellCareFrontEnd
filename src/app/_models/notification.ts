@@ -5,7 +5,7 @@ export class Notification {
   doctor: Doctor;
   patient: Patient;
   notificationType: string;
-  date: Date;
+  date: string;
   msg: string;
   beenDisplayed: boolean;
 }

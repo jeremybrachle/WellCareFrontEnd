@@ -57,12 +57,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>04/14/18</td>
+                    <td>2018-04-14</td>
                     <td>10am</td>
                     <td>Dr. Banner</td>
                     <td>General Check Up</td>
                     <td>Anger management, green skin pigmentation, gamma radiation exposure</td>
-                    <td>Attended</td>
+                    <td>attended</td>
                     <td>
                       <div class="btn btn-secondary">
                         Edit
@@ -106,7 +106,7 @@
     <ng-template #addAppt class="modal fade addAppt"  role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header modalHeaderColor text-black">
+            <div class="modal-header modalHeaderColor text-black" style="font-family:'Roboto Slab', serif;">
               <h5 class="modal-title" id="modalLabel">Schedule a new appointment</h5>
               <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                   <span aria-hidden="true">&times;</span>
@@ -117,31 +117,31 @@
                 <div class="form-group">
                     <input type="text" [(ngModel)]="docSearchText" placeholder="Search for a doctor"
                       [ngModelOptions]="{standalone: true}" style="width:90%; padding:1rem; border-radius: 7px; border-color: rgb(228, 227, 227);">
-                    <div class="container" *ngIf="docSearchText">
+                    <div class="container" *ngIf="docSearchText" style="font-family:'Roboto Slab', serif;">
                       <div class="checkbox" *ngFor="let doc of fakeDocs | filterByName : docSearchText"
-                        style="padding:.5rem;">
+                        style="padding:.5rem; font-family:'Roboto Slab', serif;">
                           <label><input type="checkbox" [(ngModel)]="newAppt.doctor" ng-value="doc" (ngModelChange)="setDoc(doc)"
-                            style="padding:0.3rem;" [ngModelOptions]="{standalone: true}">  Dr. {{doc.firstName}} {{doc.lastName}}</label>
+                            style="padding:0.3rem; font-family:'Roboto Slab', serif;" name="radio" [ngModelOptions]="{standalone: true}">  Dr. {{doc.firstName}} {{doc.lastName}}</label>
                       </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-family:'Roboto Slab', serif;">
                   <label for="reason">Reason for Visit</label>
                   <textarea class="form-control" name="reason" [(ngModel)]="newAppt.reason" rows="1" required="true" required></textarea>
                 </div>
                 <div class="form-group">
                     <mat-input-container>
-                        <input matInput [matDatepicker]="picker" [(ngModel)]="newAppt.date" [ngModelOptions]="{standalone: true}">
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="newApptDate" [ngModelOptions]="{standalone: true}">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     </mat-input-container>
                     <mat-datepicker #picker></mat-datepicker>
                 </div>
-                <div class="form-group" *ngIf="newAppt.doctor && newAppt.date">
-                    <div dtyle="overflow:hidden; width:4rem;" *ngIf="checkAvailability()">
-                            <label class="row" for="sel1" style="padding:1rem; font-size:1.5rem;">
+                <div class="form-group" *ngIf="newAppt.doctor && newApptDate">
+                    <div style="overflow:hidden; width:13rem;" *ngIf="setAvailableTimes()">
+                            <label class="row" for="sel1" id="apptTimeLabel">
                               Appointment time:</label>
                             <select class="row" name="sel1" [(ngModel)]="newAppt.time"
-                              style="border-color:white; margin-left:0.3rem; width:auto; padding:0.5rem;">
+                              style="border-color:white; margin-left:0.3rem; width:50%; padding:0.5rem;">
                               <option *ngFor="let time of available">{{time}}</option>
                             </select>
                     </div>
@@ -149,7 +149,7 @@
                 <div class="form-group">
                   <button (click)="addNewAppt()" class="btn btn-primary">Schedule Appointment</button>
                   <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-              </div>
+                </div>
               </form>
             </div>
           </div>

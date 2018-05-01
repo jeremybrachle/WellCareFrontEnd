@@ -15,25 +15,25 @@
       {
         "username": "kacarr",
         "rating": "4",
-        "date": "04/26/18",
+        "date": "2018-04-26",
         "comment": "Excellent, compassionate, and caring staff!"
       },
       {
         "username": "everyone_loves_chris",
         "rating": "4",
-        "date": "04/21/18",
+        "date": "2018-04-21",
         "comment": "Awesome customer service!"
       }
     ],
     "appointments": [
       {
-        "date": "04/27/18",
-        "time": "11:30AM-12PM",
+        "date": "2018-04-27",
+        "time": "9AM",
         "patient": {
           "id": "87644291",
           "username": "misterKade",
           "email": "kadej@smu.edu",
-          "dob": "04/20/1995",
+          "dob": "1995-04-20",
           "password": "sunshine14",
           "firstName": "Kade",
           "lastName": "Johnson",
@@ -52,8 +52,8 @@
         "status": "approved"
       },
       {
-        "date": "04/20/18",
-        "time": "2PM-2:30PM",
+        "date": "2018-04-20",
+        "time": "2PM",
         "patient": {
           "id": 1,
           "username": "kacarr",
@@ -61,7 +61,7 @@
           "password": "sunshine14",
           "firstName": "Katie",
           "lastName": "Carr",
-          "dob": "10/24/97",
+          "dob": "1997-10-24",
           "profPic": "../../assets/images/katie.jpg"
         },
         "doctor": {},
@@ -71,8 +71,8 @@
         "status": "attended"
       },
       {
-        "date": "04/27/18",
-        "time": "8AM-9AM",
+        "date": "2018-04-20",
+        "time": "8AM",
         "patient": {
           "id": 3,
           "username": "everyone_loves_chris",
@@ -80,7 +80,7 @@
           "email": "chrisblack63@gmail.com",
           "firstName": "Chris",
           "lastName": "Black",
-          "dob": "4/30/95",
+          "dob": "1995-04-30",
           "profPic": "../../assets/images/kade.jpg"
         },
         "doctor": {},
@@ -107,25 +107,25 @@
         {
           "username": "kacarr",
           "rating": "4",
-          "date": "04/15/18",
+          "date": "2018-04-15",
           "comment": "Excellent, compassionate, and caring staff!"
         },
         {
           "username": "everyone_loves_chris",
           "rating": "4",
-          "date": "04/18/18",
+          "date": "2018-04-18",
           "comment": "Awesome customer service!"
         }
       ],
       "appointments": [
         {
-          "date": "04/28/18",
-          "time": "4PM-5PM",
+          "date": "2018-04-29",
+          "time": "4PM",
           "patient": {
             "id": "87644291",
             "username": "misterKade",
             "email": "kadej@smu.edu",
-            "dob": "04/20/1995",
+            "dob": "1995-04-20",
             "password": "sunshine14",
             "firstName": "Kade",
             "lastName": "Johnson",
@@ -144,8 +144,8 @@
           "status": "approved"
         },
         {
-          "date": "04/28/18",
-          "time": "11AM-11:30AM",
+          "date": "2018-04-26",
+          "time": "11AM",
           "patient": {
             "id": 1,
             "username": "kacarr",
@@ -153,7 +153,7 @@
             "password": "sunshine14",
             "firstName": "Katie",
             "lastName": "Carr",
-            "dob": "10/24/97",
+            "dob": "1997-10-24",
             "profPic": "../../assets/images/katie.jpg"
           },
           "doctor": {},
@@ -164,8 +164,8 @@
           "status": "requested"
         },
         {
-          "date": "04/28/18",
-          "time": "8AM-9AM",
+          "date": "2018-04-26",
+          "time": "8AM",
           "patient": {
             "id": 3,
             "username": "everyone_loves_chris",
@@ -173,7 +173,7 @@
             "email": "chrisblack63@gmail.com",
             "firstName": "Chris",
             "lastName": "Black",
-            "dob": "4/30/95",
+            "dob": "1995-04-30",
             "profPic": "../../assets/images/kade.jpg"
           },
           "doctor": {},

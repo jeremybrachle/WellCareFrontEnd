@@ -5,7 +5,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { Appointment } from '../_models/appt';
 import { Patient } from '../_models/index';
 import { FilterPipe} from './filter-by-name.pipe';
-
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -19,6 +18,7 @@ import {
 import {FormControl} from '@angular/forms';
 import { Doctor } from '../_models/doctor';
 import { DateAdapter } from '@angular/material';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-patient-appts',
@@ -35,11 +35,16 @@ export class PatientAppointmentsComponent implements OnInit {
   public fakeDocs: Doctor[];
   public available: string[];
   public newAppt: Appointment;
+  public newApptDate: Date;
   public user: Patient;
   public docSearchText: string;
   public loading: boolean;
   public apptTimeRange: string[];
-  constructor(private router: Router, private modalService: BsModalService) { }
+  constructor(
+    private router: Router,
+    private modalService: BsModalService,
+    private userService: UserService
+  ) { }
 
 
   ngOnInit() {
@@ -47,20 +52,15 @@ export class PatientAppointmentsComponent implements OnInit {
     this.fakeDocs = JSON.parse(localStorage.getItem('currentDocs'));
 
     this.apptTimeRange = [
-      '9AM-9:30AM',
-      '10AM-10:30AM',
-      '10:30AM-11AM',
-      '11AM-11:30AM',
-      '12PM-12:30PM',
-      '12:30PM-1PM',
-      '1PM-1:30PM',
-      '1:30PM-2PM',
-      '2PM-2:30PM',
-      '2:30PM-3PM',
-      '3PM-3:30PM',
-      '3:30PM-4PM',
-      '4PM-4:30PM',
-      '4:30PM-5PM',
+      '9AM',
+      '10AM',
+      '11AM',
+      '12PM',
+      '1PM',
+      '2PM',
+      '3PM',
+      '4PM',
+      '5PM'
     ];
     this.available = [];
     this.newAppt = new Appointment;
@@ -69,16 +69,105 @@ export class PatientAppointmentsComponent implements OnInit {
     this.iconRight = 'arrow-right';
     this.imagePath = '../../assets/images/smu_logo2.png';
   }
+
   public setDoc(docObj) {
-    console.log(docObj);
     this.newAppt.doctor = docObj;
   }
-  public logout() {
-    console.log('hey');
-    this.router.navigateByUrl('');
+
+  public formatDateObj() {
+    const newApptDate = this.newApptDate.toISOString();
+    if (newApptDate.length === 10) {
+      // console.log('newApptDate is already formatted after toISOString()' + newApptDate);
+      this.newAppt.date = newApptDate;
+    } else {
+      this.newAppt.date = newApptDate.slice(0, 10);
+      // console.log('newApptDate after slicing it ' + this.newAppt.date);
+    }
   }
-  public setSearch() {
-    console.log(this.docSearchText);
+
+  public addNewAppt() {
+    this.loading = true;
+    this.newAppt.status = 'requested';
+    this.user.appointments.push(this.newAppt);
+    this.newAppt.doctor.appointments.push(this.newAppt);
+    this.loading = false;
+    this.modalRef.hide();
+    this.updateFakeBackend();
+  }
+
+  public updateFakeBackend() {
+    this.userService.updatePatient(this.user);
+    this.userService.updateDoc(this.newAppt.doctor);
+  }
+
+  public setAvailableTimes() {
+      this.formatDateObj();
+      this.available = [];
+      let toBeChecked = [];
+      let docApptDate = this.newAppt.doctor.appointments[0].date;
+
+      // go through the list of the selected doctor's appointments and
+      // check if he/she has any scheduled on the selected day
+      for (let j = 0; j < this.newAppt.doctor.appointments.length; j++) {
+          docApptDate = this.newAppt.doctor.appointments[j].date;
+          // if the date of this appointment matches the selected date
+          // of the proposed appointment, then add it to our array toBeChecked so
+          // that we can identify unavilable times on this day in the next for loop
+          if (docApptDate === this.newAppt.date) {
+              console.log('dr has other appts on that day but lets keep lookin..');
+              toBeChecked.push(this.newAppt.doctor.appointments[j]);
+              console.log(toBeChecked);
+          }
+
+      }
+      // if doctor doesnt have any appointments on the selected day
+      // no need to check for already taken times
+      // otherwise doctor has other appointments on the selected day, stored in
+      // our toBeChecked array, then we need to check for already taken times
+
+      if (toBeChecked.length === 0) {
+        this.available = this.apptTimeRange;
+        return true;
+      } else {
+        // check which times are taken by the doctor's already scheduled appts
+        // stored in toBeChecked array
+        for (let k = 0; k < this.apptTimeRange.length; k++) {
+          let add = true;
+          // check if any of the already scheduled appointments on this date
+          // are at (apptTimeRange[k]) time
+          for (let i = 0; i < toBeChecked.length; i++) {
+            // if any appointment in the toBeChecked array is scheduled at
+            // the current time were looking at in apptTimeRange, we will
+            // set our boolean add to false so that we know not to add the
+            // time to the available array when we exit this inner for loop
+            if (this.apptTimeRange[k] === toBeChecked[i].time) {
+              add = false;
+            }
+          }
+          // if none of the appointments in the toBeChecked array conflicted
+          // with the current time at index k of apptTimeRange array,
+          // then add the time to our available array
+          if ( add ) {
+            this.available.push(this.apptTimeRange[k]);
+          }
+        }
+      }
+
+      if (this.available !== []) {
+        console.log('there is at least one available time on this day!' + this.available);
+        return true;
+      } else {
+        console.log('no available times on this day');
+        return false;
+      }
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeModal(template: TemplateRef<any>) {
+    this.modalService.hide(1);
   }
   navigateToProfile() {
     this.router.navigateByUrl('/_patient-profile');
@@ -86,80 +175,9 @@ export class PatientAppointmentsComponent implements OnInit {
   navigateToSettings() {
     this.router.navigate(['/_patient-settings']);
   }
-
-  public addNewAppt() {
-    console.log('in add appt fxn');
-    this.loading = true;
-    console.log(this.newAppt);
-    this.newAppt.status = 'requested';
-    this.user.appointments.push(this.newAppt);
-    this.loading = false;
-    this.modalRef.hide();
-  }
-  public checkAvailability() {
-    this.available = [];
-    const newAppt = this.convert(this.newAppt.date);
-    let toBeChecked = [];
-    let docApptDate = this.newAppt.doctor.appointments[0].date.toString();
-    for (let j = 0; j < this.newAppt.doctor.appointments.length; j++) {
-      docApptDate = this.newAppt.doctor.appointments[j].date.toString();
-      // console.log('Dr has an appt on: ' + docApptDate);
-      // console.log('were looking at date: ' + newAppt);
-
-      if (docApptDate === newAppt) {
-        // console.log('dr has other appts on that day but lets keep lookin..');
-        toBeChecked.push(docApptDate);
-      }
-
-    }
-    for (let k = 0; k < this.apptTimeRange.length; k++) {
-      for (let i = 0; i < toBeChecked.length; i++) {
-        if (this.apptTimeRange[k] !== toBeChecked[k]) {
-          console.log('available');
-          this.available.push(this.apptTimeRange[k]);
-        } else {
-          console.log('we gotta match');
-        }
-      }
-    }
-    if (this.available !== []) { return true; } else { return false; }
+  public logout() {
+    this.router.navigateByUrl('');
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
-  closeModal(template: TemplateRef<any>) {
-    this.modalService.hide(1);
-  }
 
-  public convert(date: Date) {
-    let tmp = date.toDateString();
-
-    for (let k = 0; k < tmp.length; k++) {
-      if (tmp[k] === ' ') {
-        tmp = tmp.slice(k);
-      }
-    }
-    console.log(tmp);
-    let retStr = '';
-    // console.log(tmp.slice(0, 2));
-    // if (tmp.slice(0, 2) === 'Ap') {
-    //   retStr = '04/';
-    // }
-    retStr = '04/';
-    for (let k = 0; k < tmp.length; k++) {
-      if (tmp[k] === ' ') {
-        tmp = tmp.slice( k + 1 );
-      }
-    }
-    retStr = retStr + tmp.slice(0, 2) + '/';
-    for (let k = 0; k < tmp.length; k++) {
-      if (tmp[k] === ' ') {
-        tmp = tmp.slice( k + 1 );
-      }
-    }
-    retStr = retStr + tmp.slice(tmp.length - 2);
-    console.log(retStr);
-    return retStr;
-  }
 }

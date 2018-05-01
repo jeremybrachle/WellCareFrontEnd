@@ -62,7 +62,7 @@ export class DocReviewsComponent implements OnInit {
     if (this.comment_check && this.name_check && this.rating_check) {
       this.reset = true;
       this.alert_msg = '';
-      this.model.date = new Date(Date.now());
+      this.model.date = new Date().toISOString();
       this.all_reviews.push(this.model);
       this.model = {};
       console.log('you submitted value:', myForm);

@@ -2,6 +2,6 @@
 export class DocReview {
   username?: string;
   rating?: number;
-  date?: Date;
+  date?: string;
   comment?: string;
 }

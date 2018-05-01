@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     public str2: 'modal';
     public alertMsg: string;
     public count: number;
+    public smuPic: string;
     constructor(
       private route: ActivatedRoute,
       private router: Router,
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
           let allDocs = this.authenticationService.getAllDocs();
           allDocs = JSON.parse(localStorage.getItem('currentDocs'));
           console.log(allDocs);
+          this.smuPic = '../../assets/images/happy.jpg';
     }
 
     loginDoc() {
@@ -70,7 +72,7 @@ export class LoginComponent implements OnInit {
               data => {
                   this.count = 0;
                   this.alertMsg = '';
-                  this.router.navigate(['_patient-profile'], { queryParams: this.model})
+                  this.router.navigate(['_patient-profile'], { queryParams: this.model} );
               },
               error => {
                   this.alertMsg = 'Username or password incorrect!';

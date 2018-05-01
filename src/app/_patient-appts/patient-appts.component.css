@@ -113,6 +113,19 @@ h1 {
   text-align: center;
   background: #000
 }
+.addAppt {
+  font-family: 'Roboto Slab', serif;
+  color: black !important;
+  font-weight: 400;
+}
+#apptTimeLabel {
+  font-family: 'Roboto Slab', serif;
+  font-size:1rem;
+  margin-top:.8rem;
+  padding-bottom: .5rem;
+  font-weight: 300;
+  padding-left:.9rem;
+}
 /* .card {
 margin-top:3.2rem;
 margin-left: 4.0rem;

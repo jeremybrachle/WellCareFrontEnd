@@ -110,7 +110,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
 
             // get user by id
-            if (request.url.match(/\/api\/users\/\d+$/) && request.method === 'GET') {
+            if (request.url.match(/\/assets\/mock_data.json\/\d+$/) && request.method === 'GET') {
                 // check for fake auth token in header and return user if valid, this security
                 // is implemented server side in a real application
                 if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {

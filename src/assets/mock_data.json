@@ -7,13 +7,13 @@
       "password": "sunshine14",
       "firstName": "Katie",
       "lastName": "Carr",
-      "dob": "10/24/97",
+      "dob": "1997-10-24",
       "profPic": "../../assets/images/katie.jpg",
       "insurance": "None",
       "appointments": [
         {
-        "date": "04/28/18",
-        "time": "11AM-11:30AM",
+        "date": "2018-04-28",
+        "time": "3PM",
         "patient": {
         },
         "doctor": {
@@ -53,25 +53,25 @@
         {
           "username": "kacarr",
           "rating": "4",
-          "date": "04/26/18",
+          "date": "2018-04-26",
           "comment": "Excellent, compassionate, and caring staff!"
         },
         {
           "username": "everyone_loves_chris",
           "rating": "4",
-          "date": "04/21/18",
+          "date": "2018-04-21",
           "comment": "Awesome customer service!"
         }
       ],
       "appointments": [
         {
-          "date": "04/20/18",
-          "time": "11:30AM-12PM",
+          "date": "2018-04-20",
+          "time": "9AM",
           "patient": {
             "id": "87644291",
             "username": "misterKade",
             "email": "kadej@smu.edu",
-            "dob": "04/20/1995",
+            "dob": "1995-04-20",
             "password": "sunshine14",
             "firstName": "Kade",
             "lastName": "Johnson",
@@ -88,8 +88,8 @@
           "newPatient": "true"
         },
         {
-          "date": "04/20/18",
-          "time": "2PM-2:30PM",
+          "date": "2018-04-20",
+          "time": "2PM",
           "patient": {
             "id": 1,
             "username": "kacarr",
@@ -97,7 +97,7 @@
             "password": "sunshine14",
             "firstName": "Katie",
             "lastName": "Carr",
-            "dob": "10/24/97",
+            "dob": "1997-10-24",
             "profPic": "../../assets/images/katie.jpg"
           },
           "doctor": {},
@@ -106,8 +106,8 @@
           "newPatient": "true"
         },
         {
-          "date": "04/20/18",
-          "time": "8AM-9AM",
+          "date": "2018-04-20",
+          "time": "8AM",
           "patient": {
             "id": 3,
             "username": "everyone_loves_chris",
@@ -115,7 +115,7 @@
             "email": "chrisblack63@gmail.com",
             "firstName": "Chris",
             "lastName": "Black",
-            "dob": "4/30/95",
+            "dob": "1995-04-30",
             "profPic": "../../assets/images/kade.jpg"
           },
           "doctor": {},
@@ -144,25 +144,25 @@
         {
           "username": "kacarr",
           "rating": "4",
-          "date": "04/15/18",
+          "date": "2018-04-15",
           "comment": "Excellent, compassionate, and caring staff!"
         },
         {
           "username": "everyone_loves_chris",
           "rating": "4",
-          "date": "04/18/18",
+          "date": "2018-04-18",
           "comment": "Awesome customer service!"
         }
       ],
       "appointments": [
         {
-          "date": "04/20/18",
-          "time": "4PM-5PM",
+          "date": "2018-04-29",
+          "time": "4PM",
           "patient": {
             "id": "87644291",
             "username": "misterKade",
             "email": "kadej@smu.edu",
-            "dob": "04/20/1995",
+            "dob": "1995-04-20",
             "password": "sunshine14",
             "firstName": "Kade",
             "lastName": "Johnson",
@@ -179,8 +179,8 @@
           "newPatient": "true"
         },
         {
-          "date": "04/20/18",
-          "time": "11AM-11:30AM",
+          "date": "2018-04-26",
+          "time": "11AM",
           "patient": {
             "id": 1,
             "username": "kacarr",
@@ -188,7 +188,7 @@
             "password": "sunshine14",
             "firstName": "Katie",
             "lastName": "Carr",
-            "dob": "10/24/97",
+            "dob": "1997-10-24",
             "profPic": "../../assets/images/katie.jpg"
           },
           "doctor": {},
@@ -197,8 +197,8 @@
           "newPatient": "true"
         },
         {
-          "date": "04/20/18",
-          "time": "8AM-9AM",
+          "date": "2018-04-26",
+          "time": "8AM",
           "patient": {
             "id": 3,
             "username": "everyone_loves_chris",
@@ -206,7 +206,7 @@
             "email": "chrisblack63@gmail.com",
             "firstName": "Chris",
             "lastName": "Black",
-            "dob": "4/30/95",
+            "dob": "1995-04-30",
             "profPic": "../../assets/images/kade.jpg"
           },
           "doctor": {},
@@ -223,7 +223,7 @@
       "id": "87644291",
       "username": "misterKade",
       "email": "kadej@smu.edu",
-      "dob": "04/20/1995",
+      "dob": "1995-04-20",
       "password": "sunshine14",
       "firstName": "Kade",
       "lastName": "Johnson",
@@ -235,8 +235,8 @@
       "insurance": "Anthem Blue Cross",
       "appointments": [
       {
-          "date": "04/28/18",
-          "time": "4PM-5PM",
+          "date": "2018-04-28",
+          "time": "4PM",
           "patient": {},
           "doctor": {
             "id": 6,
@@ -255,8 +255,8 @@
           "status": "approved"
       },
       {
-          "date": "04/28/18",
-          "time": "11:30AM-12PM",
+          "date": "2018-04-28",
+          "time": "12PM",
           "patient": {},
           "doctor": {
             "id": 2,
@@ -290,7 +290,7 @@
         },
         "recipient": {},
         "message": "An apple a day would make me go away!",
-        "date": "04/15/18"
+        "date": "2018-04-15"
       }
       ],
       "scrips": [
@@ -310,8 +310,8 @@
           "patient": {},
           "name": "Cymbalta",
           "description": "It can treat depression, anxiety, diabetic peripheral neuropathy, fibromyalgia, and chronic muscle or bone pain. For more information on risks and side effects please visit: https://www.everydayhealth.com/drugs/cymbalta",
-          "start_date": "04/10/18",
-          "expiration": "04/25/18"
+          "start_date": "2018-04-10",
+          "expiration": "2018-04-25"
         },
         {
           "Rx_Numb": 1,
@@ -329,8 +329,8 @@
             "patient": {},
             "name": "Minocycline",
             "description": "Minocycline is used to treat a wide variety of infections. It may also be used along with other medications to treat severe acne. This medication belongs to a class of drugs known as tetracycline antibiotics. For more information on risks and side effects please visit:  https://www.rxlist.com/minocin-capsules-side-effects-drug-center.htm",
-            "start_date": "03/10/18",
-            "expiration": "03/25/18"
+            "start_date": "2018-03-10",
+            "expiration": "2018-03-25"
         }
       ]
     },
@@ -349,8 +349,8 @@
       "insurance": "Anthem Blue Cross",
       "appointments": [
         {
-        "date": "04/28/18",
-        "time": "8AM-9AM",
+        "date": "2018/04/28",
+        "time": "8AM",
         "patient": {},
         "doctor": {},
         "reason": "Green pigmentation",
@@ -368,7 +368,7 @@
       "password": "sunshine14",
       "firstName": "Jeremy",
       "lastName": "Berechle",
-      "dob": "10/24/97",
+      "dob": "1997-10-24",
       "phone": "918-788-4196",
       "address": "10 Cloverfield Lane, Dallas, TX, 75205",
       "profPic": "../../assets/images/katie.jpg",

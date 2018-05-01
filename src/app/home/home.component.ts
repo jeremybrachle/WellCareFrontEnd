@@ -12,20 +12,21 @@ export class HomeComponent implements OnInit {
     private router: Router) {
       this.route.queryParams.subscribe(disableLogin => {
         console.log(disableLogin); // {order: "popular"}
-        if ( disableLogin !== {} ) {
+        this.disableLogin = false;
+        if ( disableLogin.kickedOut ) {
           this.disableLogin = true;
-        } else { this.disableLogin = false; }
+          let id = setTimeout(function() {
+            this.disableLogin = false;
+            // this.router.navigateByUrl(['/']);
+            console.log('in timeout fxn');
+          }, 20000);
+        }
+        console.log('out');
       });
-      console.log('landing page constructor');
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(disableLogin => {
-      console.log(disableLogin); // {order: "popular"}
-      if ( disableLogin !== {} ) {
-        this.disableLogin = true;
-      } else { this.disableLogin = false; }
-    });
+
   }
 
 }
