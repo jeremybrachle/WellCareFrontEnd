@@ -14,10 +14,10 @@ export class Doctor {
   phone: string;
   address: string;
   rating?: Number;
-  reviews?: DocReview[];
   profPic?: string;
-  appointments?: Appointment[];
-  scrips?: Prescription[];
-  notesForPatient?: DoctorNote[];
-  notifications?: Notification[];
+  reviews?: DocReview[]; // REQUIRES SEPERATE GET
+  appointments?: Appointment[]; // REQUIRES SEPERATE GET
+  scrips?: Prescription[]; // REQUIRES SEPERATE GET
+  notesForPatient?: DoctorNote[]; // REQUIRES SEPERATE GET
+  notifications?: Notification[]; // REQUIRES SEPERATE GET
 }

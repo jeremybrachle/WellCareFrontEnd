@@ -16,8 +16,8 @@ export class Patient {
   emergency_contact: string;
   dob: Date;
   profPic?: string;
-  appointments?: Appointment[];
-  scrips?: Prescription[];
-  docNotes?: DoctorNote[];
-  notifications?: Notification[];
+  appointments?: Appointment[]; // REQUIRE A SEPERATE GET
+  scrips?: Prescription[]; // REQUIRE A SEPERATE GET
+  docNotes?: DoctorNote[]; // REQUIRE A SEPERATE GET
+  notifications?: Notification[]; // REQUIRE A SEPERATE GET
 }
