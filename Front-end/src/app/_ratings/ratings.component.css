@@ -1,0 +1,11 @@
+.stars {
+  font-size: 1.3rem;
+}
+
+
+.full-star:after{
+  content: "\2605";
+}
+.empty-star:after {
+  content: "\2606";
+}

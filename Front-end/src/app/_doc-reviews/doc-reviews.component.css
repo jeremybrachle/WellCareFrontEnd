@@ -1,0 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300, 400');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+@font-face {
+    font-family: 'brandon';
+    src: url(../fonts/webfontkit/brandon.woff);
+}
+@font-face {
+    font-family: 'sansb';
+    src: url(../fonts/sansb___.ttf);
+}
+
+html {
+  font-family: 'Brandon';
+}
+#prodName{
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 100;
+}
+#prodReviewsHead {
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 400;
+  padding-left: 1rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+#prodDescrip {
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 100;
+  font-size: 1rem;
+  color: rgb(44, 43, 43);
+  padding-top: 2rem;
+}
+h5{
+  font-size: 3rem;
+  color: black;
+}
+.stars {
+  font-size: 1.5rem;
+}
+.full-star:after{
+  content: "\2605";
+}
+.empty-star:after {
+  content: "\2606";
+}
+.showReviews {
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 300;
+  font-size: .8rem;
+}
+#noReviews{
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: .3rem;
+  padding: .8rem;
+}
+#msgContent {
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 400;
+  margin-top: 1rem;
+  font-size: .8rem;
+}

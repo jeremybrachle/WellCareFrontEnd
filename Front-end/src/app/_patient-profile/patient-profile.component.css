@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+@font-face {
+    font-family: 'brandon';
+    src: '../fonts/webfontkit/brandon.woff';
+}
+@font-face {
+    font-family: 'sansb';
+    src: '../fonts/sansb___.ttf';
+}
+tr.spaceUnder>td{
+  padding-bottom: 2.5rem;
+}
+.top {
+  background-color: rgb(16, 30, 77) !important;
+}
+docsTabPane > a:hover{
+  cursor:pointer;
+  text-decoration:underline;
+}
+li {
+  padding-top:.3rem;
+  padding-right:1rem;
+  padding-left:1rem;
+}
+.back {
+  background-color: rgb(209, 208, 208);
+  /* background-image: linear-gradient(-135deg, #3185e6, #203bc0); */
+  width: 100vw;
+  height: 100vw;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Roboto Slab', serif;
+}
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.4rem;
+  margin-top:1.3rem;
+  padding-left:.3rem;
+  color: white;
+  /* color: rgb(47, 117, 247); */
+}
+.inactiveTab {
+  font-family: 'Roboto Slab', serif;
+  color: rgb(5, 5, 5);
+  font-weight: 300;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+}
+.patientTabs > a:hover {
+  color:rgb(219, 2, 2);
+}
+
+.activeTab {
+  font-family: 'Roboto Slab', serif;
+  color: black;
+  font-weight: 400;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+}
+#userImg {
+  width:40%;
+  height: 40%;
+  padding-bottom: .6rem;
+}
+.card {
+  padding-bottom: 1.4rem;
+  width:100%;
+  height: 100%;
+  background-color: white;
+  /* background-color:rgb(41, 107, 250); */
+  color: black;
+}
+/* #userImg {
+  max-width: 100%;
+  max-height: 100%;
+} */
+#edit{
+  margin-top:.3rem;
+  border-color: rgb(179, 177, 177);
+  margin-bottom:.3rem;
+  padding: 0rem;
+  float: right;
+  font-size: .8rem;
+  color: rgb(109, 108, 108);
+}
+/* .jumbotron{
+  top:1.5rem;
+} */
+a:hover {
+  color: red;
+}
+#logout {
+  background-color:transparent;
+  color: white;
+}
+
+#smuLogoPic {
+  height:7%;
+  width: 5%;
+  margin-top:.7rem;
+  margin-left:2rem;
+}
+#mynav {
+  margin-top: .1rem;
+}
+.navbar {
+  width: 100%;
+  padding-bottom:.1rem;
+}
+#usrImg {
+  width:40%;
+  height: 40%;
+  padding-bottom: .6rem;
+}
+/* .card {
+  margin-top:3.2rem;
+  margin-left: 4.0rem;
+  padding-bottom: 1.4rem;
+  width:29%;
+  height: 26.5rem;
+  background-color:white;
+  color: black;
+  opacity: 0.9;
+  border-color: red;
+  border-width: .3rem;
+
+} */
+.aboutDr {
+  font-family: 'Roboto Slab', serif;
+  color: black !important;
+  font-weight: 300;
+}
+/* .userHeader {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+} */
+.profile-usertitle-comment {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding-left:.15rem;
+  padding-right:.3rem;
+  padding-top:0rem;
+}
+.label {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  color:black;
+}
+.profile {
+  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+.inactive{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  color: rgb(204, 4, 4);
+}
+.active{
+  font-family: 'Roboto Slab', serif;
+  color: white;
+  font-weight: 400;
+  /* color:rgb(47, 117, 247); */
+}
+a:hover {
+  color: rgb(201, 197, 197);;
+}
+#logout {
+  background-color:transparent;
+  color: rgb(204, 4, 4);
+}
+#rest {
+  opacity: .8;
+  background: no-repeat cover;
+  height: 100%;
+}

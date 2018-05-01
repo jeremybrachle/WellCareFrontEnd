@@ -1,0 +1,248 @@
+<div class="back">
+  <div class="top">
+    <div class="row" id="head">
+        <img src={{imagePath}} style="height:12%; width:7%; margin-top:.8rem; margin-left:2rem; padding-bottom:.2rem;"/>
+        <h1>SMU Well-Care</h1>
+    </div>
+    <div class="row" id="mynav">
+        <nav class="navbar navbar-expand-lg">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link active">My Profile <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link inactive" [routerLink]="['_patient-appts']">Appointments</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link inactive" [routerLink]="['_myDoctors']">Doctors</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link inactive" [routerLink]="['_patient-settings']">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn inactive" (click)="logout()" id="logout">Logout</button>
+                </li>
+              </ul>
+        </nav>
+    </div>
+
+  </div>
+  <div class="jumbotron bg-white">
+    <div class="card">
+
+        <div class="card-header patientTabs">
+          <ul class="nav nav-tabs card-header-tabs pull-left" id="myTabList" role="tablist">
+            <li class="nav-item">
+                <a [ngClass]="infoClass" id="info-tab" aria-selected="myInfo" (click)="showMyInfo()">My Info</a>
+            </li>
+            <li class="nav-item">
+              <a [ngClass]="docsClass" id="docs-tab" (click)="showMyDocs()" aria-selected="myDocs">My Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a [ngClass]="scripsClass" id="scrips-tab" role="tab" (click)="showMyScrips()" aria-selected="myScrips">My Prescriptions</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="docNotesClass" id="doc-notes-tab" role="tab" (click)="showMyDocNotes()" aria-selected="myDocNotes">My Doctor Notes</a>
+            </li>
+            <li class="nav-item">
+                <a [ngClass]="notifsClass" id="notifs-tab" role="tab" (click)="showMyNotifs()" aria-selected="myNotifs">Notifications</a>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+              <div *ngIf="infoTabPane" id="infoTab">
+                  <div class="row">
+                      <label class="pl-3" for="profileCard" style="margin-left: .7rem; padding: .3rem .2rem;">
+                          Patient
+                      </label>
+                    </div>
+
+                    <div class="card p-3 m-l-3" style="width: 30rem;" id="profileCard">
+                        <div class="card-header bg-white row">
+                            <h2 class="col-lg-10">
+                                {{user.firstName}} {{user.lastName}}
+                            </h2>
+                            <button type="button" class="btn btn-default col-lg-2" id="edit">
+                                  <span appOcticon [octicon]="icon"></span>
+                                    Edit
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="imgWrap">
+                                  <img src={{this.userImage}} id="userImg">
+                            </div>
+
+                            <table class ="table table-striped" id="fallTable">
+                              <thead>
+                                  <tr>
+                                      <td scope="col"><strong>Gender</strong></td>
+                                      <td scope="col">{{user.gender}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>DOB</strong></td>
+                                      <td scope="row">{{user.dob}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Email</strong></td>
+                                      <td scope="row">{{user.email}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Phone</strong></td>
+                                      <td scope="row">{{user.phone}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Local Address</strong></td>
+                                      <td scope="row">{{user.address}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td scope="row"><strong>Emergency Contact Phone</strong></td>
+                                      <td scope="row">{{user.emergency_contact}}</td>
+                                  </tr>
+                              </thead>
+                            </table>
+                        </div>
+                    </div>
+              </div>
+              <div *ngIf="docsTabPane" id="myDocsTab">
+                <table>
+                  <thead>
+                      <tr scope="col" style="font-size:2rem;">My Doctors</tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let appt of user.appointments">
+                      <td scope="row" style="font-weight:700;">
+                        <a [routerLink]="['']" style="color:black;"> Dr. {{appt.doctor.firstName}} {{appt.doctor.lastName}}
+                        </a>
+                      </td>
+                      <td style="font-weight:300; padding-left:2rem;">
+                          {{appt.doctor.specialty}}
+                      </td>
+                      <td style="font-weight:300; padding-left:2rem;">
+                          <a>{{appt.doctor.phone}}</a>
+                      </td>
+                      <td style="font-weight:300; padding-left:2rem;">
+                          {{appt.doctor.address}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div *ngIf="scripsTabPane">
+                  <table>
+                      <thead>
+                        <tr style="font-weight:400;">
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Drug</th>
+                          <th scope="col" style="font-size:1rem; width:10rem; text-align:left; padding:1rem;">Date Prescribed</th>
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Expiration</th>
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Doctor</th>
+                          <th scope="col" style="font-size:1rem; text-align:left; padding:1rem;">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let scrip of user.scrips" style="padding-bottom:1rem;" class="spaceUnder">
+                          <td style="font-weight:300; text-align:left; padding:1rem;">
+                              {{scrip.name}}
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              {{scrip.start_date}}
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              {{scrip.expiration}}
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              <a [routerLink]="['']" style="color:black;"> Dr. {{scrip.doctor.firstName}} {{scrip.doctor.lastName}}</a>
+                          </td>
+                          <td style="font-weight:300; padding-left:2rem;">
+                              {{scrip.description}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+              <div *ngIf="docNotesTabPane" id="docNotesTab">
+                  <div class="card-header bg-white row">
+                      <h2 class="col-lg-10">
+                            Doctor's Orders!
+                      </h2>
+                  </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                      <thead>
+                        <tr>
+                          <th> Doctor</th>
+                          <th> Note Date</th>
+                          <th> Message </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let note of user.docNotes">
+                          <td scope="col">Dr. {{note.sender.firstName}} {{note.sender.lastName}}</td>
+                          <td scope="row">{{note.date}}</td>
+                          <td scope="row">{{note.message}}</td>
+                        </tr>
+                      </tbody>
+
+                  </table>
+              </div>
+              <div *ngIf="notifsTabPane" id="notifsTab">
+                  <div class="bg-white row">
+                      <h2 class="col-lg-10">
+                            New Appointments
+                      </h2>
+                  </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                      <thead>
+                        <tr>
+                          <th> Appt. Date</th>
+                          <th> Doctor</th>
+                          <th> Reason for Visit </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let notif of user.notifications">
+                          <div *ngIf="notif.notificationType === 'newAppt'">
+                              <td scope="row">{{notif.date}}</td>
+                              <td scope="col" >Dr. {{notif.doctor.firstName}} {{notif.doctor.lastName}}</td>
+                              <td scope="row">{{notif.msg}}</td>
+                          </div>
+                        </tr>
+                      </tbody>
+                  </table>
+
+                  <div class="bg-white row">
+                      <h2 class="col-lg-10">
+                            New Doctor's Notes
+                      </h2>
+                  </div>
+
+                  <table class ="table table-striped" id="fallTable">
+                      <thead>
+                        <tr>
+                          <th> From </th>
+                          <th> Date </th>
+                          <th> Note </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let note of user.notifications">
+                          <div *ngIf="note.notificationType === 'note'">
+                              <td scope="row">Dr. {{note.doctor.firstName}} {{note.doctor.lastName}}</td>
+                              <td scope="col" >{{note.date}}</td>
+                              <td scope="row">{{note.msg}}</td>
+                          </div>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+</div>
+

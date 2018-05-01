@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+@font-face {
+    font-family: 'brandon';
+    src: '../fonts/webfontkit/brandon.woff';
+}
+@font-face {
+    font-family: 'sansb';
+    src: '../fonts/sansb___.ttf';
+}
+.back {
+  background-color: rgb(209, 208, 208);
+  /* background-image: linear-gradient(-135deg, #3185e6, #203bc0); */
+  width: 100vw;
+  height: 100vw;
+  padding: 0;
+  overflow: hidden;
+}
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.4rem;
+  margin-top:1.3rem;
+  padding-left:.3rem;
+  color: white;
+  /* color: rgb(47, 117, 247); */
+}
+.top {
+  background-color: rgb(16, 30, 77);
+}
+#smuLogoPic {
+  height:7%;
+  width: 5%;
+  margin-top:.7rem;
+  margin-left:2rem;
+}
+#mynav {
+  margin-top: .1rem;
+}
+.navbar {
+  width: 100%;
+  padding-bottom:.1rem;
+}
+#usrImg {
+  width:40%;
+  height: 40%;
+  padding-bottom: .6rem;
+}
+.card {
+  margin-top:3.2rem;
+  margin-left: 4.0rem;
+  padding-bottom: 1.4rem;
+  width:29%;
+  height: 26.5rem;
+  background-color:white;
+  color: black;
+  /* opacity: 0.9; */
+  /* border-color: red;
+  border-width: .3rem; */
+
+}
+.aboutDr {
+  font-family: 'Roboto Slab', serif;
+  color: black !important;
+  font-weight: 300;
+}
+/* .userHeader {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+} */
+.profile-usertitle-comment {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding-left:.15rem;
+  padding-right:.3rem;
+  padding-top:0rem;
+}
+.label {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  color:black;
+}
+.profile {
+  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+.inactive{
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  color: rgb(204, 4, 4);
+}
+.active{
+  font-family: 'Roboto Slab', serif;
+  color: white;
+  font-weight: 400;
+  /* color:rgb(47, 117, 247); */
+}
+a:hover {
+  color: rgb(201, 197, 197);;
+}
+#logout {
+  background-color:transparent;
+  color: rgb(204, 4, 4);
+}
+#rest {
+  opacity: .8;
+  background: no-repeat cover;
+  height: 100%;
+}

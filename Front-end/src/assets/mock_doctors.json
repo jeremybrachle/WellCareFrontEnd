@@ -1,0 +1,187 @@
+{
+  "doctors" :  [ {
+      "id": 2,
+    "username": "random_andy",
+    "email": "thauptmann@smu.edu",
+    "password": "sunshine14",
+    "firstName": "Teddy",
+    "lastName": "Hauptmann",
+    "phone": "918-788-4196",
+    "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+    "specialty": "Pediatrics",
+    "profPic": "../../assets/images/ted.jpg",
+    "rating": "4",
+    "reviews": [
+      {
+        "username": "kacarr",
+        "rating": "4",
+        "date": "2018-04-26",
+        "comment": "Excellent, compassionate, and caring staff!"
+      },
+      {
+        "username": "everyone_loves_chris",
+        "rating": "4",
+        "date": "2018-04-21",
+        "comment": "Awesome customer service!"
+      }
+    ],
+    "appointments": [
+      {
+        "date": "2018-04-27",
+        "time": "9AM",
+        "patient": {
+          "id": "87644291",
+          "username": "misterKade",
+          "email": "kadej@smu.edu",
+          "dob": "1995-04-20",
+          "password": "sunshine14",
+          "firstName": "Kade",
+          "lastName": "Johnson",
+          "phone": "918-788-4196",
+          "address": "10 Cloverfield Lane, Dallas, TX, 75205",
+          "emergency_contact": "Barbara Johnson 934-610-8572",
+          "profPic": "../../assets/images/kade3.jpg",
+          "gender": "Male",
+          "insurance": "Anthem Blue Cross"
+        },
+        "doctor": {},
+        "type": "Check-up",
+        "reason": "Severe migraines",
+        "insurance": "Anthem Blue Cross",
+        "newPatient": "true",
+        "status": "approved"
+      },
+      {
+        "date": "2018-04-20",
+        "time": "2PM",
+        "patient": {
+          "id": 1,
+          "username": "kacarr",
+          "email": "kacarr@smu.edu",
+          "password": "sunshine14",
+          "firstName": "Katie",
+          "lastName": "Carr",
+          "dob": "1997-10-24",
+          "profPic": "../../assets/images/katie.jpg"
+        },
+        "doctor": {},
+        "reason": "Back and Neck pain",
+        "insurance": "None",
+        "newPatient": "true",
+        "status": "attended"
+      },
+      {
+        "date": "2018-04-20",
+        "time": "8AM",
+        "patient": {
+          "id": 3,
+          "username": "everyone_loves_chris",
+          "password": "sunshine14",
+          "email": "chrisblack63@gmail.com",
+          "firstName": "Chris",
+          "lastName": "Black",
+          "dob": "1995-04-30",
+          "profPic": "../../assets/images/kade.jpg"
+        },
+        "doctor": {},
+        "reason": "Coming in for a general checkup/annual physical",
+        "type": "Physical",
+        "insurance": "GlobalHealth",
+        "newPatient": "false",
+        "status": "approved"
+      }
+    ]},
+    {
+      "id": 6,
+      "username": "dr_derek",
+      "email": "dshepherd@graysanatomy.edu",
+      "password": "sunshine14",
+      "firstName": "Derek",
+      "lastName": "Shepherd",
+      "phone": "918-788-4196",
+      "address": "Ashton Pediatrics- 5448 La Sierra Drive, Dallas, TX, 75205",
+      "specialty": "Neurosurgery",
+      "profPic": "../../assets/images/derek.jpg",
+      "rating": "4",
+      "reviews": [
+        {
+          "username": "kacarr",
+          "rating": "4",
+          "date": "2018-04-15",
+          "comment": "Excellent, compassionate, and caring staff!"
+        },
+        {
+          "username": "everyone_loves_chris",
+          "rating": "4",
+          "date": "2018-04-18",
+          "comment": "Awesome customer service!"
+        }
+      ],
+      "appointments": [
+        {
+          "date": "2018-04-29",
+          "time": "4PM",
+          "patient": {
+            "id": "87644291",
+            "username": "misterKade",
+            "email": "kadej@smu.edu",
+            "dob": "1995-04-20",
+            "password": "sunshine14",
+            "firstName": "Kade",
+            "lastName": "Johnson",
+            "phone": "918-788-4196",
+            "address": "10 Cloverfield Lane, Dallas, TX, 75205",
+            "emergency_contact": "Barbara Johnson 934-610-8572",
+            "profPic": "../../assets/images/kade3.jpg",
+            "gender": "Male",
+            "insurance": "Anthem Blue Cross"
+          },
+          "type": "Treatment Evaluation",
+          "doctor": {},
+          "reason": "Severe migraines",
+          "insurance": "Anthem Blue Cross",
+          "newPatient": "true",
+          "status": "approved"
+        },
+        {
+          "date": "2018-04-26",
+          "time": "11AM",
+          "patient": {
+            "id": 1,
+            "username": "kacarr",
+            "email": "kacarr@smu.edu",
+            "password": "sunshine14",
+            "firstName": "Katie",
+            "lastName": "Carr",
+            "dob": "1997-10-24",
+            "profPic": "../../assets/images/katie.jpg"
+          },
+          "doctor": {},
+          "reason": "Back and Neck pain",
+          "treatment": "eval",
+          "insurance": "None",
+          "newPatient": "true",
+          "status": "requested"
+        },
+        {
+          "date": "2018-04-26",
+          "time": "8AM",
+          "patient": {
+            "id": 3,
+            "username": "everyone_loves_chris",
+            "password": "sunshine14",
+            "email": "chrisblack63@gmail.com",
+            "firstName": "Chris",
+            "lastName": "Black",
+            "dob": "1995-04-30",
+            "profPic": "../../assets/images/kade.jpg"
+          },
+          "doctor": {},
+          "reason": "Green pigmentation",
+          "insurance": "GlobalHealth",
+          "newPatient": "false",
+          "status": "approved"
+        }
+      ]
+    }]
+}
