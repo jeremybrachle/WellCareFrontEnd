@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { Http, HttpModule, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { mergeMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs/observable/forkJoin';
+
+
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Doctor } from '../_models/index';
@@ -92,6 +96,26 @@ export class UserService {
 
         console.log('Loaded Doc obj after calling every post in getDocByUsername ' + this.returnDoc);
         return (this.returnDoc);
+    }
+
+    getFullPatient(u: string) {
+      const basicPatient = this.http.post<any>(`${this.endPoint}/_patient-profile`, { 'username': u }, this.httpOptions);
+      const patientAppts = this.http.post<any>(`${this.endPoint}/appointments/patient`, { 'username': u }, this.httpOptions);
+      const patientScrips = this.http.post<any>(`${this.endPoint}/perscription/patient`, { 'username': u }, this.httpOptions);
+      const patientNotifs = this.http.post<any>(`${this.endPoint}/notifications/patient`, { 'username': u }, this.httpOptions);
+      const notesFromDoc = this.http.post<any>(`${this.endPoint}/docnotes/patient`, { 'username': u }, this.httpOptions);
+      forkJoin([basicPatient, patientAppts, patientScrips, patientNotifs, notesFromDoc]).subscribe(
+        patientAttribGroups => {
+          this.returnPatient = patientAttribGroups[0];
+          this.returnPatient.appointments = patientAttribGroups[1];
+          this.returnPatient.scrips = patientAttribGroups[2];
+          this.returnPatient.notifications = patientAttribGroups[3];
+          this.returnPatient.docNotes = patientAttribGroups[4];
+        },
+        () => {
+          return (this.returnPatient);
+        }
+      );
     }
 
     getBasicPatientByUsername(u: string) {
