@@ -1,21 +1,29 @@
 <div class="align-top giantPIC" [ngStyle]="{'background-image': 'url('+'../../assets/images/giantSMU.jpg)', 'background-position': 'center', 'background-size': 'cover'}">
-  <div class="align-center card" >
-    <div class="card-header row">
-      <img src="../../assets/images/smu_logo2.png" id="img">
-      <h1>Mustang HealthCare</h1>
-    </div>
-    <div class="card-body">
-      <div>
+  <div class="container d-flex h-100">
+    <div class="card justify-content-center align-self-center" >
+      <div class="card-header row">
+        <img src="../../assets/images/smu_logo2.png" id="img">
+        <h1>Mustang HealthCare</h1>
+      </div>
+      <div class="card-body container h-100">
+        <div class="row h-20 justify-content-center align-items-center" style="padding-top:3rem;">
+              <button type="button" class="btn btn-danger " [routerLink]="['_login']" id="login">Login</button>
+        </div>
+        <!-- <div [hidden]="disableLogin">
           <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button>
       </div>
-      <!-- <div [hidden]="disableLogin">
-        <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button>
-    </div>
-      <div [hidden]="!disableLogin">
-          <button type="button" class="btn btn-danger"  id="login">Login</button>
-      </div> -->
-        <p> First-time user? <a [routerLink]="['_register']">Activate account </a></p>
-        <hr>
-        <h5> © Southern Methodist University, Dallas TX 75205, 214-768-2000 </h5>
-    </div>
+        <div [hidden]="!disableLogin">
+            <button type="button" class="btn btn-danger"  id="login">Login</button>
+        </div> -->
+        <div class="row h-20 justify-content-center align-items-center" style="padding-top:2.6rem;">
+            <p> First-time user? <a [routerLink]="['_register']">Activate account </a></p>
+        </div>
+        <div class="row h-4 justify-content-center align-items-center" style="padding-top:1rem;"><hr></div>
+
+        <div class="row h-23 justify-content-center align-items-center" style="padding-top:0.6rem;">
+            <h5> © Southern Methodist University, Dallas TX 75205, 214-768-2000 </h5>
+        </div>
+      </div>
+  </div>
+
 </div>

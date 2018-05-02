@@ -94,10 +94,10 @@ export class UserService {
         return (this.returnDoc);
     }
 
-    getPatientByUsername(u: string) {
-        this.http.post<any>(`${this.endPoint}/_patient-profile`, { 'username': u }, this.httpOptions).subscribe(
+    getBasicPatientByUsername(u: string) {
+        return this.http.post<any>(`${this.endPoint}/_patient-profile`, { 'username': u }, this.httpOptions).map(
           pat => {
-            this.returnPatient.id = pat.id;
+            this.returnPatient.id = pat.patient_id;
             this.returnPatient.username = pat.username;
             this.returnPatient.password = pat.password;
             this.returnPatient.firstName = pat.firstName;
@@ -108,51 +108,65 @@ export class UserService {
             this.returnPatient.emergency_contact = pat.emergency_contact;
             this.returnPatient.dob = pat.dob;
             this.returnPatient.profPic = pat.profPic;
+            return this.returnPatient;
+
           },
           error => {
             console.log('sad for getting patient basic info');
           }
         );
-        this.http.post<any>(`${this.endPoint}/appointments/patient`, { 'username': u }, this.httpOptions).subscribe(
+    }
+    getPatientAppts(u: string) {
+        return this.http.post<any>(`${this.endPoint}/appointments/patient`, { 'username': u }, this.httpOptions).map(
           appts => {
-            if (appts !== []) {
               this.returnPatient.appointments = appts;
-            } else {
-              console.log('returned false for appts !== []');
-              this.returnPatient.appointments = appts;
-            }
+              return this.returnPatient.appointments;
+
           },
           error => {
             console.log('sad for getting patient appts');
           }
         );
-        this.http.post<any>(`${this.endPoint}/notifications/patient`, { 'username': u }, this.httpOptions).subscribe(
+    }
+    getPatientNotifs(u: string) {
+
+        return this.http.post<any>(`${this.endPoint}/notifications/patient`, { 'username': u }, this.httpOptions).map(
           notifs => {
             this.returnPatient.notifications = notifs;
+            return this.returnPatient.notifications;
+
           },
           error => {
             console.log('sad for getting patient notifs');
           }
         );
-        this.http.post<any>(`${this.endPoint}/perscription/patient`, { 'username': u }, this.httpOptions).subscribe(
+    }
+    getPatientScrips(u: string) {
+        return this.http.post<any>(`${this.endPoint}/perscription/patient`, { 'username': u }, this.httpOptions).map(
           scrips => {
             this.returnPatient.scrips = scrips;
+            return this.returnPatient.scrips;
+
           },
           error => {
             console.log('sad for getting patient scrips');
           }
         );
-        this.http.post<any>(`${this.endPoint}/docnotes/patient`, { 'username': u }, this.httpOptions).subscribe(
+    }
+    getPatientDocNotes(u: string) {
+        return this.http.post<any>(`${this.endPoint}/docnotes/patient`, { 'username': u }, this.httpOptions).map(
           docNotes => {
             this.returnPatient.docNotes = docNotes;
+            return this.returnPatient.docNotes;
           },
           error => {
             console.log('sad for getting patient docNotes');
           }
         );
-        console.log('Loaded Patient obj after calling every post in getDocByUsername ' + this.returnPatient);
-        return (this.returnPatient);
     }
+    //     console.log('Loaded Patient obj after calling every post in getDocByUsername ' + this.returnPatient);
+    //     return (this.returnPatient);
+    // }
 
     getAll() {
       // const headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
@@ -162,7 +176,9 @@ export class UserService {
     }
 
     getAllDocs() {
-      return this.http.get<any>('/getAllDoctors');
+      this.http.get<any>('/getAllDoctors').subscribe(
+        docIds => {}
+      );
     }
 
     getById(id: number) {
