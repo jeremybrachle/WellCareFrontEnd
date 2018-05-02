@@ -170,14 +170,14 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  margin-left:8rem;
-  margin-top:1.6rem;
-  display: -webkit-box;
+  margin: auto;
+  /* display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
-  display: -ms-flexbox;
+  display: -ms-flexbox; */
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   justify-content: space-between;
   /* padding: 177px 130px 33px 95px; */
 }
@@ -186,14 +186,15 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 40%;
+  width: 100%;
   height:90%;
-  margin-left: 3.4rem;
-  margin-top: 1.48rem;
+  margin: auto;
+  /* margin-left: 3.4rem;
+  margin-top: 1.48rem; */
 }
 
 .login100-pic img {
-  width: 95%;
+  width: 94%;
   height: 98%;
 }
 
@@ -201,21 +202,25 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-form {
-  width: 17rem;
-  margin-right: 6rem;
+  /* width: 17rem; */
+  /* margin: auto; */
+  position: relative;
+  width: 88%;
+  padding-left:.5rem;
 }
 
 .login100-form-title {
   font-family: Poppins-Bold;
-  font-size: 24px;
+  font-size: 1.6rem;
   color: #333333;
   line-height: 1.2;
-  text-align: center;
-  margin-top:2.6rem;
-  margin-left: 0rem;
+  /* text-align: center; */
+  /* margin-top:2.6rem;
+  margin-left: 0rem; */
   width: 100%;
-  display: block;
-  padding-bottom: 44px;
+  display: flex;
+  padding-bottom: 2.4rem;
+  padding-top:4.3rem;
 }
 
 
@@ -224,7 +229,7 @@ iframe {
   position: relative;
   width: 100%;
   z-index: 1;
-  margin-top:3rem;
+  /* margin: auto; */
   padding: .5rem;
 }
 .wrap2-input100 {
@@ -321,6 +326,7 @@ iframe {
 
 .container-login100-form-btn {
   width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -329,18 +335,21 @@ iframe {
   flex-wrap: wrap;
   justify-content: center space-between;
   padding-top: 20px;
-  margin-left: 3.8rem;
+  position: relative;
+  /* margin-left: 3.8rem; */
 }
-
+#loginButton {
+  color:white;
+  font-size: 0.8rem;
+}
 .login100-form-btn {
   font-family: Montserrat-Bold;
-  font-size: 13px;
-  line-height: 1.8;
+  line-height: 1.3rem;
   color: #fff;
   text-transform: uppercase;
 
-  width: 56%;
-  height: 42px;
+  width: 35%;
+  height: 2rem;
   border-radius: 25px;
   background: rgb(85, 84, 84);
   /* background: #57b846; */
@@ -349,15 +358,13 @@ iframe {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0 25px;
-  margin: .1rem;
-
+  /* margin: .1rem; */
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
+  position: relative;
 }
 
 .login100-form-btn:hover {

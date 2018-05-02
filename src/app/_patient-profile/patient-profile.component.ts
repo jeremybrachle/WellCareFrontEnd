@@ -3,7 +3,7 @@ import { User, Doctor, Patient} from '../_models/index';
 // import { AppModule } from '../app.module';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-patient-profile',
@@ -33,11 +33,13 @@ export class PatientProfileComponent implements OnInit {
   public docsClass: string;
   public infoClass: string;
   public scripsClass: string;
+  public myDocs: Doctor[];
 
 
   constructor(private router: Router,
     // make an http client object for calling http requests
-    protected httpClient: HttpClient
+    protected httpClient: HttpClient,
+    private userService: UserService
 ) {
   // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.imagePath = '../../assets/images/smu_logo2.png';
@@ -59,7 +61,7 @@ protected httpOptions  = {
   ngOnInit() {
     console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.user.firstName);
+    console.log(this.user.appointments.length);
     this.userImage = this.user.profPic;
     this.icon = 'pencil';
     this.infoClass = 'btn nav-link activeTab';
@@ -78,6 +80,7 @@ protected httpOptions  = {
     this.router.navigateByUrl('');
   }
   showMyDocs() {
+    console.log('in the patient profile showMyDocs() fxn')
     this.docsClass = 'btn nav-link activeTab';
     this.infoClass = 'btn nav-link inactiveTab';
     this.scripsClass = 'btn nav-link inactiveTab';
@@ -88,6 +91,24 @@ protected httpOptions  = {
     this.scripsTabPane = false;
     this.docNotesTabPane = false;
     this.notifsTabPane = false;
+    this.myDocs = [];
+    console.log(this.user.appointments);
+    console.log(this.user.appointments.length);
+    for (let k = 0; k < this.user.appointments.length; k++) {
+      console.log('in for loop for iterating through this users appts');
+      this.userService.getBasicDocByUsername(this.user.appointments[k].doctor.username).subscribe(
+        doc => {
+          console.log('this current doc obj being iterated over: ' + doc);
+          this.myDocs.push(doc);
+        },
+        error => {
+          console.log('getDocByUsername fxn error in for loop error of patient profile ts');
+        },
+        () => {
+          console.log(this.myDocs);
+        }
+      );
+    }
   }
   showMyScrips() {
     this.docsClass = 'btn nav-link inactiveTab';

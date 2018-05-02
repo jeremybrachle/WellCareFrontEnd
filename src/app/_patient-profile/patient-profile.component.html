@@ -115,19 +115,19 @@
                       <tr scope="col" style="font-size:2rem;">My Doctors</tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let appt of user.appointments">
+                    <tr *ngFor="let doc of myDocs">
                       <td scope="row" style="font-weight:700;">
-                        <a [routerLink]="['']" style="color:black;"> Dr. {{appt.doctor.firstName}} {{appt.doctor.lastName}}
+                        <a [routerLink]="['']" style="color:black;"> Dr. {{doc.firstName}} {{doc.lastName}}
                         </a>
                       </td>
                       <td style="font-weight:300; padding-left:2rem;">
-                          {{appt.doctor.specialty}}
+                          {{doc.specialty}}
                       </td>
                       <td style="font-weight:300; padding-left:2rem;">
-                          <a>{{appt.doctor.phone}}</a>
+                          <a>{{doc.phone}}</a>
                       </td>
                       <td style="font-weight:300; padding-left:2rem;">
-                          {{appt.doctor.address}}
+                          {{doc.address}}
                       </td>
                     </tr>
                   </tbody>

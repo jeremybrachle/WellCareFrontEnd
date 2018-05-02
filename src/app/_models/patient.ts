@@ -4,7 +4,8 @@ import { DoctorNote } from './note';
 import { Notification } from './notification';
 
 export class Patient {
-  id: number;
+  patient_id: number;
+  // id: number;
   gender: string;
   username: string;
   password: string;

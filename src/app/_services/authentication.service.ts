@@ -166,16 +166,19 @@ export class AuthenticationService {
     //           });
     // }
     login(u: string, p: string) {
-      console.log('username' + u);
-      console.log('password' + p);
+      console.log('username: ' + u);
+      console.log('password: ' + p);
         return this.http.post<any>(`${this.endPoint}/login`, { 'username': u, 'password': p} , this.httpOptions)
             .map(curr_user => {
+                console.log(curr_user);
                 // login successful if there's a jwt token in the response
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     // localStorage.setItem('currentUser', JSON.stringify(curr_user));
                 if (curr_user == 0 || curr_user == 1) {
-                  // localStorage.setItem('currentUser', JSON.stringify(this.mock));
-                  return curr_user;
+                    console.log(curr_user);
+
+                    // localStorage.setItem('currentUser', JSON.stringify(this.mock));
+                    return curr_user;
                 }
                 // if (curr_user && curr_user.token) {
                 //   console.log(curr_user);
@@ -184,7 +187,8 @@ export class AuthenticationService {
                 //   localStorage.setItem('currentUser', JSON.stringify(curr_user));
                 // }
                 else {
-                  return curr_user;
+                    console.log(curr_user);
+                    return curr_user.isDoc;
                 }
                 // return curr_user;
             }

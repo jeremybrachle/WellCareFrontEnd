@@ -205,54 +205,205 @@ export class LoginComponent implements OnInit {
           // console.log(allDocs);
           this.smuPic = '../../assets/images/happy.jpg';
     }
-
     login() {
       this.count++;
       this.loading = true;
-      // localStorage.setItem('currentUser', JSON.stringify(this.model));
-      console.log('in login before calling authenticationServiceLogin')
       this.authenticationService.login(this.model.username, this.model.password)
           .subscribe(
               data => {
-                console.log(data);
-                console.log('in login subscribing from authenticationServiceLogin')
+
                 if (data == -1) {
-                  this.isDoc = -1;
                   this.alertMsg = 'Username or password incorrect!';
                   if (this.count > 3) {
                     this.kickedOut();
                   }
                   this.loading = false;
                 } else if (data == 1) {
-                  console.log('its a doc');
-                  this.isDoc = 1;
                   this.count = 0;
                   this.alertMsg = '';
-                  this.doc = this.userService.getDocByUsername(this.model.username);
-                  // localStorage.setItem('currentUser', JSON.stringify(this.doc));
-                  // this.router.navigate(['_doc-profile'], { queryParams: this.doc} );
+                  this.populateDoctor();
                 } else if (data == 0) {
                   console.log('its a patient');
                   this.count = 0;
                   this.alertMsg = '';
-                  this.isDoc = 0;
-                  this.patient = this.userService.getPatientByUsername(this.model.username);
+                  this.populatePatient();
                 }
 
               },
               error => {
                   this.alertMsg = 'Im scared why did the program enter this error block';
-                  if (this.count > 3) {
-                    this.kickedOut();
-                  }
                   this.loading = false;
               });
-              () => {
-                console.log(this.patient);
-                localStorage.setItem('currentUser', JSON.stringify(this.patient));
-                this.router.navigate(['_patient-profile'], { queryParams: this.patient} );
-              }
+    }
 
+    populatePatient() {
+      this.userService.getBasicPatientByUsername(this.model.username).subscribe(
+        patient => {
+          // console.log(patient);
+          this.patient = patient;
+          console.log(this.patient);
+          // console.log(this.patient.patient_id);
+
+        },
+        error => {
+          console.log(this.patient);
+        },
+        () => {
+          // console.log(this.patient.patient_id);
+          this.userService.getPatientDocNotes(this.patient.patient_id).subscribe(
+            myDocNotes => {
+              // console.log(myDocNotes);
+              this.patient.docNotes = myDocNotes;
+              console.log(this.patient.docNotes);
+
+            },
+            error => {
+              console.log('getPatientDocNotes error');
+              this.loading = false;
+            },
+            () => {
+              console.log(this.patient.patient_id);
+              this.userService.getPatientNotifs(this.patient.patient_id).subscribe(
+                notifs => {
+                  this.patient.notifications = notifs;
+                },
+                error => {
+                  console.log('getPatientNotifs error');
+                  this.loading = false;
+                },
+                () => {
+                  console.log(this.patient.patient_id);
+                  this.userService.getPatientScrips(this.patient.patient_id).subscribe(
+                    scrips => {
+                      console.log(scrips);
+                      this.patient.scrips = scrips;
+                      console.log(this.patient.scrips);
+
+                    },
+                    error => {
+                      console.log('getPatientScrips error');
+                      this.loading = false;
+                    },
+                    () => {
+                      console.log(this.patient.patient_id);
+                      this.userService.getPatientAppts(this.patient.patient_id).subscribe(
+                        appts => {
+                          console.log(appts);
+                          this.patient.appointments = appts;
+                          console.log(this.patient.appointments);
+
+                        },
+                        error => {
+                          console.log('getPatientAppts error');
+                          this.loading = false;
+                        },
+                        () => {
+                          console.log(this.patient);
+                          console.log(this.patient.appointments[0]);
+                          localStorage.setItem('currentUser', JSON.stringify(this.patient));
+                          this.router.navigate(['_patient-profile'], { queryParams: this.patient} );
+                        }
+                      );
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
+    }
+
+    populateDoctor() {
+      this.userService.getBasicDocByUsername(this.model.username).subscribe(
+        doc => {
+          console.log(doc);
+          this.doc = doc;
+          console.log(this.doc);
+          console.log(this.doc.doc_id);
+
+        },
+        error => {
+          console.log(this.doc);
+        },
+        () => {
+          console.log(this.doc.doc_id);
+          this.userService.getDocsNotesForPatients(this.doc.doc_id).subscribe(
+            myDocNotes => {
+              console.log(myDocNotes);
+              this.doc.notesForPatient = myDocNotes;
+              console.log(this.doc.notesForPatient);
+
+            },
+            error => {
+              console.log('getDocsNotesForPatients error');
+              this.loading = false;
+            },
+            () => {
+              console.log(this.doc.doc_id);
+              this.userService.getDocNotifs(this.doc.doc_id).subscribe(
+                notifs => {
+                  this.doc.notifications = notifs;
+                },
+                error => {
+                  console.log('getDocNotifs error');
+                  this.loading = false;
+                },
+                () => {
+                  console.log(this.doc.doc_id);
+                  this.userService.getDocScrips(this.doc.doc_id).subscribe(
+                    scrips => {
+                      console.log(scrips);
+                      this.doc.scrips = scrips;
+                      console.log(this.doc.scrips);
+
+                    },
+                    error => {
+                      console.log('getDocScrips error');
+                      this.loading = false;
+                    },
+                    () => {
+                      console.log(this.doc.doc_id);
+                      this.userService.getDocAppts(this.doc.doc_id).subscribe(
+                        appts => {
+                          console.log(appts);
+                          this.doc.appointments = appts;
+                          console.log(this.doc.appointments);
+
+                        },
+                        error => {
+                          console.log('getDocAppts error');
+                          this.loading = false;
+                        },
+                        () => {
+                          console.log(this.doc.doc_id);
+                          this.userService.getDocReviews(this.doc.doc_id).subscribe(
+                            reviews => {
+                              console.log(reviews);
+                              this.doc.reviews = reviews;
+                              console.log(this.doc.reviews);
+    
+                            },
+                            error => {
+                              console.log('getDocReviews error');
+                              this.loading = false;
+                            },
+                            () => {
+                              console.log(this.doc);
+                              localStorage.setItem('currentUser', JSON.stringify(this.doc));
+                              this.router.navigate(['_doc-profile'], { queryParams: this.doc} );
+                            }
+                          );
+                        }
+                      );
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
     }
 
     forgot() {

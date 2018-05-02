@@ -4,7 +4,7 @@ import { Prescription } from './scrip';
 import { DoctorNote } from './note';
 import { Notification } from './notification';
 export class Doctor {
-  id: number;
+  doc_id: number;
   username: string;
   password: string;
   firstName: string;
@@ -14,8 +14,8 @@ export class Doctor {
   phone?: string;
   address?: string;
   rating?: Number;
-  reviews?: DocReview[];
   profPic?: string;
+  reviews?: DocReview[];
   appointments: Appointment[];
   scrips: Prescription[];
   notesForPatient: DoctorNote[];
