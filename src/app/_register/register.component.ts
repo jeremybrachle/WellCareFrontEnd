@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -17,45 +18,65 @@ export class RegisterComponent {
     model: any = {};
     public loading = false;
     public imagePath: string;
+    protected httpClient: HttpClient;
 
     constructor(private router: Router, private userService: UserService, private alertService: AlertService) {
         this.imagePath = '../../assets/images/smu_logo.png';
     }
-    registerPatient() {
-      const editJsonFile = require('edit-json-file');
-      const file = editJsonFile(`../../assets/mock-data.json`);
-      //'_register/patient'
-      this.loading = true;
-      this.userService.createPatient(this.model)
-          .subscribe(
-              data => {
-                  // console.log('yay');
-                  this.alertService.success('Registration successful', true);
 
-                  this.router.navigate(['']);
-              },
-              error => {
-                  this.alertService.error(error);
-                  this.loading = false;
-              });
+    protected httpOptions  = {
+        headers: new HttpHeaders({
+          'Content-Type' : 'application/json'
+        })
+    };
+    registerPatient() {
+    //   const editJsonFile = require('edit-json-file');
+    //   const file = editJsonFile(`../../assets/mock-data.json`);
+    //   //'_register/patient'
+    //   this.loading = true;
+    //   this.userService.createPatient(this.model)
+    //       .subscribe(
+    //           data => {
+    //               // console.log('yay');
+    //               this.alertService.success('Registration successful', true);
+
+    //               this.router.navigate(['']);
+    //           },
+    //           error => {
+    //               this.alertService.error(error);
+    //               this.loading = false;
+    //           });
+
+    this.httpClient.post('http://0.0.0.0/_register/patient', {'allData' : this.model}, this.httpOptions);
+
+    // DO WE NEED TO SEND A RESPONSE BACK
+
     }
     registerDoc() {
-      const editJsonFile = require('edit-json-file');
-      const file = editJsonFile(`../../assets/mock-data.json`);
-          //'_register/doc'
-      this.loading = true;
-      this.userService.createDoc(this.model)
-          .subscribe(
-              data => {
-                  // console.log('yay');
-                  this.alertService.success('Registration successful', true);
+    //   const editJsonFile = require('edit-json-file');
+    //   const file = editJsonFile(`../../assets/mock-data.json`);
+    //       //'_register/doc'
+    //   this.loading = true;
+    //   this.userService.createDoc(this.model)
+    //       .subscribe(
+    //           data => {
+    //               // console.log('yay');
+    //               this.alertService.success('Registration successful', true);
 
-                  this.router.navigate(['']);
-              },
-              error => {
-                  this.alertService.error(error);
-                  this.loading = false;
-              });
+    //               this.router.navigate(['']);
+    //           },
+    //           error => {
+    //               this.alertService.error(error);
+    //               this.loading = false;
+    //           });
+
+
+    this.httpClient.post('http://0.0.0.0/', {'allData' : this.model}, this.httpOptions);
+    // .map(curr_user => {
+
+    // });
+
+
     }
 }
 

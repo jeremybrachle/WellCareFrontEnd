@@ -25,37 +25,37 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // const users: any[] = JSON.parse(localStorage.getItem('users')) || [];
         // wrap in delayed observable to simulate server api call
         return Observable.of(null).mergeMap(() => {
-
+            console.log('ZZZZZZZZZZZZZ');
             // authenticate
-            if (request.url.endsWith('/api/authenticate/doc') && request.method === 'POST') {
-                console.log(request.body);
-                // find if any user matches login credentials
-                for (let j = 0; j < data.users.length; j++) {
-                  if (data.users[j].username === request.body.user.username && data.users[j].password === request.body.user.password){
-                    console.log('match!');
-                    const user = data.users[j];
-                    const body = {
-                      id: user.id,
-                      username: user.username,
-                      password: user.password,
-                      firstName: user.firstName,
-                      lastName: user.lastName,
-                      address: user.address,
-                      email: user.email,
-                      phone: user.phone,
-                      specialty: user.specialty,
-                      rating: user.rating,
-                      reviews: user.reviews,
-                      profPic: user.profPic,
-                      scrips: user.scrips,
-                      appointments: user.appointments,
-                      token: 'fake-jwt-token'
-                    };
-                    return Observable.of(new HttpResponse({ status: 200, body: body }));
-                  }
-                }
-                return Observable.throw('Username or password is incorrect');
-            }
+            // if (request.url.endsWith('/api/authenticate/doc') && request.method === 'POST') {
+            //     console.log(request.body);
+            //     // find if any user matches login credentials
+            //     for (let j = 0; j < data.users.length; j++) {
+            //       if (data.users[j].username === request.body.user.username && data.users[j].password === request.body.user.password){
+            //         console.log('match!');
+            //         const user = data.users[j];
+            //         const body = {
+            //           id: user.id,
+            //           username: user.username,
+            //           password: user.password,
+            //           firstName: user.firstName,
+            //           lastName: user.lastName,
+            //           address: user.address,
+            //           email: user.email,
+            //           phone: user.phone,
+            //           specialty: user.specialty,
+            //           rating: user.rating,
+            //           reviews: user.reviews,
+            //           profPic: user.profPic,
+            //           scrips: user.scrips,
+            //           appointments: user.appointments,
+            //           token: 'fake-jwt-token'
+            //         };
+            //         return Observable.of(new HttpResponse({ status: 200, body: body }));
+            //       }
+            //     }
+            //     return Observable.throw('Username or password is incorrect');
+            // }
             // authenticate
             if (request.url.endsWith('/api/authenticate/patient') && request.method === 'POST') {
               // find if any user matches login credentials
@@ -188,6 +188,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         .materialize()
         .delay(500)
         .dematerialize();
+        
     }
 }
 

@@ -9,7 +9,7 @@ import { Directive, Input, OnInit, ElementRef, Renderer2 } from '@angular/core';
 
 import * as octicons from 'octicons';
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers/index';
+// import { fakeBackendProvider } from './_helpers/index';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
@@ -164,7 +164,7 @@ import { FilterByAvailablePipe } from './_patient-appts/filter-by-available.pipe
         },
 
         // provider used to create fake backend
-        fakeBackendProvider
+        // fakeBackendProvider
     ],
     bootstrap: [AppComponent],
     exports: [

@@ -27,5 +27,9 @@ export class HomeComponent implements OnInit {
       } else { this.disableLogin = false; }
     });
   }
+  toLoginPage() {
+    console.log('navigating');
+    this.router.navigateByUrl('/_login');
+  }
 
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Directive } from '@angular/core';
 import { User, Doctor, Patient} from '../_models/index';
 // import { AppModule } from '../app.module';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-patient-profile',
@@ -9,6 +11,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./patient-profile.component.css']
 })
 export class PatientProfileComponent implements OnInit {
+  
+  
+  // make a patient object
+  public myPatient: Patient;
+  
+  
   @Input()
   public user: Patient;
   public imagePath: string;
@@ -27,7 +35,11 @@ export class PatientProfileComponent implements OnInit {
   public scripsClass: string;
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    // make an http client object for calling http requests
+    protected httpClient: HttpClient
+) {
+  // this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.imagePath = '../../assets/images/smu_logo2.png';
     console.log('profile constructor!');
     this.docsTabPane = false;
@@ -37,9 +49,17 @@ export class PatientProfileComponent implements OnInit {
     this.notifsTabPane = false;
   }
 
+// http options with headers
+protected httpOptions  = {
+  headers: new HttpHeaders({
+    'Content-Type' : 'application/json'
+  })
+};
+
   ngOnInit() {
     console.log(JSON.parse(localStorage.getItem('currentUser')));
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.user.firstName);
     this.userImage = this.user.profPic;
     this.icon = 'pencil';
     this.infoClass = 'btn nav-link activeTab';
@@ -47,6 +67,10 @@ export class PatientProfileComponent implements OnInit {
     this.scripsClass = 'btn nav-link inactiveTab';
     this.notifsClass = 'btn nav-link inactiveTab';
     this.docNotesClass = 'btn nav-link inactiveTab';
+    // this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+
+
   }
 
   public logout() {
@@ -78,6 +102,7 @@ export class PatientProfileComponent implements OnInit {
     this.docNotesTabPane = false;
   }
   showMyInfo() {
+
     this.docsClass = 'btn nav-link inactiveTab';
     this.infoClass = 'btn nav-link activeTab';
     this.scripsClass = 'btn nav-link inactiveTab';
@@ -88,6 +113,7 @@ export class PatientProfileComponent implements OnInit {
     this.infoTabPane = true;
     this.scripsTabPane = false;
     this.docNotesTabPane = false;
+
   }
   showMyDocNotes() {
     this.docsClass = 'btn nav-link inactiveTab';

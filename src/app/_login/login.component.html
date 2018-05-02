@@ -1,78 +1,75 @@
 
 
-	<div class="limiter">
-		<div class="container-login100" >
-        <!-- [ngStyle]="{'background-image': 'url('+'../../assets/images/smuBg.jpg)', 'background-position': 'center', 'background-size': 'cover'}" -->
-      <div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-            <img src="../../assets/images/img-01.png" alt="IMG">
-				</div>
-
-				<form class="login100-form validate-form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
-					<span class="login100-form-title"> Member Login
-          </span>
-          <div class="row">
-            <div class="alert alert-danger" *ngIf=" alertMsg !== '' " role="alert">
-              <strong>Oh snap!</strong> {{alertMsg}}
-            </div>
-          </div>
-
-					<div class="wrap1-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                  <input class="form-control input100" placeholder="Email" type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required >
-                  <span class="focus-input100"></span>
-                  <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </span>
-                  <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-            </div>
-					</div>
-
-					<div class="wrap2-input100 validate-input" data-validate = "Password is required">
-              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-                  <input type="password" class="form-control input100" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required />
-                  <span class="focus-input100"></span>
-                  <span class="symbol-input100">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                  </span>
-                  <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-              </div>
-          </div>
-					<div class="form-group container-login100-form-btn row">
-              <button [disabled]="loading" (click)="loginPatient()" class="login100-form-btn">Patient Login</button>
-              <button [disabled]="loading" (click)="loginDoc()" class="login100-form-btn">Doctor Login</button>
-          </div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#" [routerLink]="['/_loginHelp']">
-							Username / Password?
-            </a>
-          </div>
-
-          <div class="text-center p-t-13">
-            <a class="txt1" [routerLink]="['/_loginHelp']" style="font-size: .68rem;" >
-							Reset Password
-            </a>
-          </div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" [routerLink]="['_register']">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-            </a>
-          </div>
-
-				</form>
+<div class="limiter">
+  <div class="container-login100" >
+      <!-- [ngStyle]="{'background-image': 'url('+'../../assets/images/smuBg.jpg)', 'background-position': 'center', 'background-size': 'cover'}" -->
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+          <img src="../../assets/images/happy.jpg" alt="IMG">
       </div>
 
-      <!-- <ng-template #editProf>
-        <div class="modal-body">
+      <form class="login100-form validate-form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+        <span class="login100-form-title"> Member Login
+        </span>
+        <div class="row">
+          <div class="alert alert-danger" *ngIf=" alertMsg !== '' " role="alert">
+            <strong>Oh snap!</strong> {{alertMsg}}
+          </div>
+        </div>
+
+        <div class="wrap1-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <input class="form-control input100" placeholder="Email" type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required >
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+          </div>
+        </div>
+
+        <div class="wrap2-input100 validate-input" data-validate = "Password is required">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <input type="password" class="form-control input100" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required />
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+        </div>
+        <div class="form-group container-login100-form-btn row">
+            <button [disabled]="loading" (click)="login()" class="login100-form-btn">Login</button>
+            <!-- <button [disabled]="loading" (click)="loginDoc()" class="login100-form-btn">Doctor Login</button> -->
+        </div>
+
+        <div class="text-center p-t-12">
+          <span class="txt1">
+            Forgot
+          </span>
+          <a class="txt2" href="#" [routerLink]="['/_loginHelp']">
+            Username / Password?
+          </a>
+        </div>
+
+        <div class="text-center p-t-13">
+          <a class="txt1" [routerLink]="['/_loginHelp']" style="font-size: .68rem;" >
+            Reset Password
+          </a>
+        </div>
+
+        <div class="text-center p-t-13">
+            <a class="txt2" [routerLink]="['_register']">
+                Create your Account </a>
 
         </div>
-      </ng-template>  -->
-		</div>
-  </div>
 
+      </form>
+    </div>
+
+    <!-- <ng-template #editProf>
+      <div class="modal-body">
+      </div>
+    </ng-template>  -->
+  </div>
+</div>

@@ -6,7 +6,9 @@
     </div>
     <div class="card-body">
       <div>
-            <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button>
+            <!-- <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button> -->
+            <button type="button" class="btn btn-danger" (click)="toLoginPage()" id="login">Login</button>
+
       </div>
       <!-- <div [hidden]="disableLogin">
           <button type="button" class="btn btn-danger" [routerLink]="['_login']" id="login">Login</button>
