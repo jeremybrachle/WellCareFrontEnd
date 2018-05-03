@@ -300,7 +300,7 @@ export class UserService {
       }
     );
   }
-    getDocAppts(id: number) {
+  getDocAppts(id: number) {
         return this.http.post<any>(`${this.endPoint}/appointments/doctor`, { 'doc_id': id }, this.httpOptions).map(
           appts => {
             console.log(appts);
@@ -385,6 +385,20 @@ export class UserService {
           }
         );
     }
+    getDocsAppts(id: number) {
+        console.log(id);
+        return this.http.post<any>(`${this.endPoint}/appointments/doc`, { 'doc_id': id }, this.httpOptions).map(
+          appts => {
+              // this.returnPatient.appointments = appts;
+              // return this.returnPatient.appointments;
+              console.log(appts);
+              return appts;
+          },
+          error => {
+            console.log('sad for getting docs appts');
+          }
+        );
+    }
     getPatientNotifs(id: number) {
         console.log(id);
         return this.http.post<any>(`${this.endPoint}/notifications/patient`, { 'patient_id': id }, this.httpOptions).map(
@@ -436,10 +450,25 @@ export class UserService {
     }
 
     getAllDocs() {
-      this.http.get<any>('/getAllDoctors').subscribe(
+      return this.http.get<any>(`${this.endPoint}/getAllDoctors`, this.httpOptions).map(
         docIds => {
           console.log(docIds);
+          console.log(docIds[0].firstName)
           return docIds;
+        }
+      );
+    }
+    addNewAppt(appt) {
+      let tmp = 0;
+      let tmp2 = "requested";
+      return this.http.post<any>(`${this.endPoint}/docAppt`, {'date': appt.date,
+      'doctor': appt.doctor, 'patient': appt.patient, 'time': appt.time, 'newPatient': tmp,
+      'insurance': appt.insurance, 'reason': appt.reason, 'type': appt.type, 'status': tmp2 }, this.httpOptions).map(
+        docIds => {
+          console.log('hi');
+        },
+        error => {
+          console.log('error');
         }
       );
     }

@@ -96,6 +96,7 @@ protected httpOptions  = {
     this.notifsTabPane = false;
     this.myDocs = [];
     this.myDocs = this.loadDocs();
+  
   }
 
   loadDocs() {
