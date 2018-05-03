@@ -37,6 +37,7 @@ export class PatientProfileComponent implements OnInit {
   public tempDoc: Doctor;
   public myScrips: Prescription[];
   public myDocNotes: DoctorNote[];
+  public myNotifs: any= {};
   public alerts: Notification[];
 
   constructor(private router: Router,
@@ -73,9 +74,8 @@ protected httpOptions  = {
     this.notifsClass = 'btn nav-link inactiveTab';
     this.docNotesClass = 'btn nav-link inactiveTab';
     // this.user = JSON.parse(localStorage.getItem('currentUser'));
-
-
-
+    console.log(this.user.notifications);
+    this.user.profPic = this.imagePath;
   }
 
   public logout() {
@@ -97,6 +97,7 @@ protected httpOptions  = {
     this.myDocs = [];
     this.myDocs = this.loadDocs();
   }
+
   loadDocs() {
     console.log(this.user.appointments);
     console.log(this.user.appointments.length);
@@ -134,7 +135,7 @@ protected httpOptions  = {
   }
 
   loadMyScrips() {
-    console.log(this.user.scrips);
+    // console.log(this.user.scrips);
   }
   showMyInfo() {
 
@@ -171,7 +172,6 @@ protected httpOptions  = {
     this.myDocNotes = this.loadDocNotes();
   }
 
-
   loadDocNotes() {
     this.userService.getPatientDocNotes(this.user.patient_id).subscribe(
       notes => {
@@ -206,25 +206,35 @@ protected httpOptions  = {
     // this.myNotifications = [];
     // this.myNotifications = this.loadNotifications();
     this.alerts = [];
-    this.alerts = this.loadAlerts();
-    
+    this.myNotifs = [];
+    this.myNotifs = this.loadAlerts();
+    return this.myNotifs
   }
 
   loadAlerts() {
     this.userService.getPatientNotifs(this.user.patient_id).subscribe(
       notifications => {
-        this.alerts = notifications;
+        // this.user.notifications = notifications;
+        console.log(notifications);
+        this.myNotifs.push(notifications);
       },
       error => {
         console.log('shoot, error getting the doctor notifications for this patient');
-        this.alerts = [];
+        this.myNotifs = [];
       },
       () => {
-        console.log(this.alerts);
-        return this.alerts;
+        console.log(this.myNotifs);
+        return this.myNotifs;
+        // return this.alerts;
       }
     );
-    return this.alerts;
+    console.log(this.myNotifs);
+    // console.log(this.myNotifs[0].DocFirstName);
+    return this.myNotifs;
+  }
+
+  format(date: string) {
+    return date.slice(0,10);
   }
 
 

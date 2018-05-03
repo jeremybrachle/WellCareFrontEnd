@@ -8,4 +8,7 @@ export class Notification {
   date: Date;
   msg: string;
   beenDisplayed: boolean;
+  DocFirstName?: string;
+  DocLastName?: string;
+  DocAddress?: string;
 }

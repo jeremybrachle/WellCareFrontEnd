@@ -13,7 +13,6 @@ import * as octicons from 'octicons';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-
 import { AlertComponent } from './_directives/index';
 import { AuthenticationGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';

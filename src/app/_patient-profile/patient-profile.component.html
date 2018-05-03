@@ -165,7 +165,7 @@
                       </tbody>
                     </table>
               </div>
-              <div *ngIf="docNotesTabPane" id="docNotesTab">
+              <div *ngIf="docNotesTabPane" id="docNotesTab" >
                   <div class="card-header bg-white row">
                       <h2 class="col-lg-10">
                             Doctor's Orders!
@@ -195,7 +195,7 @@
               <div *ngIf="notifsTabPane" id="notifsTab">
                   <div class="bg-white row">
                       <h2 class="col-lg-10">
-                            New Appointments
+                            New Notifications
                       </h2>
                   </div>
 
@@ -208,20 +208,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <!--<tr *ngFor="let notif of user.notifications">-->
-                            <!--
-                        <tr *ngFor="let notif of ">
-                          <div *ngIf="notif.notificationType === 'newAppt'">
-                              <td scope="row">{{notif.date}}</td>
-                              <td scope="col" >Dr. {{notif.doctor.firstName}} {{notif.doctor.lastName}}</td>
+                        <!-- <tr *ngFor="let notif of user.notifications"> -->
+                        <tr *ngFor="let notif of myNotifs">
+                              <td scope="row">{{(notif.date) | date}}</td>
+                              <td scope="col" >Dr. {{notif.DocFirstName}} {{notif.DocLastName}}</td>
                               <td scope="row">{{notif.msg}}</td>
-                          </div>
                         </tr>
-                    -->
+                    
                       </tbody>
                   </table>
 
-                  <div class="bg-white row">
+                  <!-- <div class="bg-white row">
                       <h2 class="col-lg-10">
                             New Doctor's Notes
                       </h2>
@@ -237,15 +234,15 @@
                       </thead>
                       <tbody>
                           
-                        <!-- <tr *ngFor="let note of user.notifications">
+                        <tr *ngFor="let note of user.notifications">
                           <div *ngIf="note.notificationType === 'note'">
                               <td scope="row">Dr. {{note.doctor.firstName}} {{note.doctor.lastName}}</td>
                               <td scope="col" >{{note.date}}</td>
                               <td scope="row">{{note.msg}}</td>
                           </div>
-                        </tr> -->
+                        </tr>
                       </tbody>
-                  </table>
+                  </table> -->
               </div>
             </div>
         </div>

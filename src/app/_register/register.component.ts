@@ -18,9 +18,9 @@ export class RegisterComponent {
     model: any = {};
     public loading = false;
     public imagePath: string;
-    protected httpClient: HttpClient;
+    // public httpClient: HttpClient;
 
-    constructor(private router: Router, private userService: UserService, private alertService: AlertService) {
+    constructor(private router: Router, private userService: UserService, private alertService: AlertService, public httpClient: HttpClient) {
         this.imagePath = '../../assets/images/smu_logo.png';
     }
 
@@ -47,11 +47,31 @@ export class RegisterComponent {
     //               this.loading = false;
     //           });
 
-    this.httpClient.post('http://0.0.0.0/_register/patient', {'allData' : this.model}, this.httpOptions);
+    this.httpClient.post('http://0.0.0.0:5000/_register/patient', 
+    {
+        'gender': this.model.gender,
+        'username': this.model.username,
+        'password': this.model.password,
+        'firstName': this.model.firstName,
+        'lastName': this.model.lastName,
+        'email': this.model.email,
+        'phone': this.model.phone,
+        'address': this.model.address,
+        'emergency_contact': this.model.emergency_contact,
+        'dob': this.model.dob,
+        'profPic': 'null'
+    }, 
+    this.httpOptions).subscribe(
+        response => {
+            console.log(response);
+        }
+    );
 
     // DO WE NEED TO SEND A RESPONSE BACK
 
     }
+    
+    /*
     registerDoc() {
     //   const editJsonFile = require('edit-json-file');
     //   const file = editJsonFile(`../../assets/mock-data.json`);
@@ -78,6 +98,7 @@ export class RegisterComponent {
 
 
     }
+    */
 }
 
 
