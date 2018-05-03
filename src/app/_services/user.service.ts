@@ -278,6 +278,28 @@ export class UserService {
           }
         );
     }
+    getDocById(id: number) {
+      return this.http.post<any>(`${this.endPoint}/_doc-profile/byId`, { 'doc_id': id }, this.httpOptions).map(
+        doc => {
+          console.log(doc);
+          return doc;
+        },
+        error => {
+          console.log('sad for getting doc by id');
+        }
+      );
+  }
+  getPatientsDocs(id:number) {
+    return this.http.post<any>(`${this.endPoint}/patient/myDocs`, { 'patient_id': id }, this.httpOptions).map(
+      docs => {
+        console.log(docs);
+        return docs;
+      },
+      error => {
+        console.log('sad for getting this patients doctors');
+      }
+    );
+  }
     getDocAppts(id: number) {
         return this.http.post<any>(`${this.endPoint}/appointments/doctor`, { 'doc_id': id }, this.httpOptions).map(
           appts => {

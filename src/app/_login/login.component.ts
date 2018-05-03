@@ -298,8 +298,6 @@ export class LoginComponent implements OnInit {
                           this.loading = false;
                         },
                         () => {
-                          console.log(this.patient);
-                          console.log(this.patient.appointments[0]);
                           localStorage.setItem('currentUser', JSON.stringify(this.patient));
                           this.router.navigate(['_patient-profile'], { queryParams: this.patient} );
                         }

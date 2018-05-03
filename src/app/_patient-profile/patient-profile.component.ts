@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Directive } from '@angular/core';
-import { User, Doctor, Patient} from '../_models/index';
+import { User, Doctor, Patient, DoctorNote, Notification} from '../_models/index';
 // import { AppModule } from '../app.module';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { UserService } from '../_services/user.service';
-
+import { Prescription } from '../_models/scrip';
 @Component({
   selector: 'app-patient-profile',
   templateUrl: './patient-profile.component.html',
@@ -34,7 +34,10 @@ export class PatientProfileComponent implements OnInit {
   public infoClass: string;
   public scripsClass: string;
   public myDocs: Doctor[];
-
+  public tempDoc: Doctor;
+  public myScrips: Prescription[];
+  public myDocNotes: DoctorNote[];
+  public alerts: Notification[];
 
   constructor(private router: Router,
     // make an http client object for calling http requests
@@ -92,25 +95,31 @@ protected httpOptions  = {
     this.docNotesTabPane = false;
     this.notifsTabPane = false;
     this.myDocs = [];
+    this.myDocs = this.loadDocs();
+  }
+  loadDocs() {
     console.log(this.user.appointments);
     console.log(this.user.appointments.length);
-    for (let k = 0; k < this.user.appointments.length; k++) {
-      console.log('in for loop for iterating through this users appts');
-      this.userService.getBasicDocByUsername(this.user.appointments[k].doctor.username).subscribe(
-        doc => {
-          console.log('this current doc obj being iterated over: ' + doc);
-          this.myDocs.push(doc);
-        },
-        error => {
-          console.log('getDocByUsername fxn error in for loop error of patient profile ts');
-        },
-        () => {
-          console.log(this.myDocs);
-        }
-      );
-    }
+    this.userService.getPatientsDocs(this.user.patient_id).subscribe(
+      docs => {
+        this.myDocs = docs;
+        // console.log(docs);
+      },
+      error => {
+        console.log('shoot, error getting the doctors for this patient');
+        this.myDocs = [];
+      },
+      () => {
+        console.log(this.myDocs);
+        return this.myDocs;
+      }
+    );
+    return this.myDocs;
   }
+
+  
   showMyScrips() {
+    console.log('in the patient profile showMyScripts() fxn');
     this.docsClass = 'btn nav-link inactiveTab';
     this.infoClass = 'btn nav-link inactiveTab';
     this.scripsClass = 'btn nav-link activeTab';
@@ -121,6 +130,11 @@ protected httpOptions  = {
     this.infoTabPane = false;
     this.scripsTabPane = true;
     this.docNotesTabPane = false;
+    this.loadMyScrips();
+  }
+
+  loadMyScrips() {
+    console.log(this.user.scrips);
   }
   showMyInfo() {
 
@@ -137,6 +151,11 @@ protected httpOptions  = {
 
   }
   showMyDocNotes() {
+    console.log('in the patient profile showMyDocNotes() fxn');
+    // this.myDocNotes = 
+    console.log(this.user.docNotes[0]);
+
+    console.log('after calling trying to load the user doc notes');
     this.docsClass = 'btn nav-link inactiveTab';
     this.infoClass = 'btn nav-link inactiveTab';
     this.scripsClass = 'btn nav-link inactiveTab';
@@ -147,8 +166,31 @@ protected httpOptions  = {
     this.infoTabPane = false;
     this.scripsTabPane = false;
     this.docNotesTabPane = true;
+    // load the doctor notes
+    this.myDocNotes = [];
+    this.myDocNotes = this.loadDocNotes();
   }
+
+
+  loadDocNotes() {
+    this.userService.getPatientDocNotes(this.user.patient_id).subscribe(
+      notes => {
+        this.myDocNotes = notes;
+      },
+      error => {
+        console.log('shoot, error getting the doctor notes for this patient');
+        this.myDocNotes = [];
+      },
+      () => {
+        console.log(this.myDocNotes);
+        return this.myDocNotes;
+      }
+    );
+    return this.myDocNotes;
+  }
+
   showMyNotifs() {
+    console.log('in the patient profile showMyNotifs() fxn');
     this.docsClass = 'btn nav-link inactiveTab';
     this.infoClass = 'btn nav-link inactiveTab';
     this.scripsClass = 'btn nav-link inactiveTab';
@@ -159,13 +201,63 @@ protected httpOptions  = {
     this.infoTabPane = false;
     this.scripsTabPane = false;
     this.docNotesTabPane = false;
-    this.updateNotifs();
+    // this.updateNotifs();
+    // load the notifications
+    // this.myNotifications = [];
+    // this.myNotifications = this.loadNotifications();
+    this.alerts = [];
+    this.alerts = this.loadAlerts();
+    
   }
+
+  loadAlerts() {
+    this.userService.getPatientNotifs(this.user.patient_id).subscribe(
+      notifications => {
+        this.alerts = notifications;
+      },
+      error => {
+        console.log('shoot, error getting the doctor notifications for this patient');
+        this.alerts = [];
+      },
+      () => {
+        console.log(this.alerts);
+        return this.alerts;
+      }
+    );
+    return this.alerts;
+  }
+
+
   updateNotifs() {
     for (let k = 0; k < this.user.notifications.length; k++) {
       this.user.notifications[k].beenDisplayed = true;
     }
   }
+
+  // load the notfications
+  /*
+  loadNotifications() {
+    // call the service for notifications
+    this.userService.getPatientNotifs(this.user.patient_id).subscribe(
+      notifs => {
+        console.log(notifs);
+        this.myNotifications = notifs;
+      },
+      error => {
+        console.log('shoot, error getting the doctor notifications for this patient');
+        this.myNotifications = [];
+      },
+      () => {
+        console.log(this.myNotifications);
+        return this.myNotifications;
+      }
+    );
+    return this.myNotifications;
+  }
+  */
+
+
+
 }
 
 
